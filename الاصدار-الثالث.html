@@ -580,6 +580,40 @@
             object-fit: contain;
             filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
         }
+        .slide-header .header-forum {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+        .slide-header .header-forum-logo {
+            width: clamp(2.3rem, 3.2vw, 2.9rem);
+            height: clamp(2.3rem, 3.2vw, 2.9rem);
+            border-radius: 50%;
+            display: block;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 0.24rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(122, 16, 21, 0.16);
+        }
+        .slide-header .header-forum-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+            text-align: right;
+        }
+        .slide-header .header-forum-title {
+            font-size: clamp(0.7rem, 0.92vw, 0.88rem);
+            font-weight: 900;
+            color: #7a1015;
+            max-width: 11rem;
+        }
+        .slide-header .header-forum-sub {
+            font-size: clamp(0.6rem, 0.74vw, 0.68rem);
+            font-weight: 700;
+            color: #a3373c;
+            letter-spacing: 0.01em;
+        }
         .slide-header .header-logo.qanwan {
             width: clamp(10.2rem, 18vw, 13.2rem);
         }
@@ -591,11 +625,16 @@
         }
         @media (max-width: 760px) {
             .slide-header {
-                padding: 0.72rem 0.9rem;
+                padding: 0.62rem 0.9rem;
             }
             .slide-header .header-logos {
-                gap: 0.75rem;
+                gap: 0.55rem;
+                flex-wrap: wrap;
+                row-gap: 0.3rem;
             }
+            .slide-header .header-forum-logo { width: 1.9rem; height: 1.9rem; }
+            .slide-header .header-forum-sub { display: none; }
+            .slide-header .header-forum-title { font-size: 0.62rem; max-width: 7.5rem; }
             .slide-header .header-logo.qanwan { width: 30vw; }
             .slide-header .header-logo.union { width: 38vw; }
             .slide-header .header-logo.council { width: 40vw; }
@@ -852,6 +891,13 @@
             <img class="background-art" src="assets/backgrounds/third-edition-background-clean.jpg" alt="">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -886,6 +932,13 @@
         <section class="slide" aria-label="الشريحة 1">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -921,6 +974,13 @@
         <section class="slide text-slide" aria-label="الشريحة 2">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -999,6 +1059,13 @@
         <section class="slide text-slide" aria-label="الشريحة 3">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1045,6 +1112,13 @@
         <section class="slide text-slide" aria-label="الشريحة 4">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1126,6 +1200,13 @@
         <section class="slide text-slide" aria-label="الشريحة 5">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1207,6 +1288,13 @@
         <section class="slide text-slide" aria-label="الشريحة 6">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1295,6 +1383,13 @@
         <section class="slide text-slide" aria-label="الشريحة 7">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1356,6 +1451,13 @@
         <section class="slide text-slide" aria-label="الشريحة 8">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1418,6 +1520,13 @@
         <section class="slide text-slide" aria-label="الشريحة 9">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1486,6 +1595,13 @@
         <section class="slide text-slide" aria-label="الشريحة 10">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
@@ -1553,6 +1669,13 @@
         <section class="slide text-slide" aria-label="الشريحة 11">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
+                    <div class="header-forum">
+                        <img class="header-forum-logo" src="assets/forum/forum-logo.svg" alt="شعار الملتقى">
+                        <div class="header-forum-text">
+                            <span class="header-forum-title">ملتقى سرت الاقتصادي لرجال الأعمال</span>
+                            <span class="header-forum-sub">2026 &middot; ليبيا</span>
+                        </div>
+                    </div>
                     <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
                     <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
                     <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">

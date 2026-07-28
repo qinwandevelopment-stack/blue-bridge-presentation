@@ -6,12 +6,18 @@
     <title>الإصدار الثالث</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { width: 100%; height: 100%; }
            :root { --deck-bg: #d9eef7; }
-           body { overflow: hidden; background: var(--deck-bg); }
+           body {
+               overflow: hidden;
+               background: var(--deck-bg);
+               font-family: 'Cairo', Tahoma, Arial, sans-serif;
+               -webkit-font-smoothing: antialiased;
+               text-rendering: optimizeLegibility;
+           }
         .stage {
             width: 100vw;
             height: 100vh;
@@ -103,17 +109,43 @@
             gap: 1.2rem;
         }
         .text-slide-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             color: #0b6fa8;
-            font-weight: 800;
-            font-size: clamp(0.78rem, 1.05vw, 0.98rem);
-            letter-spacing: 0.02em;
+            font-weight: 900;
+            font-size: clamp(0.8rem, 1.08vw, 1rem);
+            letter-spacing: 0.03em;
+        }
+        .text-slide-kicker::before {
+            content: "";
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1f8fd1, #0b4d74);
+            flex-shrink: 0;
         }
         .text-slide-title {
-            font-size: clamp(1.4rem, 2.4vw, 2.3rem);
+            font-size: clamp(1.48rem, 2.55vw, 2.4rem);
             font-weight: 900;
             color: #04314f;
-            line-height: 1.3;
-            margin-top: 0.15rem;
+            line-height: 1.28;
+            margin-top: 0.2rem;
+            letter-spacing: -0.005em;
+            position: relative;
+            padding-bottom: 0.5rem;
+            width: fit-content;
+        }
+        .text-slide-title::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 3.6rem;
+            height: 0.27rem;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #1f8fd1, #0b4d74);
         }
         .text-slide-lead {
             font-size: clamp(0.82rem, 1.02vw, 1.02rem);
@@ -128,8 +160,18 @@
             margin-top: 0.2rem;
         }
         .material-symbols-rounded {
+            font-family: 'Material Symbols Rounded';
+            font-weight: normal;
+            font-style: normal;
             font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
             line-height: 1;
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
         }
         .text-slide-columns {
             display: grid;
@@ -394,10 +436,11 @@
             display: flex;
             align-items: flex-start;
             gap: 0.55rem;
-            background: linear-gradient(160deg, rgba(255,255,255,0.75), rgba(223,240,250,0.75));
+            background: linear-gradient(160deg, rgba(255,255,255,0.78), rgba(223,240,250,0.78));
             border: 1px solid rgba(11, 77, 116, 0.14);
+            border-right: 3px solid #1f8fd1;
             border-radius: 0.55rem;
-            padding: 0.42rem 0.6rem;
+            padding: 0.42rem 0.65rem;
             box-shadow: 0 4px 10px rgba(6, 44, 74, 0.06);
         }
         .workflow-list .num {
@@ -415,10 +458,11 @@
             margin-top: 0.1rem;
         }
         .workflow-list h5 {
-            font-size: clamp(0.78rem, 0.95vw, 0.92rem);
+            font-size: clamp(0.8rem, 0.98vw, 0.95rem);
             font-weight: 900;
             color: #04314f;
             line-height: 1.3;
+            letter-spacing: -0.005em;
             margin-bottom: 0.15rem;
         }
         .workflow-list h5 .en-tag {
@@ -518,6 +562,26 @@
             padding: 0.55rem 0.85rem;
             box-shadow: 0 6px 14px rgba(6, 44, 74, 0.08);
         }
+        .benchmark-card .stat-row {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            justify-content: flex-start;
+            flex-direction: row-reverse;
+        }
+        .benchmark-card .stat-icon {
+            width: clamp(2.1rem, 2.6vw, 2.5rem);
+            height: clamp(2.1rem, 2.6vw, 2.5rem);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1f8fd1, #0b4d74);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+            flex-shrink: 0;
+            box-shadow: 0 6px 14px rgba(11, 77, 116, 0.22);
+        }
         .benchmark-card .stat {
             font-size: clamp(1.15rem, 1.9vw, 1.7rem);
             font-weight: 900;
@@ -527,14 +591,15 @@
             text-align: left;
         }
         .benchmark-card h5 {
-            font-size: clamp(0.76rem, 0.92vw, 0.88rem);
+            font-size: clamp(0.78rem, 0.95vw, 0.9rem);
             font-weight: 900;
             color: #04314f;
-            margin: 0.2rem 0 0.25rem;
+            margin: 0.3rem 0 0.25rem;
+            letter-spacing: -0.005em;
         }
         .benchmark-card p {
-            font-size: clamp(0.7rem, 0.85vw, 0.82rem);
-            line-height: 1.6;
+            font-size: clamp(0.72rem, 0.87vw, 0.84rem);
+            line-height: 1.62;
             color: #1c4360;
             font-weight: 600;
         }
@@ -1376,6 +1441,14 @@
                             <h5>شركة قنوان للاستثمار وإدارة المجوعات التجارية<span class="en-tag">Qinwan Company</span></h5>
                             <p>التطوير والتشغيل التقني.<span class="role-en">Development &amp; Technical Operation.</span></p>
                         </div>
+                        <div class="partner-card">
+                            <h5>رجال الأعمال<span class="en-tag">Businessmen</span></h5>
+                            <p>المستفيدون المباشرون وقادة الاستثمار.<span class="role-en">Direct Beneficiaries &amp; Investment Drivers.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>المؤسسات والشركات (القطاع الخاص)<span class="en-tag">Private Sector Institutions &amp; Companies</span></h5>
+                            <p>الشركاء التنفيذيون وسلاسل الإمداد.<span class="role-en">Execution Partners &amp; Supply Chains.</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1494,22 +1567,34 @@
                     <p class="benchmark-lead">تؤكد تقارير (IMF, World Bank, UNCTAD 2024) أن "الرقمنة" هي الرافعة الاقتصادية الأقوى للمنطقة، وفق الشواهد التالية:</p>
                     <div class="benchmark-grid">
                         <div class="benchmark-card">
-                            <span class="stat">0% → 32%</span>
+                            <div class="stat-row">
+                                <span class="stat-icon material-symbols-rounded">security</span>
+                                <span class="stat">0% → 32%</span>
+                            </div>
                             <h5>تغلب التقنية على التحديات الأمنية (نموذج الصومال)</h5>
                             <p>نجحت منصة "ميناء بربرة" الرقمية في رفع حصتها من تجارة إثيوبيا من 0% إلى 32% خلال 4 سنوات فقط، رغم الظروف الأمنية الصعبة.</p>
                         </div>
                         <div class="benchmark-card">
-                            <span class="stat">21 → 4 أيام</span>
+                            <div class="stat-row">
+                                <span class="stat-icon material-symbols-rounded">speed</span>
+                                <span class="stat">21 → 4 أيام</span>
+                            </div>
                             <h5>الكفاءة الأمنية القصوى (نموذج شرق أفريقيا)</h5>
                             <p>أثبتت أنظمة التتبع الإلكتروني قدرتها على خفض زمن العبور من 21 يوماً إلى 4 أيام، والقضاء على سرقة البضائع بنسبة 99%.</p>
                         </div>
                         <div class="benchmark-card">
-                            <span class="stat">72.8%</span>
+                            <div class="stat-row">
+                                <span class="stat-icon material-symbols-rounded">pie_chart</span>
+                                <span class="stat">72.8%</span>
+                            </div>
                             <h5>اقتصاد الخدمات (نموذج جيبوتي)</h5>
                             <p>تشكل خدمات العبور حالياً 72.8% من الناتج المحلي الإجمالي، مما يجعله البديل الاستراتيجي للنفط.</p>
                         </div>
                         <div class="benchmark-card">
-                            <span class="stat">+$200M</span>
+                            <div class="stat-row">
+                                <span class="stat-icon material-symbols-rounded">trending_up</span>
+                                <span class="stat">+$200M</span>
+                            </div>
                             <h5>ميزة ليبيا الحاسمة (القرب من أوروبا)</h5>
                             <p>تتفوق ليبيا على منافسيها في غرب أفريقيا بكونها الأقرب للأسواق الأوروبية (2-3 أيام شحن بحري مقابل 12 يوماً)، مما يوفر للتاجر النيجيري 50% من زمن دورة رأس المال، ويحقق وفورات سنوية تتجاوز 200 مليون دولار (وفق تقديرات AfDB).</p>
                         </div>

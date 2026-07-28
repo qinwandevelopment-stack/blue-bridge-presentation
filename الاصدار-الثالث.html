@@ -787,6 +787,63 @@
             .nav-button { width: 2.2rem; height: 2.2rem; }
             .slide-counter { min-width: 2.2rem; font-size: 0.64rem; }
         }
+        @media (max-width: 1024px) {
+            .slide {
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                align-items: flex-start;
+                padding-top: clamp(5rem, 9vh, 6.4rem);
+                padding-bottom: clamp(3.4rem, 8vh, 4.2rem);
+            }
+            .text-slide-body,
+            .workflow-body,
+            .text-slide-solo {
+                height: auto;
+                min-height: 100%;
+                padding: 0.6rem 0;
+            }
+            .text-slide-split,
+            .text-slide-columns {
+                grid-template-columns: 1fr;
+                height: auto;
+                gap: 1rem;
+            }
+            .text-slide-split .text-slide-visual,
+            .text-slide-columns .text-slide-sectors {
+                order: 2;
+            }
+            .text-slide-sectors {
+                border-right: 0;
+                padding-right: 0;
+                border-top: 1px solid rgba(11, 77, 116, 0.16);
+                padding-top: 0.6rem;
+            }
+            .text-slide-visual img {
+                max-height: 42vh;
+            }
+            .partners-grid,
+            .workflow-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .slide {
+                padding-left: clamp(3.6rem, 15vw, 4.3rem);
+                padding-right: clamp(0.9rem, 4vw, 1.3rem);
+            }
+            .text-slide {
+                padding-left: clamp(3.6rem, 15vw, 4.3rem);
+                padding-right: clamp(0.9rem, 4vw, 1.3rem);
+            }
+            .partners-grid,
+            .workflow-steps,
+            .benchmark-grid {
+                grid-template-columns: 1fr;
+            }
+            .text-slide-top {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1631,6 +1688,11 @@
             playCurrentNarration();
         }
 
+        function syncStagePosition() {
+            stage.style.transition = 'none';
+            stage.style.transform = `translateY(${-activeSlideIndex * window.innerHeight}px)`;
+        }
+
         function goToSlide(index) {
             const targetIndex = Math.min(Math.max(index, 0), slides.length - 1);
             if (targetIndex === activeSlideIndex) {
@@ -1655,7 +1717,8 @@
             handleFirstInteraction();
             toggleNarration();
         });
-        window.addEventListener('resize', () => goToSlide(currentSlideIndex()));
+        window.addEventListener('resize', syncStagePosition);
+        window.addEventListener('orientationchange', syncStagePosition);
         window.addEventListener('keydown', (event) => {
             handleFirstInteraction();
             if (event.key === 'ArrowUp' || event.key === 'PageUp') {

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="170" viewBox="0 0 820 170" role="img" aria-labelledby="title desc">
+  <title id="title">شعار الجهاز الوطني للتنمية</title>
+  <desc id="desc">شعار الجهاز الوطني للتنمية بالعربية والإنجليزية مع رمز أزرق وذهبي ونجمة بيضاء.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#004c83"/>
+      <stop offset="1" stop-color="#002f56"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0aa4d"/>
+      <stop offset="1" stop-color="#b37a28"/>
+    </linearGradient>
+  </defs>
+  <rect width="820" height="170" fill="none"/>
+  <g transform="translate(34 28)">
+    <text x="530" y="38" font-family="Cairo, Tahoma, Arial, sans-serif" font-size="41" font-weight="900" fill="#003f73" direction="rtl" unicode-bidi="bidi-override">الجهاز الوطني للتنمية</text>
+    <text x="0" y="86" font-family="Arial, Tahoma, sans-serif" font-size="30" font-weight="800" fill="#004c83">National Development Agency</text>
+  </g>
+  <g transform="translate(642 18)">
+    <path d="M88 8 C121 10 143 32 149 64 C132 40 107 37 88 58 C72 76 61 108 31 120 C55 82 52 43 88 8 Z" fill="url(#blue)"/>
+    <path d="M142 68 C130 111 100 136 58 129 C37 126 20 114 8 98 C43 105 62 80 80 57 C103 28 128 34 142 68 Z" fill="url(#gold)"/>
+    <path d="M123 17 L130 31 L146 32 L134 42 L138 58 L123 49 L109 58 L112 42 L100 32 L116 31 Z" fill="#ffffff"/>
+  </g>
+</svg>

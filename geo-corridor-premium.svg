@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Premium Digital Blue Bridge Geoeconomic Corridor</title>
+  <desc id="desc">A polished geoeconomic corridor visual showing Libya as a digital logistics hub connected to Niger, Chad, Mali and Burkina Faso.</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.58" stop-color="#f3fbff"/>
+      <stop offset="1" stop-color="#d8eef8"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#063064"/>
+      <stop offset="0.55" stop-color="#0878ad"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="0.45" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#f3d675"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e9f7ff"/>
+    </linearGradient>
+    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#063064" flood-opacity="0.22"/>
+    </filter>
+    <filter id="routeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.13 0 0 0 0 0.83 0 0 0 0 0.93 0 0 0 .9 0"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="dotGrid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.3" fill="#0b6f9f" opacity="0.18"/>
+    </pattern>
+    <marker id="arrow" markerWidth="18" markerHeight="18" refX="15" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L16,6 L0,12 Z" fill="#f3d675"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#paperGlow)"/>
+  <rect width="1600" height="900" fill="url(#dotGrid)"/>
+  <path d="M0 704c160-88 326-112 498-73 155 35 251 119 431 106 151-11 242-91 400-52 96 24 181 80 271 70v145H0z" fill="url(#sea)" opacity="0.95"/>
+  <path d="M0 724c154-74 314-93 480-57 158 34 261 106 438 94 151-10 246-78 397-50 111 20 198 70 285 62" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.42"/>
+
+  <g transform="translate(190 108)" filter="url(#softShadow)">
+    <path d="M207 173c92-65 209-84 322-53 85 23 133 79 219 111 74 27 137 16 202 1 96-23 188 10 269 91 67 67 111 147 182 179-86 56-183 91-293 103-139 15-275-12-397-58-96-37-180-86-265-111-82-25-169-19-262 12-20-105-13-198 23-275z" fill="url(#land)" stroke="#0f4777" stroke-width="4"/>
+    <path d="M448 247c48 18 77 56 123 79 54 28 111 14 165 5 55-9 111 2 168 40 49 34 79 84 129 113-87 34-182 43-288 26-92-15-171-52-249-77-58-18-121-20-190-5 24-88 72-148 142-181z" fill="#c7efff" opacity="0.74"/>
+    <path d="M390 292l155-77 139 89 180-27 208 159" fill="none" stroke="url(#route)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#routeGlow)" marker-end="url(#arrow)"/>
+    <path d="M390 292l155-77 139 89 180-27 208 159" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 18" opacity="0.75"/>
+  </g>
+
+  <g font-family="Cairo, Tahoma, Arial" font-weight="900" text-anchor="middle">
+    <g transform="translate(582 402)">
+      <circle r="68" fill="#063064" stroke="#7dd3fc" stroke-width="5" filter="url(#routeGlow)"/>
+      <text y="-6" font-size="31" fill="#ffffff">ليبيا</text>
+      <text y="29" font-size="16" fill="#9ddcff">Digital Hub</text>
+    </g>
+    <g transform="translate(736 322)">
+      <circle r="47" fill="#0b6f9f" stroke="#ffffff" stroke-width="3"/>
+      <text y="7" font-size="22" fill="#ffffff">مالي</text>
+    </g>
+    <g transform="translate(877 412)">
+      <circle r="48" fill="#0b6f9f" stroke="#ffffff" stroke-width="3"/>
+      <text y="7" font-size="22" fill="#ffffff">النيجر</text>
+    </g>
+    <g transform="translate(1056 386)">
+      <circle r="47" fill="#0b6f9f" stroke="#ffffff" stroke-width="3"/>
+      <text y="7" font-size="22" fill="#ffffff">تشاد</text>
+    </g>
+    <g transform="translate(1266 548)">
+      <rect x="-92" y="-52" width="184" height="104" rx="24" fill="#063064" stroke="#f3d675" stroke-width="4"/>
+      <text y="-6" font-size="24" fill="#fff7d6">أسواق العمق</text>
+      <text y="28" font-size="15" fill="#dff6ff">95M People</text>
+    </g>
+  </g>
+
+  <g font-family="Cairo, Tahoma, Arial" font-weight="900">
+    <text x="88" y="102" fill="#063064" font-size="44">من الجغرافيا إلى الجيواقتصاد</text>
+    <text x="90" y="148" fill="#0b6f9f" font-size="24">ممر رقمي لوجستي يحول الموقع الليبي إلى أصل سيادي متصل بأسواق العمق الأفريقي</text>
+  </g>
+
+  <g transform="translate(96 642)" font-family="Cairo, Tahoma, Arial" font-weight="900">
+    <rect width="490" height="134" rx="28" fill="rgba(255,255,255,0.9)" stroke="rgba(11,111,159,0.2)"/>
+    <g transform="translate(56 68)">
+      <circle r="33" fill="#063064"/>
+      <path d="M-14 2h28M0-14v28" stroke="#7dd3fc" stroke-width="7" stroke-linecap="round"/>
+    </g>
+    <text x="112" y="52" fill="#063064" font-size="26">Digital Blue Bridge</text>
+    <text x="112" y="88" fill="#0b6f9f" font-size="18">Port · Wallet · Geofence · Customs · Destination Access</text>
+  </g>
+
+  <g transform="translate(1112 102)" font-family="Cairo, Tahoma, Arial" font-weight="900" text-anchor="middle">
+    <rect x="-170" y="-34" width="340" height="68" rx="34" fill="rgba(255,255,255,0.84)" stroke="rgba(125,211,252,0.36)"/>
+    <text y="9" fill="#063064" font-size="23">Qanwan · 2026</text>
+  </g>
+</svg>

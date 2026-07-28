@@ -1,0 +1,447 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبادرة الجسر الأزرق الرقمي | العرض الأصلي التفاعلي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --ink: #06101d;
+            --deep: #0a2744;
+            --blue: #0d6f9f;
+            --sky: #7dd3fc;
+            --gold: #f1cf78;
+            --soft: rgba(255,255,255,0.82);
+            --line: rgba(125,211,252,0.24);
+        }
+        html, body { width: 100%; height: 100%; background: var(--ink); }
+        body { font-family: 'Cairo', Tahoma, sans-serif; color: #fff; overflow: hidden; }
+        .app { height: 100vh; display: grid; grid-template-columns: 17rem 1fr; background: linear-gradient(135deg, #06101d, #082b4a 48%, #0a6f9f); }
+        .side { padding: 1rem; border-left: 1px solid var(--line); background: rgba(6,16,29,0.82); backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 0.8rem; z-index: 3; }
+        .brand { border: 1px solid var(--line); border-radius: 0.8rem; padding: 0.8rem; background: rgba(255,255,255,0.06); }
+        .brand small { color: var(--gold); font-weight: 900; font-size: 0.7rem; }
+        .brand h1 { font-size: 1.05rem; line-height: 1.45; margin-top: 0.3rem; }
+        .brand p { color: var(--soft); font-size: 0.67rem; line-height: 1.7; margin-top: 0.35rem; }
+        .progress { height: 0.38rem; border-radius: 99px; background: rgba(255,255,255,0.12); overflow: hidden; }
+        .progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--sky)); transition: width 0.25s ease; }
+        .nav { overflow: auto; display: grid; gap: 0.35rem; padding-left: 0.2rem; }
+        .nav button { min-height: 2.75rem; border-radius: 0.62rem; border: 1px solid transparent; background: transparent; color: rgba(255,255,255,0.74); display: grid; grid-template-columns: 1.7rem 1fr; gap: 0.45rem; align-items: center; text-align: right; padding: 0.5rem; cursor: pointer; font-family: inherit; }
+        .nav b { direction: ltr; color: rgba(241,207,120,0.8); font-size: 0.68rem; }
+        .nav span { font-size: 0.7rem; font-weight: 900; line-height: 1.45; }
+        .nav button.active, .nav button:hover { background: rgba(255,255,255,0.08); border-color: rgba(241,207,120,0.36); color: #fff; }
+        .tools { margin-top: auto; display: flex; gap: 0.45rem; }
+        .tools button { width: 2.35rem; height: 2.35rem; border-radius: 99px; border: 1px solid var(--line); background: rgba(255,255,255,0.08); color: #fff; display: grid; place-items: center; cursor: pointer; }
+        .deck { height: 100vh; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; display: flex; direction: ltr; }
+        .deck::-webkit-scrollbar { width: 0; }
+        .slide { min-width: 100%; min-height: 100vh; scroll-snap-align: start; direction: rtl; position: relative; display: flex; align-items: center; justify-content: center; padding: 2.6rem clamp(2rem, 4vw, 4.6rem); overflow: hidden; background: radial-gradient(circle at 15% 18%, rgba(125,211,252,0.16), transparent 24rem), radial-gradient(circle at 85% 15%, rgba(241,207,120,0.12), transparent 22rem), linear-gradient(140deg, rgba(6,16,29,0.95), rgba(8,43,74,0.93)); }
+        .slide::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 70px 70px; pointer-events: none; opacity: 0.55; }
+        .content { position: relative; z-index: 1; width: min(80rem, 100%); display: grid; gap: 1.1rem; }
+        .split { grid-template-columns: 1fr 0.96fr; align-items: center; }
+        .single { text-align: center; justify-items: center; max-width: 76rem; }
+        .wide { max-width: 84rem; }
+        .cover { padding: 0; background: #06101d; }
+        .cover .full-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.98; }
+        .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,16,29,0.82), rgba(6,16,29,0.28), rgba(6,16,29,0.68)); }
+        .cover .content { padding: 3rem; }
+        .kicker { color: var(--gold); font-size: 0.78rem; font-weight: 900; margin-bottom: 0.5rem; }
+        h1 { font-size: clamp(3rem, 6.8vw, 6.8rem); line-height: 1.02; font-weight: 900; text-shadow: 0 25px 70px rgba(0,0,0,0.5); }
+        h2 { color: #e7f9ff; font-size: clamp(1.8rem, 3.4vw, 3.25rem); line-height: 1.22; font-weight: 900; }
+        h3 { color: var(--gold); font-size: 1.05rem; line-height: 1.55; font-weight: 900; }
+        p, li { color: var(--soft); font-size: clamp(0.82rem, 1.04vw, 1rem); line-height: 1.85; font-weight: 700; }
+        .lead { font-size: clamp(1rem, 1.45vw, 1.28rem); line-height: 1.9; color: rgba(255,255,255,0.9); }
+        .en { direction: ltr; text-align: left; font-family: 'Cairo', Tahoma, sans-serif; }
+        .sky { color: var(--sky); }
+        .gold { color: var(--gold); }
+        .panel, .visual, .stat { border: 1px solid rgba(255,255,255,0.15); background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.045)); border-radius: 0.9rem; box-shadow: 0 24px 70px rgba(0,0,0,0.28); }
+        .panel { padding: 1rem; }
+        .grid { display: grid; gap: 0.75rem; }
+        .two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+        .three { grid-template-columns: repeat(3, minmax(0,1fr)); }
+        .four { grid-template-columns: repeat(4, minmax(0,1fr)); }
+        .visual { min-height: 24rem; overflow: hidden; background: rgba(255,255,255,0.94); display: flex; align-items: center; justify-content: center; }
+        .visual img { width: 100%; height: 100%; object-fit: contain; padding: 0.55rem; display: block; }
+        .photo { background: rgba(0,0,0,0.22); }
+        .photo img { object-fit: cover; padding: 0; }
+        .stat { text-align: center; min-height: 8rem; padding: 0.9rem; display: flex; flex-direction: column; justify-content: center; }
+        .stat b { direction: ltr; display: block; color: var(--sky); font-size: clamp(1.55rem, 3vw, 2.6rem); font-weight: 900; line-height: 1; margin-bottom: 0.5rem; }
+        .stat.gold b { color: var(--gold); }
+        .wm { position: absolute; left: 1.4rem; bottom: 0.9rem; z-index: 1; color: rgba(255,255,255,0.14); font-size: clamp(3rem, 8vw, 6.2rem); font-weight: 900; line-height: 1; }
+        .logo { max-width: 11rem; max-height: 7rem; object-fit: contain; filter: drop-shadow(0 14px 30px rgba(0,0,0,0.25)); }
+        .footer-note { position: absolute; right: 2rem; bottom: 1.3rem; z-index: 2; color: rgba(255,255,255,0.72); font-size: 0.72rem; font-weight: 800; }
+        .cinema-mode .slide .content > * { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+        .cinema-mode .slide.is-playing .content > * { opacity: 1; transform: translateY(0); }
+        .cinema-mode .slide.is-playing .content > *:nth-child(2) { transition-delay: 0.32s; }
+        .cinema-mode .slide.is-playing .content > *:nth-child(3) { transition-delay: 0.64s; }
+        .cinema-mode .slide.is-playing .content > *:nth-child(4) { transition-delay: 0.96s; }
+        .narration-card { width: min(38rem, calc(100% - 3rem)); position: absolute; right: 2rem; bottom: 1.6rem; z-index: 3; border: 1px solid rgba(241,207,120,0.36); border-radius: 0.9rem; padding: 0.85rem 1rem; background: rgba(6,16,29,0.72); box-shadow: 0 24px 70px rgba(0,0,0,0.32); backdrop-filter: blur(12px); opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease 1.1s, transform 0.65s ease 1.1s; }
+        .cinema-mode .cinematic-slide.is-playing .narration-card { opacity: 1; transform: translateY(0); }
+        .narration-card b { display: block; color: var(--gold); font-size: 0.74rem; margin-bottom: 0.25rem; }
+        .narration-card p { font-size: 0.82rem; line-height: 1.75; color: rgba(255,255,255,0.9); }
+        .cinema-control { width: auto !important; min-width: 7.2rem; padding: 0 0.8rem; gap: 0.35rem; font-weight: 900; font-size: 0.72rem; }
+        .cinema-control span { font-size: 1.15rem; }
+        .voice-status { position: fixed; left: 50%; bottom: 5.6rem; z-index: 40; width: min(42rem, calc(100vw - 2rem)); border: 1px solid rgba(241,207,120,0.34); border-radius: 0.8rem; padding: 0.7rem 0.9rem; background: rgba(6,16,29,0.92); color: rgba(255,255,255,0.92); font-size: 0.82rem; font-weight: 800; line-height: 1.6; box-shadow: 0 18px 54px rgba(0,0,0,0.35); opacity: 0; transform: translate(-50%, 0.8rem); transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; text-align: center; }
+        .voice-status.show { opacity: 1; transform: translateY(0); }
+        .voice-status.show { transform: translate(-50%, 0); }
+        .floating-controls { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 39; display: flex; align-items: center; justify-content: center; gap: 0.55rem; padding: 0.55rem; border: 1px solid rgba(241,207,120,0.34); border-radius: 999px; background: rgba(6,16,29,0.88); box-shadow: 0 20px 64px rgba(0,0,0,0.36); backdrop-filter: blur(14px); }
+        .floating-controls button { min-width: 3rem; height: 2.65rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; background: rgba(255,255,255,0.1); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.38rem; padding: 0 0.78rem; font-family: inherit; font-weight: 900; }
+        .floating-controls button.primary { background: linear-gradient(135deg, rgba(241,207,120,0.95), rgba(125,211,252,0.9)); color: #06101d; border-color: transparent; }
+        .floating-controls .material-symbols-rounded { font-size: 1.25rem; }
+        .forum-identity { position: relative; z-index: 3; width: min(30rem, 46vw); padding: 0.75rem; border-radius: 1rem; background: rgba(255,255,255,0.9); box-shadow: 0 24px 80px rgba(0,0,0,0.28); }
+        .cover .forum-identity { position: absolute; top: 1.5rem; right: 1.6rem; width: min(26rem, 36vw); }
+        .forum-identity img { width: 100%; display: block; }
+        @media (max-width: 980px) { body { overflow: hidden; } .app { height: 100vh; grid-template-columns: 1fr; grid-template-rows: auto 1fr; } .side { max-height: 42vh; overflow: auto; } .deck { height: 100%; overflow-x: auto; overflow-y: hidden; } .slide { min-width: 100%; min-height: 100%; padding: 2rem 1rem; } .split, .two, .three, .four { grid-template-columns: 1fr; } .visual { min-height: 16rem; } .wm { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <aside class="side">
+            <div class="brand">
+                <small>مراجعة العرض الأصلي</small>
+                <h1>مبادرة الجسر الأزرق الرقمي</h1>
+                <p>نسخة تفاعلية مبنية على ترتيب العرض التقديمي الأصلي · 15 شريحة</p>
+            </div>
+            <div class="progress"><i id="progressBar"></i></div>
+            <nav class="nav" id="nav"></nav>
+            <div class="tools">
+                <button class="cinema-control" onclick="playCinematicIntro()" title="تشغيل أول شريحتين بسرد صوتي"><span class="material-symbols-rounded">record_voice_over</span> سرد صوتي</button>
+                <button onclick="testVoice()" title="اختبار الصوت"><span class="material-symbols-rounded">volume_up</span></button>
+                <button onclick="stopNarration()" title="إيقاف الصوت"><span class="material-symbols-rounded">volume_off</span></button>
+                <button onclick="prevSlide()" title="السابق"><span class="material-symbols-rounded">keyboard_arrow_right</span></button>
+                <button onclick="nextSlide()" title="التالي"><span class="material-symbols-rounded">keyboard_arrow_left</span></button>
+                <button onclick="toggleFullscreen()" title="ملء الشاشة"><span class="material-symbols-rounded">fullscreen</span></button>
+            </div>
+        </aside>
+
+        <main class="deck" id="deck">
+            <section class="slide cover cinematic-slide" data-title="الغلاف الأصلي">
+                <img class="full-image" src="media/image1.jpeg" alt="غلاف العرض الأصلي">
+                <div class="forum-identity"><img src="assets/forum/sirte-economic-forum-identity.svg" alt="ملتقى سرت الاقتصادي لرجال الأعمال 2026 ليبيا"></div>
+                <div class="content">
+                    <p class="kicker">مبادرة الجسر الأزرق الرقمي</p>
+                    <h1>مبادرة <span class="sky">الجسر الأزرق الرقمي</span></h1>
+                    <p class="lead">الرؤية الأصلية للممر اللوجستي الرقمي السيادي لربط الموانئ الليبية بالعمق الأفريقي.</p>
+                </div>
+                <div class="narration-card"><b>نص الإلقاء</b><p>في لحظة تعيد فيها التجارة العالمية رسم مساراتها، تتقدم ليبيا برؤية جديدة: ممر رقمي سيادي يجعل من موقعها الجغرافي جسراً اقتصادياً آمناً نحو العمق الأفريقي.</p></div>
+                <div class="wm">01</div>
+            </section>
+
+            <section class="slide cinematic-slide" data-title="صفحة التعريف">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">شركة قنوان للاستثمار وإدارة المجموعات التجارية</p>
+                        <h2>مبادرة الجسر الأزرق الرقمي</h2>
+                        <p class="lead">حقوق الملكية الفكرية لمبادرة الجسر الأزرق الرقمي لصالح شركة قنوان للاستثمار وإدارة المجموعات التجارية.</p>
+                        <p class="gold">2026</p>
+                    </div>
+                    <div class="grid two">
+                        <div class="visual photo"><img src="media/image2.jpeg" alt="صورة تعريفية من العرض الأصلي"></div>
+                        <div class="visual"><div class="forum-identity"><img src="assets/forum/sirte-economic-forum-identity.svg" alt="ملتقى سرت الاقتصادي لرجال الأعمال 2026 ليبيا"></div></div>
+                    </div>
+                </div>
+                <img class="logo" src="media/image4.png" alt="الشعار" style="position:absolute;right:2rem;top:1.5rem;z-index:2">
+                <div class="narration-card"><b>نص الإلقاء</b><p>تقدم شركة قنوان هذه المبادرة بوصفها إطاراً وطنياً قابلاً للتنفيذ، يجمع بين الاستثمار المؤسسي، والتحول الرقمي، والتكامل مع الجهات السيادية لخدمة الاقتصاد الليبي.</p></div>
+                <div class="wm">02</div>
+            </section>
+
+            <section class="slide" data-title="تعريف قنوان">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">شركة قنوان للاستثمار وإدارة المجموعات التجارية</p>
+                        <h2>امتداد لمجموعة استثمارية منذ عام <span class="gold">1990</span></h2>
+                        <p>تمثل قنوان مركزاً لإدارة استثمارات المجموعة في قطاعات حيوية متنوعة، مستندة إلى ملاءة مالية معتبرة وتوزيع جغرافي استراتيجي.</p>
+                        <div class="grid two">
+                            <div class="panel"><h3>قطاعات الاستثمار</h3><p>المجوهرات، التطوير العقاري، البنية التحتية، الغذاء، الخدمات المالية، التكنولوجيا والتحول الرقمي، السيارات والآليات الثقيلة، الصناعة، التجارة، والدعاية والإعلان.</p></div>
+                            <div class="panel"><h3>مبادرة قنوان الوطنية</h3><p>أطلقت قنوان مبادرات مع شركاء استراتيجيين من القطاع العام، ومن نتائجها منصة النظام الموحد لغرف التجارة والصناعة والزراعة.</p></div>
+                        </div>
+                    </div>
+                    <div class="visual"><img src="media/image6.png" alt="مكونات أعمال قنوان"></div>
+                </div>
+                <div class="footer-note">الخلفية الأصلية: image5.jpeg</div>
+                <div class="wm">03</div>
+            </section>
+
+            <section class="slide" data-title="الجيواقتصاد">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">من الجغرافيا إلى الجيواقتصاد</p>
+                        <h2>ليبيا كضرورة اقتصادية ملحة</h2>
+                        <p>تتجاوز مبادرة الجسر الأزرق الرقمي مفهوم شق الطرق وتسيير الشاحنات؛ إنها رؤية لتحويل الموقع الاستراتيجي للدولة الليبية إلى أصل سيادي رقمي ولوجستي.</p>
+                        <p>تمنح المبادرة دول الجوار الأفريقي الحبيسة شريان حياة بديلاً: آمناً، ذكياً، وسريعاً، براً وجواً، يربط ثرواتهم بالأسواق العالمية عبر الموانئ الليبية الشمالية.</p>
+                    </div>
+                    <div class="visual"><img src="media/image7.png" alt="من الجغرافيا إلى الجيواقتصاد"></div>
+                </div>
+                <div class="wm">04</div>
+            </section>
+
+            <section class="slide" data-title="التشغيل البري">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">بروتوكول التشغيل البري</p>
+                        <h2>بروتوكول تشغيل رقمي آمن</h2>
+                        <div class="grid">
+                            <div class="panel"><h3>التسجيل والاعتماد</h3><p>هوية رقمية ومحفظة مالية بعد التحقق الآلي عبر وزارة الاقتصاد والمصرف المركزي.</p></div>
+                            <div class="panel"><h3>الإخطار المسبق</h3><p>رفع بيان الشحنة إلكترونياً قبل الوصول لتمكين القراءة الاستباقية وتجهيز الموارد.</p></div>
+                            <div class="panel"><h3>التحقق والعبور والتخليص</h3><p>تحليل مخاطر، خصم مباشر، اقتران رقمي، سياج جغرافي، ثم تأكيد الخروج واسترداد الضمان.</p></div>
+                        </div>
+                    </div>
+                    <div class="visual"><img src="media/image9.png" alt="بروتوكول التشغيل البري"></div>
+                </div>
+                <div class="wm">05</div>
+            </section>
+
+            <section class="slide" data-title="تفصيل التشغيل البري">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">تفصيل بروتوكول التشغيل البري</p>
+                        <h2>هوية رقمية، عبور آمن، وإغلاق مؤتمت للدورة.</h2>
+                        <p>تبدأ العملية بتأسيس هوية رقمية ومحفظة مالية بعد التحقق الآلي من الأهلية، ثم يرفع الوكيل الملاحي بيان الشحنة قبل الوصول لتمكين المنصة من قراءة البيانات وتجهيز الموارد.</p>
+                        <p>بعد ذلك يحدد النظام نوع التتبع، وينفذ الخصم المباشر، ويكمل الاقتران الرقمي مع الجمارك وسلطات الميناء. وتتحرك الشحنة داخل ممر مؤمن بسياج جغرافي حتى تأكيد الخروج واسترداد الضمان.</p>
+                    </div>
+                    <div class="visual"><img src="media/image9.png" alt="تفصيل بروتوكول التشغيل البري"></div>
+                </div>
+                <div class="wm">06</div>
+            </section>
+
+            <section class="slide" data-title="بحر - جو">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">بروتوكول التشغيل: المسار المتعدد</p>
+                        <h2>بحر - جو</h2>
+                        <p>يوّسع المسار الهوية الرقمية للمشغل لتشمل صلاحيات المناولة الجوية، ويربط المحفظة المالية بقطاعي الموانئ والطيران المدني لضمان الامتثال الموحد.</p>
+                        <div class="grid two"><div class="panel"><h3>إخطار موحد</h3><p>بيان بحر-جو مسبق يفعّل المسار السريع ويحجز حيز التخزين في المطار.</p></div><div class="panel"><h3>نقل بيني مقيد</h3><p>اقتران انتقالي للشاحنة لنقل البضاعة كشحنة مقيدة بين دائرتين جمركيتين.</p></div></div>
+                    </div>
+                    <div class="visual"><img src="media/image11.png" alt="المسار المتعدد بحر جو"></div>
+                </div>
+                <div class="wm">07</div>
+            </section>
+
+            <section class="slide" data-title="تفصيل بحر - جو">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">تفصيل المسار المتعدد بحر - جو</p>
+                        <h2>مسار سريع في الميناء، نقل مقيد، وإبراء جوي.</h2>
+                        <p>يوسّع التسجيل المزدوج الهوية الرقمية لتشمل صلاحيات المناولة الجوية، بينما يفعّل الإخطار الموحد المسار السريع في الميناء ويحجز مساحة الشحن في المطار قبل وصول السفينة.</p>
+                        <p>تراقب المنصة النقل الأرضي إلى المطار عبر السياج الجغرافي، ثم تتابع مسار الطائرة بالتكامل مع الرقابة الجوية حتى تأكيد المغادرة وإرسال التنبيه المسبق إلى مطار الوجهة.</p>
+                    </div>
+                    <div class="visual"><img src="media/image11.png" alt="تفصيل المسار المتعدد بحر جو"></div>
+                </div>
+                <div class="wm">08</div>
+            </section>
+
+            <section class="slide" data-title="الشركاء">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">مصفوفة الشركاء والتكامل المؤسسي</p>
+                        <h2>مصفوفة الشركاء والتكامل المؤسسي</h2>
+                        <p>وزارة الاقتصاد والتجارة توفر المظلة التشريعية، ومصلحة الموانئ والنقل البحري والمطارات تتولى التنظيم، وموانئ المناطق الحرة تقدم البنية اللوجستية، بينما تدير شبكة ليبيا للتجارة النافذة الوطنية وسيادة البيانات.</p>
+                    </div>
+                    <div class="visual"><img src="media/image12.png" alt="مصفوفة الشركاء"></div>
+                </div>
+                <div class="wm">09</div>
+            </section>
+
+            <section class="slide" data-title="الخدمات المالية">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">إعادة هندسة الخدمات المالية والتأمينية</p>
+                        <h2>إعادة تدوير الخدمات المالية والتأمينية</h2>
+                        <div class="grid two"><div class="panel"><h3>المصارف كضامن موثوق</h3><p>فتح محفظة العبور الرقمية عبر المصارف الليبية يوفر سيولة من العملة الصعبة ويعزز الثقة.</p></div><div class="panel"><h3>توطين قطاع التأمين</h3><p>بوليصة عبور شاملة صادرة من شركات التأمين الليبية لإعادة تدوير الأقساط داخل الاقتصاد الوطني.</p></div></div>
+                    </div>
+                    <div class="visual"><img src="media/image13.png" alt="الخدمات المالية والتأمينية"></div>
+                </div>
+                <div class="wm">10</div>
+            </section>
+
+            <section class="slide" data-title="الشواهد العالمية">
+                <div class="content single">
+                    <p class="kicker">شواهد النجاح العالمية والميزة التنافسية</p>
+                    <h2>شواهد النجاح العالمية والميزة التنافسية</h2>
+                    <p class="lead">تؤكد تقارير صندوق النقد الدولي والبنك الدولي ومؤتمر الأمم المتحدة للتجارة والتنمية لعام 2024 أن الرقمنة هي الرافعة الاقتصادية الأقوى للمنطقة.</p>
+                    <div class="grid four wide">
+                        <div class="stat"><b>32%</b><p>نمو حصة ميناء بربرة من تجارة إثيوبيا خلال 4 سنوات.</p></div>
+                        <div class="stat"><b>21→4</b><p>خفض زمن العبور في نماذج شرق أفريقيا.</p></div>
+                        <div class="stat gold"><b>99%</b><p>خفض سرقة البضائع بفضل التتبع الإلكتروني.</p></div>
+                        <div class="stat"><b>رقمي</b><p>الرقمنة تتغلب على تحديات الأمن والتشغيل.</p></div>
+                    </div>
+                </div>
+                <div class="wm">11</div>
+            </section>
+
+            <section class="slide" data-title="الديموغرافيا">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">الديموغرافيا والاقتصاد</p>
+                        <h2>سوق بشري يقارب <span class="sky">95 مليون نسمة</span></h2>
+                        <div class="grid three"><div class="stat"><b>27M</b><p>النيجر: واردات 3.84 مليار دولار وحصة مستهدفة 35%-40%.</p></div><div class="stat"><b>19M</b><p>تشاد: هدف ملح ضمن ممرات بديلة مستقرة.</p></div><div class="stat gold"><b>$15.54B</b><p>إجمالي واردات مستهدفة في دول الطوق والعمق.</p></div></div>
+                    </div>
+                    <div class="visual"><img src="media/image14.png" alt="الديموغرافيا والاقتصاد"></div>
+                </div>
+                <div class="wm">12</div>
+            </section>
+
+            <section class="slide" data-title="الامتثال">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">الامتثال الدولي والاتفاقيات</p>
+                        <h2>الامتثال الدولي والاتفاقيات</h2>
+                        <div class="grid two"><div class="panel"><h3>اتفاقية التجارة القارية الأفريقية</h3><p>تطبيق قواعد المنشأ ضمن التجارة القارية.</p></div><div class="panel"><h3>معايير أمن التجارة</h3><p>معايير أمن التجارة وسلاسل الإمداد.</p></div><div class="panel"><h3>الامتثال المالي</h3><p>الامتثال المالي الدولي والتعرف على العملاء.</p></div><div class="panel"><h3>سيادة البيانات</h3><p>سيادة البيانات ضمن النافذة الوطنية.</p></div></div>
+                    </div>
+                    <div class="visual"><img src="media/image15.png" alt="الامتثال الدولي والاتفاقيات"></div>
+                </div>
+                <div class="wm">13</div>
+            </section>
+
+            <section class="slide" data-title="الخاتمة">
+                <div class="content split">
+                    <div>
+                        <p class="kicker">الخاتمة ودعوة للمباركة</p>
+                        <h2>الخاتمة ودعوة للمباركة</h2>
+                        <p>إن مبادرة الجسر الأزرق الرقمي هي إعادة صياغة لدور ليبيا الإقليمي؛ من دولة عبور جغرافي إلى مركز ثقل خدماتي ومالي.</p>
+                        <p>نقدم نظاماً يتكامل مع ما هو قائم، يحيي القطاعات المصرفية والتأمينية، ويخدم سوقاً يتجاوز 90 مليون نسمة.</p>
+                        <p class="gold">حرر في: يناير 2026 · شركة قنوان للاستثمار وإدارة المجموعات التجارية</p>
+                    </div>
+                    <div class="visual"><img src="media/image16.png" alt="الخاتمة ودعوة للمباركة"></div>
+                </div>
+                <div class="wm">14</div>
+            </section>
+
+            <section class="slide cover" data-title="النهاية">
+                <img class="full-image" src="media/image17.jpeg" alt="شريحة النهاية الأصلية">
+                <div class="content single">
+                    <img class="logo" src="media/image4.png" alt="الشعار">
+                    <h2>شركة قنوان للاستثمار وإدارة المجموعات التجارية</h2>
+                    <p class="lead">مبادرة الجسر الأزرق الرقمي</p>
+                    <p class="gold">حقوق الملكية الفكرية محفوظة · 2026</p>
+                </div>
+                <div class="wm">15</div>
+            </section>
+        </main>
+    </div>
+    <div class="floating-controls" aria-label="أدوات الصوت والعرض">
+        <button class="primary" onclick="playCinematicIntro()"><span class="material-symbols-rounded">record_voice_over</span> سرد صوتي</button>
+        <button onclick="testVoice()" title="اختبار الصوت"><span class="material-symbols-rounded">volume_up</span> اختبار</button>
+        <button onclick="stopNarration()" title="إيقاف الصوت"><span class="material-symbols-rounded">volume_off</span></button>
+        <button onclick="prevSlide()" title="السابق"><span class="material-symbols-rounded">keyboard_arrow_right</span></button>
+        <button onclick="nextSlide()" title="التالي"><span class="material-symbols-rounded">keyboard_arrow_left</span></button>
+    </div>
+    <div class="voice-status" id="voiceStatus">جاهز لاختبار الصوت.</div>
+
+    <script>
+        const deck = document.getElementById('deck');
+        const slides = Array.from(document.querySelectorAll('.slide'));
+        const nav = document.getElementById('nav');
+        const progressBar = document.getElementById('progressBar');
+        const voiceStatus = document.getElementById('voiceStatus');
+        let current = 0;
+        let cinemaTimers = [];
+        let statusTimer = null;
+        let currentAudio = null;
+        const cinemaSlideDuration = 7000;
+        const narrationSources = ['assets/audio/slide-01.mp3', 'assets/audio/slide-02.mp3'];
+
+        function showVoiceStatus(message) {
+            voiceStatus.textContent = message;
+            voiceStatus.classList.add('show');
+            clearTimeout(statusTimer);
+            statusTimer = setTimeout(() => voiceStatus.classList.remove('show'), 6500);
+        }
+
+        slides.forEach((slide, index) => {
+            const button = document.createElement('button');
+            button.innerHTML = `<b>${String(index + 1).padStart(2, '0')}</b><span>${slide.dataset.title}</span>`;
+            button.onclick = () => goToSlide(index);
+            nav.appendChild(button);
+        });
+
+        function updateUi() {
+            nav.querySelectorAll('button').forEach((button, index) => button.classList.toggle('active', index === current));
+            progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
+        }
+        function goToSlide(index) {
+            current = Math.max(0, Math.min(slides.length - 1, index));
+            slides[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            updateUi();
+        }
+        function nextSlide() { goToSlide(current + 1); }
+        function prevSlide() { goToSlide(current - 1); }
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+            else document.exitFullscreen();
+        }
+        function clearCinema() {
+            cinemaTimers.forEach(timer => clearTimeout(timer));
+            cinemaTimers = [];
+            document.body.classList.remove('cinema-mode');
+            slides.forEach(slide => slide.classList.remove('is-playing'));
+        }
+        function playNarrationFile(src, onEnded) {
+            stopAudioOnly();
+            currentAudio = new Audio(src);
+            currentAudio.preload = 'auto';
+            currentAudio.onplay = () => showVoiceStatus('يتم تشغيل ملف الإلقاء الصوتي الآن.');
+            currentAudio.onerror = () => showVoiceStatus('تعذر تشغيل ملف الصوت. تأكد من فتح العرض عبر الخادم المحلي أو من وجود الملف داخل assets/audio.');
+            currentAudio.onended = () => {
+                showVoiceStatus('انتهى مقطع الإلقاء الصوتي.');
+                currentAudio = null;
+                if (onEnded) onEnded();
+            };
+            currentAudio.play().catch(() => {
+                showVoiceStatus('منع المتصفح تشغيل الصوت. اضغط زر اختبار أو سرد صوتي مرة أخرى داخل الصفحة.');
+            });
+        }
+        function stopAudioOnly() {
+            if (!currentAudio) return;
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
+        }
+        function testVoice() {
+            playNarrationFile('assets/audio/slide-01.mp3');
+        }
+        function stopNarration() {
+            clearCinema();
+            stopAudioOnly();
+            showVoiceStatus('تم إيقاف الإلقاء الصوتي.');
+        }
+        function playCinematicIntro() {
+            stopNarration();
+            document.body.classList.add('cinema-mode');
+            showVoiceStatus('بدأ العرض السينمائي التلقائي. اضغط Escape للإيقاف.');
+            playCinematicSlide(0);
+        }
+        function playCinematicSlide(index) {
+            if (index >= slides.length) {
+                clearCinema();
+                showVoiceStatus('انتهى العرض السينمائي.');
+                return;
+            }
+            slides.forEach(slide => slide.classList.remove('is-playing'));
+            goToSlide(index);
+            slides[index].classList.add('is-playing');
+            const narrationSource = narrationSources[index];
+            if (narrationSource) {
+                playNarrationFile(narrationSource, () => playCinematicSlide(index + 1));
+                return;
+            }
+            cinemaTimers.push(setTimeout(() => playCinematicSlide(index + 1), cinemaSlideDuration));
+        }
+        deck.addEventListener('scroll', () => {
+            const next = Math.round(deck.scrollLeft / deck.clientWidth);
+            if (next !== current) { current = Math.max(0, Math.min(slides.length - 1, next)); updateUi(); }
+        }, { passive: true });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') stopNarration();
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ') nextSlide();
+            if (event.key === 'ArrowRight' || event.key === 'ArrowUp' || event.key === 'PageUp') prevSlide();
+            if (event.key === 'Home') goToSlide(0);
+            if (event.key === 'End') goToSlide(slides.length - 1);
+        });
+        updateUi();
+    </script>
+</body>
+</html>

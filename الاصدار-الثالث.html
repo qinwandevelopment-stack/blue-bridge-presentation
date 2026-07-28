@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإصدار الثالث</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; }
+           :root { --deck-bg: #d9eef7; }
+           body { overflow: hidden; background: var(--deck-bg); }
+        .stage {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            direction: rtl;
+               background: var(--deck-bg);
+            transition: transform 280ms ease;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+        }
+        .slide {
+            min-width: 100vw;
+            width: 100vw;
+            flex: 0 0 100vh;
+            height: 100vh;
+            direction: rtl;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+               background: var(--deck-bg);
+        }
+        .slide::before,
+        .slide::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: clamp(3.8rem, 12vh, 5.6rem);
+            background: var(--deck-bg);
+            z-index: 1;
+        }
+        .slide::before,
+        .slide::after {
+            display: none;
+        }
+        .cover-slide::before,
+        .cover-slide::after {
+            display: block;
+        }
+        .slide::before {
+            top: 0;
+            height: clamp(5.7rem, 18vh, 8.4rem);
+        }
+        .slide::after { bottom: 0; }
+        .background-art {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+        .slide-image {
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+               background: var(--deck-bg);
+        }
+        .protocol-slide {
+            position: relative;
+        }
+        .header-logos {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: clamp(5.7rem, 18vh, 8.4rem);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(1.72rem, 4.5vw, 3.37rem);
+            padding: 0.62rem clamp(1.5rem, 6vw, 3.75rem);
+        }
+        .header-logo {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        .header-logo.qanwan {
+            width: clamp(13.05rem, 24.75vw, 15.9rem);
+        }
+        .header-logo.union {
+            width: clamp(16.8rem, 30vw, 19.5rem);
+        }
+        .header-logo.council {
+            width: clamp(17.85rem, 33vw, 21rem);
+        }
+        @media (max-width: 760px) {
+            .header-logos {
+                gap: 1.12rem;
+                padding-inline: 0.98rem;
+            }
+            .header-logo.qanwan { width: 36vw; }
+            .header-logo.union { width: 45vw; }
+            .header-logo.council { width: 46.5vw; }
+        }
+        .slide-controls {
+            position: fixed;
+            left: 50%;
+            bottom: clamp(0.9rem, 2.6vh, 1.4rem);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transform: translateX(-50%);
+            padding: 0.52rem 0.7rem;
+            border: 1px solid rgba(4, 75, 132, 0.16);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 16px 36px rgba(0, 48, 96, 0.16);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .nav-button {
+            width: 2.7rem;
+            height: 2.7rem;
+            border: 0;
+            border-radius: 999px;
+            color: #0b4d74;
+            background: linear-gradient(135deg, #ffffff 0%, #dff4ff 100%);
+            font-size: 1.02rem;
+            font-weight: 800;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(11, 77, 116, 0.13);
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            color: #052d47;
+            background: linear-gradient(135deg, #f6fcff 0%, #ccecff 100%);
+            box-shadow: 0 12px 24px rgba(11, 77, 116, 0.18);
+        }
+        .nav-button:active {
+            transform: scale(0.97);
+        }
+        .nav-button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .audio-button {
+            min-width: 2.7rem;
+            padding: 0 0.2rem;
+            font-size: 1rem;
+        }
+        .slide-counter {
+            min-width: 5rem;
+            color: #0b4d74;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 0.03em;
+            padding: 0 0.25rem;
+        }
+        @media (max-width: 760px) {
+            .slide-controls { bottom: 0.65rem; }
+            .nav-button { width: 2.2rem; height: 2.2rem; }
+            .slide-counter { min-width: 4.3rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <main class="stage" id="stage" aria-label="الإصدار الثالث">
+        <section class="slide cover-slide" aria-label="الشريحة الرئيسية">
+            <img class="background-art" src="assets/backgrounds/third-edition-background-clean.jpg" alt="">
+            <div class="header-logos" aria-label="شعارات الهيدر">
+                <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+            </div>
+        </section>
+        <section class="slide" aria-label="الشريحة 1"><img class="slide-image" src="assets/slides/1.png" alt="الشريحة 1"></section>
+        <section class="slide" aria-label="الشريحة 2"><img class="slide-image" src="assets/slides/2.png" alt="الشريحة 2"></section>
+        <section class="slide protocol-slide" aria-label="الشريحة 3">
+            <img class="slide-image" src="assets/slides/3.png" alt="الشريحة 3">
+        </section>
+        <section class="slide" aria-label="الشريحة 4"><img class="slide-image" src="assets/slides/4.png" alt="الشريحة 4"></section>
+        <section class="slide" aria-label="الشريحة 5"><img class="slide-image" src="assets/slides/5.png" alt="الشريحة 5"></section>
+        <section class="slide" aria-label="الشريحة 6"><img class="slide-image" src="assets/slides/6.png" alt="الشريحة 6"></section>
+        <section class="slide" aria-label="الشريحة 7"><img class="slide-image" src="assets/slides/7.png" alt="الشريحة 7"></section>
+        <section class="slide" aria-label="الشريحة 8"><img class="slide-image" src="assets/slides/8.png" alt="الشريحة 8"></section>
+        <section class="slide" aria-label="الشريحة 9"><img class="slide-image" src="assets/slides/9.png" alt="الشريحة 9"></section>
+        <section class="slide" aria-label="الشريحة 10"><img class="slide-image" src="assets/slides/10.png" alt="الشريحة 10"></section>
+        <section class="slide" aria-label="الشريحة 11"><img class="slide-image" src="assets/slides/11.png" alt="الشريحة 11"></section>
+        <section class="slide" aria-label="الشريحة 12"><img class="slide-image" src="assets/slides/12.png" alt="الشريحة 12"></section>
+        <section class="slide" aria-label="الشريحة 13"><img class="slide-image" src="assets/slides/13.png" alt="الشريحة 13"></section>
+        <section class="slide" aria-label="الشريحة 14"><img class="slide-image" src="assets/slides/14.png" alt="الشريحة 14"></section>
+    </main>
+    <audio id="narrationAudio" preload="auto" aria-label="السرد الصوتي"></audio>
+    <nav class="slide-controls" aria-label="التنقل بين الشرائح">
+        <button class="nav-button audio-button" type="button" id="toggleNarration" aria-label="تشغيل/إيقاف السرد الصوتي" aria-pressed="true">🔊</button>
+        <button class="nav-button" type="button" id="prevSlide" aria-label="الشريحة السابقة">↑</button>
+        <span class="slide-counter" id="slideCounter" aria-live="polite">1 / 13</span>
+        <button class="nav-button" type="button" id="nextSlide" aria-label="الشريحة التالية">↓</button>
+    </nav>
+    <script>
+        const stage = document.getElementById('stage');
+        const slides = Array.from(document.querySelectorAll('.slide'));
+        const previousButton = document.getElementById('prevSlide');
+        const nextButton = document.getElementById('nextSlide');
+        const toggleNarrationButton = document.getElementById('toggleNarration');
+        const slideCounter = document.getElementById('slideCounter');
+        const narrationAudio = document.getElementById('narrationAudio');
+        const narrationTracks = [
+            'assets/audio/third/third-00-main-cover.mp3',
+            'assets/audio/third/third-01-qanwan-profile.mp3',
+            'assets/audio/third/third-02-geo-economics.mp3',
+            'assets/audio/third/third-03-land-workflow-ar.mp3',
+            'assets/audio/third/third-03-land-workflow-ar.mp3',
+            'assets/audio/third/third-05-sea-air-workflow-ar.mp3',
+            'assets/audio/third/third-05-sea-air-workflow-ar.mp3',
+            'assets/audio/third/third-07-partners-matrix.mp3',
+            'assets/audio/third/third-08-finance-insurance.mp3',
+            'assets/audio/third/third-09-benchmarks.mp3',
+            'assets/audio/third/third-10-demographics.mp3',
+            'assets/audio/third/third-11-compliance.mp3',
+            'assets/audio/third/third-12-conclusion.mp3',
+            'assets/audio/third/third-13-rights-and-identity.mp3',
+            'assets/audio/third/third-14-digital-blue-bridge.mp3'
+        ];
+        let activeSlideIndex = 0;
+        let narrationEnabled = true;
+        let hasUserInteracted = false;
+
+        function currentSlideIndex() {
+            return activeSlideIndex;
+        }
+
+        function handleFirstInteraction() {
+            if (hasUserInteracted) {
+                return;
+            }
+            hasUserInteracted = true;
+            playCurrentNarration();
+        }
+
+        function updateControls() {
+            const index = Math.min(Math.max(activeSlideIndex, 0), slides.length - 1);
+            slideCounter.textContent = `${index + 1} / ${slides.length}`;
+            previousButton.disabled = index === 0;
+            nextButton.disabled = index === slides.length - 1;
+        }
+
+        function playCurrentNarration() {
+            if (!narrationEnabled) {
+                return;
+            }
+
+            const track = narrationTracks[activeSlideIndex];
+            if (!track) {
+                narrationAudio.pause();
+                narrationAudio.currentTime = 0;
+                return;
+            }
+
+            if (narrationAudio.getAttribute('data-track') !== track) {
+                narrationAudio.pause();
+                narrationAudio.setAttribute('data-track', track);
+                narrationAudio.src = track;
+                narrationAudio.currentTime = 0;
+                narrationAudio.load();
+            }
+
+            narrationAudio.play().catch(() => {});
+        }
+
+        function toggleNarration() {
+            narrationEnabled = !narrationEnabled;
+            toggleNarrationButton.textContent = narrationEnabled ? '🔊' : '🔈';
+            toggleNarrationButton.setAttribute('aria-pressed', String(narrationEnabled));
+
+            if (!narrationEnabled) {
+                narrationAudio.pause();
+                return;
+            }
+
+            playCurrentNarration();
+        }
+
+        function goToSlide(index) {
+            const targetIndex = Math.min(Math.max(index, 0), slides.length - 1);
+            if (targetIndex === activeSlideIndex) {
+                return;
+            }
+            activeSlideIndex = targetIndex;
+            stage.style.transition = 'transform 320ms cubic-bezier(0.22, 1, 0.36, 1)';
+            stage.style.transform = `translateY(${-targetIndex * window.innerHeight}px)`;
+            updateControls();
+            playCurrentNarration();
+        }
+
+        previousButton.addEventListener('click', () => {
+            handleFirstInteraction();
+            goToSlide(currentSlideIndex() - 1);
+        });
+        nextButton.addEventListener('click', () => {
+            handleFirstInteraction();
+            goToSlide(currentSlideIndex() + 1);
+        });
+        toggleNarrationButton.addEventListener('click', () => {
+            handleFirstInteraction();
+            toggleNarration();
+        });
+        window.addEventListener('resize', () => goToSlide(currentSlideIndex()));
+        window.addEventListener('keydown', (event) => {
+            handleFirstInteraction();
+            if (event.key === 'ArrowUp' || event.key === 'PageUp') {
+                event.preventDefault();
+                goToSlide(currentSlideIndex() - 1);
+            }
+            if (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ') {
+                event.preventDefault();
+                goToSlide(currentSlideIndex() + 1);
+            }
+        });
+        narrationAudio.addEventListener('ended', () => {
+            if (narrationEnabled && activeSlideIndex < slides.length - 1) {
+                goToSlide(activeSlideIndex + 1);
+            }
+        });
+        updateControls();
+        playCurrentNarration();
+    </script>
+</body>
+</html>

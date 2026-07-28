@@ -165,20 +165,24 @@
         .text-slide-kicker {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             color: #0b6fa8;
             font-weight: 900;
             font-size: clamp(0.98rem, 1.35vw, 1.28rem);
             letter-spacing: 0.03em;
         }
-        .text-slide-kicker::before {
-            content: "";
-            display: inline-block;
-            width: 0.5rem;
-            height: 0.5rem;
+        .text-slide-kicker .kicker-icon {
+            width: clamp(1.9rem, 2.3vw, 2.35rem);
+            height: clamp(1.9rem, 2.3vw, 2.35rem);
             border-radius: 50%;
             background: linear-gradient(135deg, #1f8fd1, #0b4d74);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.05rem, 1.35vw, 1.3rem);
             flex-shrink: 0;
+            box-shadow: 0 5px 12px rgba(11, 77, 116, 0.28);
         }
         .text-slide-title {
             font-size: clamp(1.48rem, 2.55vw, 2.4rem);
@@ -1273,7 +1277,7 @@
                     <div class="text-slide-main">
                         <div class="text-slide-top">
                             <div>
-                                <p class="text-slide-kicker">مؤسسة قنوان للاستثمار وإدارة المجموعات التجارية</p>
+                                <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">corporate_fare</span>مؤسسة قنوان للاستثمار وإدارة المجموعات التجارية</p>
                             </div>
                         </div>
                         <p class="text-slide-lead">امتداد لمجموعة استثمارية عريقة لها باع طويل في عالم التجارة منذ عام 1990، خاصة في مجال المجوهرات والمعادن الثمينة. وتمثل قنوان اليوم الثمرة المتطورة لهذا التاريخ الحافل، حيث تتولى إدارة استثمارات المجموعة بمختلف قطاعاتها الحيوية المتنوعة، بفضل كوكبة من الشركات التجارية المتميزة ذات ملاءة مالية معتبرة وتوزيع جغرافي استراتيجي.</p>
@@ -1350,7 +1354,7 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker">من الجغرافيا إلى الجيواقتصاد</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">public</span>من الجغرافيا إلى الجيواقتصاد</p>
                         <p class="text-slide-lead solo-lead">في توقيت مفصلي يشهد فيه العالم إعادة هندسة جذرية لسلاسل الإمداد العالمية، وتحديداً مع التحديات التي فرضتها الاضطرابات الجيوسياسية على الممرات التقليدية، تبرز ليبيا ليس فقط كحقيقة جغرافية ثابتة، بل كضرورة اقتصادية ملحة. إن مبادرة «الجسر الأزرق الرقمي» تتجاوز مفهوم شق الطرق وتسيير الشاحنات؛ إنها تطرح رؤية طموحة لتحويل الموقع الاستراتيجي للدولة الليبية إلى «أصل سيادي رقمي ولوجستي»، يمنح دول الجوار الأفريقي ‏(دول الطوق والعمق الحبيسة)‏ شريان حياة بديلاً: آمناً، ذكياً، وسريعاً، برياً وجوياً يربط ثرواتهم بالأسواق العالمية عبر موانئنا الشمالية، مؤسساً لشراكة تكاملية مستدامة.</p>
                         <p class="text-slide-signature">مبادرة الجسر الأزرق الرقمي</p>
                     </div>
@@ -1402,7 +1406,7 @@
             </div>
             <div class="text-slide-body">
                 <div class="text-slide-solo">
-                    <p class="text-slide-kicker">فكرة المبادرة</p>
+                    <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">lightbulb</span>فكرة المبادرة</p>
                     <p class="text-slide-lead solo-lead">تنطلق مبادرة «الجسر الأزرق الرقمي» من قناعة راسخة بأن موقع ليبيا الجغرافي، عند ملتقى البحر المتوسط والعمق الأفريقي، يمثل أصلاً استراتيجياً لم يُستثمر بعد بالشكل الأمثل. فبدلاً من الاكتفاء بدور تقليدي كممر عبور للبضائع، تطرح المبادرة رؤية لتحويل هذا الموقع إلى منصة رقمية سيادية موحدة، تدير حركة التجارة براً وبحراً وجواً عبر هوية رقمية موثوقة، ومحفظة مالية آمنة، وسياج جغرافي إلكتروني يواكب أفضل المعايير الدولية. بهذا التحول، تعيد ليبيا تعريف دورها الإقليمي؛ من نقطة عبور جغرافية إلى مركز ثقل خدماتي ومالي ولوجستي يخدم أسواقاً أفريقية تتجاوز 90 مليون نسمة.</p>
                     <p class="text-slide-signature">مبادرة الجسر الأزرق الرقمي</p>
                 </div>
@@ -1450,7 +1454,7 @@
             </div>
             <div class="text-slide-body">
                 <div class="benchmark-body">
-                    <p class="text-slide-kicker">أهداف المبادرة وفوائدها</p>
+                    <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">track_changes</span>أهداف المبادرة وفوائدها</p>
                     <div class="goals-grid">
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">public</span>
@@ -1540,7 +1544,7 @@
             </div>
             <div class="text-slide-body">
                 <div class="benchmark-body">
-                    <p class="text-slide-kicker">دور التحول الرقمي في خلق اقتصاد مستدام</p>
+                    <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">hub</span>دور التحول الرقمي في خلق اقتصاد مستدام</p>
                     <p class="benchmark-lead">يشكل التحول الرقمي حجر الأساس في تحقيق استدامة اقتصادية طويلة الأمد؛ فبدلاً من الاعتماد على موارد ناضبة أو إجراءات ورقية بطيئة، تعتمد المبادرة على بنية رقمية متكاملة تربط الجهات الحكومية والمصرفية واللوجستية في منظومة واحدة، تُنتج بيانات دقيقة تدعم القرار الاقتصادي، وتفتح الباب أمام إيرادات متجددة من الخدمات الرقمية والمالية.</p>
                     <div class="goals-grid goals-grid-2">
                         <div class="closing-card">
@@ -1618,7 +1622,7 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker">بروتوكول التشغيل البري (Operational Workflow)</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">local_shipping</span>بروتوكول التشغيل البري (Operational Workflow)</p>
                         <ul class="workflow-list">
                             <li>
                                 <span class="num">1</span>
@@ -1706,7 +1710,7 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker">بروتوكول التشغيل: المسار المتعدد "بحر-جو" (Sea-Air Workflow)</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">flight</span>بروتوكول التشغيل: المسار المتعدد "بحر-جو" (Sea-Air Workflow)</p>
                         <ul class="workflow-list">
                             <li>
                                 <span class="num">1</span>
@@ -1793,7 +1797,7 @@
             </div>
             <div class="text-slide-body">
                 <div class="workflow-body">
-                    <p class="text-slide-kicker" style="text-align:center">مصفوفة الشركاء والتكامل المؤسسي (Stakeholders Matrix &amp; Institutional Integration)</p>
+                    <p class="text-slide-kicker" style="text-align:center"><span class="kicker-icon material-symbols-rounded">groups</span>مصفوفة الشركاء والتكامل المؤسسي (Stakeholders Matrix &amp; Institutional Integration)</p>
                     <div class="partner-group">
                         <p class="partner-group-title"><span class="material-symbols-rounded">account_balance</span>القطاع العام</p>
                         <div class="partners-grid">
@@ -1923,7 +1927,7 @@
             </div>
             <div class="text-slide-body">
                 <div class="benchmark-body">
-                    <p class="text-slide-kicker" style="text-align:center">القطاعات المستفيدة من المبادرة</p>
+                    <p class="text-slide-kicker" style="text-align:center"><span class="kicker-icon material-symbols-rounded">storefront</span>القطاعات المستفيدة من المبادرة</p>
                     <p class="benchmark-lead">لا تقتصر عوائد المبادرة على البنية التشغيلية وحدها، بل تمتد لتخلق فرصاً حقيقية وقابلة للقياس لكافة القطاعات الوطنية:</p>
                     <div class="benefit-grid">
                         <div class="benefit-card">
@@ -2042,7 +2046,7 @@
             </div>
             <div class="text-slide-body">
                 <div class="benchmark-body">
-                    <p class="text-slide-kicker">شواهد النجاح العالمية والميزة التنافسية (Global Benchmarks &amp; Competitive Edge)</p>
+                    <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">military_tech</span>شواهد النجاح العالمية والميزة التنافسية (Global Benchmarks &amp; Competitive Edge)</p>
                     <p class="benchmark-lead">تؤكد تقارير (IMF, World Bank, UNCTAD 2024) أن "الرقمنة" هي الرافعة الاقتصادية الأقوى للمنطقة، وفق الشواهد التالية:</p>
                     <div class="benchmark-grid">
                         <div class="benchmark-card">
@@ -2124,7 +2128,7 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker">الديموغرافيا والاقتصاد</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">groups_3</span>الديموغرافيا والاقتصاد</p>
                         <p class="text-slide-lead">لا تستهدف المبادرة أرقاماً صماء، بل تستهدف كتلاً بشرية هائلة تمثل سوقاً استهلاكياً متنامياً، بإجمالي واردات يتجاوز 15.54 مليار دولار وسوق بشري يقارب 95 مليون نسمة:</p>
                         <ul class="workflow-list">
                             <li>
@@ -2199,7 +2203,7 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker">الامتثال الدولي والاتفاقيات</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">gavel</span>الامتثال الدولي والاتفاقيات</p>
                         <p class="text-slide-lead">تلتزم المنصة بمنظومة متكاملة من المعايير والاتفاقيات الدولية التي تمنح الممر مصداقية تشغيلية، وتسهّل اعتراف الجمارك والمصارف والشركاء الدوليين ببياناته وشهاداته:</p>
                         <ul class="workflow-list">
                             <li>
@@ -2281,7 +2285,7 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker">الخاتمة ودعوة للمباركة</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">flag_circle</span>الخاتمة ودعوة للمباركة</p>
                         <p class="text-slide-lead solo-lead" style="text-align:justify;text-align-last:right;">إن مبادرة «الجسر الأزرق الرقمي» هي إعادة صياغة لدور ليبيا الإقليمي؛ من دولة عبور جغرافي إلى "مركز ثقل خدماتي ومالي". نحن نقدم نظاماً يتكامل مع ما هو قائم، يحيي قطاعاتنا المصرفية والتأمينية، ويخدم سوقاً يتجاوز 90 مليون نسمة. نضع بين أيديكم هذا الطرح، متطلعين لنيل مباركتكم ورعايتكم الكريمة لهذه المبادرة الاستراتيجية.</p>
                         <p class="text-slide-signature">مبادرة الجسر الأزرق الرقمي</p>
                     </div>

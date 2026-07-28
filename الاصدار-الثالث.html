@@ -581,6 +581,37 @@
         @media (max-width: 760px) {
             .partners-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        .partner-group {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .partner-group + .partner-group {
+            margin-top: 0.55rem;
+        }
+        .partner-group-title {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: clamp(0.78rem, 0.98vw, 0.92rem);
+            font-weight: 900;
+            color: #04314f;
+            margin-bottom: 0.4rem;
+        }
+        .partner-group-title .material-symbols-rounded {
+            font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+            color: #1f8fd1;
+        }
+        .partner-group-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(11, 77, 116, 0.3), transparent);
+        }
+        .slide-scrollable {
+            overflow-y: auto !important;
+            align-items: flex-start !important;
+        }
         .goals-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1651,7 +1682,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 9">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 9">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -1694,61 +1725,83 @@
             <div class="text-slide-body">
                 <div class="workflow-body">
                     <p class="text-slide-kicker" style="text-align:center">مصفوفة الشركاء والتكامل المؤسسي (Stakeholders Matrix &amp; Institutional Integration)</p>
-                    <div class="workflow-visual">
-                        <img src="assets/slides/partners-matrix.png" alt="مصفوفة الشركاء والتكامل المؤسسي">
+                    <div class="partner-group">
+                        <p class="partner-group-title"><span class="material-symbols-rounded">account_balance</span>القطاع العام</p>
+                        <div class="partners-grid">
+                            <div class="partner-card">
+                                <h5>وزارة الاقتصاد والتجارة<span class="en-tag">Ministry of Economy &amp; Trade</span></h5>
+                                <p>المظلة العامة والتشريعية للمشروع.<span class="role-en">General legislative umbrella for the project.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>مصلحة الموانئ والنقل البحري والمطارات<span class="en-tag">Ports &amp; Maritime Transport Authority</span></h5>
+                                <p>التنظيم الملاحي.<span class="role-en">Maritime regulation.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>موانئ المناطق الحرة<span class="en-tag">Free Zone Ports</span></h5>
+                                <p>البنية التحتية واللوجستية.<span class="role-en">Infrastructure and logistics.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>شبكة ليبيا للتجارة (LTN)<span class="en-tag">Libya Trade Network (LTN)</span></h5>
+                                <p>إدارة النافذة الوطنية وسيادة البيانات.<span class="role-en">National Window Management &amp; Data Sovereignty.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>الاتحاد العام لغرف التجارة<span class="en-tag">General Union of Chambers of Commerce</span></h5>
+                                <p>التنسيق التجاري بين الدول.<span class="role-en">Commercial Coordination between Nations.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>مصلحة الجمارك<span class="en-tag">Customs Authority</span></h5>
+                                <p>الامتثال الجمركي.<span class="role-en">Customs Compliance.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>وزارة الداخلية<span class="en-tag">Ministry of Interior</span></h5>
+                                <p>الامتثال الأمني.<span class="role-en">Security Compliance.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>المصرف المركزي الليبي<span class="en-tag">Central Bank of Libya</span></h5>
+                                <p>التحقق من الأهلية المالية والرقابة النقدية.<span class="role-en">Financial Eligibility Verification &amp; Monetary Oversight.</span></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="partners-grid">
-                        <div class="partner-card">
-                            <h5>وزارة الاقتصاد والتجارة<span class="en-tag">Ministry of Economy &amp; Trade</span></h5>
-                            <p>المظلة العامة والتشريعية للمشروع.<span class="role-en">General legislative umbrella for the project.</span></p>
+                    <div class="partner-group">
+                        <p class="partner-group-title"><span class="material-symbols-rounded">business_center</span>القطاع الخاص</p>
+                        <div class="partners-grid">
+                            <div class="partner-card">
+                                <h5>النواقل البحرية والوكلاء<span class="en-tag">Maritime Carriers &amp; Agents</span></h5>
+                                <p>تزويد البيانات وتسريع دوران الحاويات.<span class="role-en">Data Provision &amp; Accelerating Turnaround.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>القطاع المصرفي<span class="en-tag">Banking Sector</span></h5>
+                                <p>إدارة الدورة المالية.<span class="role-en">Financial Cycle Management.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>قطاع التأمين<span class="en-tag">Insurance Sector</span></h5>
+                                <p>إعادة تدوير خدمات التأمين.<span class="role-en">Recycling Insurance Services.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>شركة قنوان للاستثمار وإدارة المجوعات التجارية<span class="en-tag">Qinwan Company</span></h5>
+                                <p>التطوير والتشغيل التقني.<span class="role-en">Development &amp; Technical Operation.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>المؤسسات والشركات (القطاع الخاص)<span class="en-tag">Private Sector Institutions &amp; Companies</span></h5>
+                                <p>الشركاء التنفيذيون وسلاسل الإمداد.<span class="role-en">Execution Partners &amp; Supply Chains.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>رجال الأعمال<span class="en-tag">Businessmen</span></h5>
+                                <p>المستفيدون المباشرون وقادة القرار التجاري.<span class="role-en">Direct Beneficiaries &amp; Trade Decision-Makers.</span></p>
+                            </div>
+                            <div class="partner-card">
+                                <h5>المستثمرون<span class="en-tag">Investors</span></h5>
+                                <p>تمويل المشاريع وتوسيع قاعدة رأس المال.<span class="role-en">Project Financing &amp; Capital Base Expansion.</span></p>
+                            </div>
                         </div>
-                        <div class="partner-card">
-                            <h5>مصلحة الموانئ والنقل البحري والمطارات<span class="en-tag">Ports &amp; Maritime Transport Authority</span></h5>
-                            <p>التنظيم الملاحي.<span class="role-en">Maritime regulation.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>موانئ المناطق الحرة<span class="en-tag">Free Zone Ports</span></h5>
-                            <p>البنية التحتية واللوجستية.<span class="role-en">Infrastructure and logistics.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>شبكة ليبيا للتجارة (LTN)<span class="en-tag">Libya Trade Network (LTN)</span></h5>
-                            <p>إدارة النافذة الوطنية وسيادة البيانات.<span class="role-en">National Window Management &amp; Data Sovereignty.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>الاتحاد العام لغرف التجارة<span class="en-tag">General Union of Chambers of Commerce</span></h5>
-                            <p>التنسيق التجاري بين الدول.<span class="role-en">Commercial Coordination between Nations.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>النواقل البحرية والوكلاء<span class="en-tag">Maritime Carriers &amp; Agents</span></h5>
-                            <p>تزويد البيانات وتسريع دوران الحاويات.<span class="role-en">Data Provision &amp; Accelerating Turnaround.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>مصلحة الجمارك<span class="en-tag">Customs Authority</span></h5>
-                            <p>الامتثال الجمركي.<span class="role-en">Customs Compliance.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>وزارة الداخلية<span class="en-tag">Ministry of Interior</span></h5>
-                            <p>الامتثال الأمني.<span class="role-en">Security Compliance.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>القطاع المصرفي<span class="en-tag">Banking Sector</span></h5>
-                            <p>إدارة الدورة المالية.<span class="role-en">Financial Cycle Management.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>قطاع التأمين<span class="en-tag">Insurance Sector</span></h5>
-                            <p>إعادة تدوير خدمات التأمين.<span class="role-en">Recycling Insurance Services.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>شركة قنوان للاستثمار وإدارة المجوعات التجارية<span class="en-tag">Qinwan Company</span></h5>
-                            <p>التطوير والتشغيل التقني.<span class="role-en">Development &amp; Technical Operation.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>رجال الأعمال<span class="en-tag">Businessmen</span></h5>
-                            <p>المستفيدون المباشرون وقادة الاستثمار.<span class="role-en">Direct Beneficiaries &amp; Investment Drivers.</span></p>
-                        </div>
-                        <div class="partner-card">
-                            <h5>المؤسسات والشركات (القطاع الخاص)<span class="en-tag">Private Sector Institutions &amp; Companies</span></h5>
-                            <p>الشركاء التنفيذيون وسلاسل الإمداد.<span class="role-en">Execution Partners &amp; Supply Chains.</span></p>
+                    </div>
+                    <div class="partner-group">
+                        <p class="partner-group-title"><span class="material-symbols-rounded">public</span>جهات مستفيدة أخرى</p>
+                        <div class="partners-grid">
+                            <div class="partner-card">
+                                <h5>دول الجوار الأفريقي (النيجر، تشاد، مالي، بوركينا فاسو)<span class="en-tag">African Neighboring Countries</span></h5>
+                                <p>الأسواق المستهدفة والمستفيد الأكبر من الممر اللوجستي.<span class="role-en">Target Markets &amp; Primary Beneficiaries of the Corridor.</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>

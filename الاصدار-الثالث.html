@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الإصدار الثالث</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { width: 100%; height: 100%; }
@@ -30,7 +33,9 @@
             overflow: hidden;
             display: grid;
             place-items: center;
-               background: var(--deck-bg);
+            background: var(--deck-bg);
+            padding-top: clamp(5.5rem, 10vh, 7rem);
+            padding-bottom: clamp(4.3rem, 8vh, 5.4rem);
         }
         .slide::before,
         .slide::after {
@@ -65,8 +70,8 @@
             display: block;
         }
         .slide-image {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
             object-position: center;
             display: block;
@@ -75,43 +80,524 @@
         .protocol-slide {
             position: relative;
         }
-        .header-logos {
+        .text-slide {
+            padding-left: clamp(1.4rem, 4vw, 3.2rem);
+            padding-right: clamp(1.4rem, 4vw, 3.2rem);
+        }
+        .text-slide-body {
+            position: relative;
+            z-index: 2;
+            width: min(1360px, 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: clamp(0.55rem, 1.3vh, 0.95rem);
+            color: #0a2c46;
+        }
+        .text-slide-top {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1.2rem;
+        }
+        .text-slide-kicker {
+            color: #0b6fa8;
+            font-weight: 800;
+            font-size: clamp(0.78rem, 1.05vw, 0.98rem);
+            letter-spacing: 0.02em;
+        }
+        .text-slide-title {
+            font-size: clamp(1.4rem, 2.4vw, 2.3rem);
+            font-weight: 900;
+            color: #04314f;
+            line-height: 1.3;
+            margin-top: 0.15rem;
+        }
+        .text-slide-lead {
+            font-size: clamp(0.82rem, 1.02vw, 1.02rem);
+            line-height: 1.85;
+            color: #173b52;
+            font-weight: 600;
+        }
+        .text-slide-subhead {
+            font-size: clamp(0.85rem, 1.05vw, 1.02rem);
+            font-weight: 800;
+            color: #04314f;
+            margin-top: 0.2rem;
+        }
+        .material-symbols-rounded {
+            font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+            line-height: 1;
+        }
+        .text-slide-columns {
+            display: grid;
+            grid-template-columns: 1.18fr 0.82fr;
+            gap: clamp(1.2rem, 2.6vw, 2.2rem);
+            width: 100%;
+            height: 100%;
+            align-items: center;
+        }
+        .text-slide-main {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.1vh, 0.85rem);
+            height: 100%;
+            justify-content: center;
+        }
+        .text-slide-sectors {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            height: 100%;
+            justify-content: center;
+            border-right: 1px solid rgba(11, 77, 116, 0.16);
+            padding-right: clamp(1.2rem, 2.6vw, 2.2rem);
+        }
+        .sector-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin: 0.1rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .sector-card {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(223,240,250,0.85));
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.6rem;
+            padding: 0.4rem 0.7rem;
+            box-shadow: 0 4px 10px rgba(6, 44, 74, 0.07);
+        }
+        .sector-card .icon {
+            width: clamp(1.8rem, 2.1vw, 2.05rem);
+            height: clamp(1.8rem, 2.1vw, 2.05rem);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1f8fd1, #0b4d74);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1rem, 1.15vw, 1.1rem);
+            flex-shrink: 0;
+        }
+        .sector-card .label {
+            font-size: clamp(0.76rem, 0.94vw, 0.92rem);
+            font-weight: 700;
+            color: #0b4d74;
+            line-height: 1.4;
+        }
+        .closing-panels {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-top: 0.2rem;
+        }
+        .closing-card {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.6);
+            border-right: 3px solid #1f8fd1;
+            border-radius: 0.5rem;
+            padding: 0.55rem 0.8rem;
+        }
+        .closing-card .icon {
+            font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+            color: #1f8fd1;
+            flex-shrink: 0;
+            margin-top: 0.05rem;
+        }
+        .closing-card h4 {
+            font-size: clamp(0.78rem, 0.95vw, 0.92rem);
+            color: #04314f;
+            font-weight: 900;
+            margin-bottom: 0.2rem;
+        }
+        .closing-card p {
+            font-size: clamp(0.72rem, 0.88vw, 0.85rem);
+            line-height: 1.6;
+            color: #1c4360;
+            font-weight: 600;
+        }
+        @media (max-width: 760px) {
+            .text-slide-columns { grid-template-columns: 1fr; height: auto; }
+            .text-slide-sectors { border-right: 0; padding-right: 0; border-top: 1px solid rgba(11, 77, 116, 0.16); padding-top: 0.6rem; }
+        }
+        .text-slide-solo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(1rem, 2.2vh, 1.6rem);
+            height: 100%;
+            text-align: center;
+            width: min(1100px, 100%);
+            margin: 0 auto;
+        }
+        .text-slide-solo .text-slide-kicker {
+            font-size: clamp(1rem, 1.3vw, 1.3rem);
+        }
+        .solo-lead {
+            max-width: 62rem;
+            text-align: justify;
+            text-align-last: center;
+            font-size: clamp(0.95rem, 1.2vw, 1.18rem);
+            line-height: 2;
+            color: #173b52;
+            font-weight: 600;
+        }
+        .text-slide-signature {
+            font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+            font-weight: 900;
+            color: #0b4d74;
+            padding-top: clamp(0.6rem, 1.4vh, 0.9rem);
+            border-top: 2px solid rgba(31, 143, 209, 0.35);
+        }
+        .text-slide-split {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: clamp(1.4rem, 3vw, 2.6rem);
+            width: 100%;
+            height: 100%;
+            align-items: center;
+        }
+        .text-slide-split .text-slide-copy {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.6rem, 1.3vh, 1rem);
+        }
+        .text-slide-split .solo-lead {
+            max-width: none;
+            text-align: justify;
+            text-align-last: right;
+        }
+        .text-slide-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.9rem;
+            box-shadow: 0 12px 30px rgba(6, 44, 74, 0.1);
+            padding: 0.7rem;
+        }
+        .text-slide-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem;
+        }
+        @media (max-width: 760px) {
+            .text-slide-split { grid-template-columns: 1fr; height: auto; }
+        }
+        .workflow-body {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.2vh, 0.9rem);
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+        }
+        .workflow-visual {
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.8rem;
+            box-shadow: 0 12px 28px rgba(6, 44, 74, 0.1);
+            padding: 0.4rem;
+            flex-shrink: 0;
+        }
+        .workflow-visual img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: clamp(14rem, 32vh, 22rem);
+            display: block;
+            border-radius: 0.4rem;
+        }
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.55rem;
+            width: 100%;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+        .workflow-step {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(223,240,250,0.85));
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.6rem;
+            padding: 0.5rem 0.6rem;
+            box-shadow: 0 4px 10px rgba(6, 44, 74, 0.07);
+        }
+        .workflow-step .step-head {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .workflow-step .num {
+            width: clamp(1.5rem, 1.8vw, 1.7rem);
+            height: clamp(1.5rem, 1.8vw, 1.7rem);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1f8fd1, #0b4d74);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: clamp(0.68rem, 0.85vw, 0.78rem);
+            flex-shrink: 0;
+        }
+        .workflow-step h5 {
+            font-size: clamp(0.72rem, 0.88vw, 0.85rem);
+            font-weight: 900;
+            color: #04314f;
+            line-height: 1.3;
+        }
+        .workflow-step .en-tag {
+            display: block;
+            font-size: clamp(0.6rem, 0.7vw, 0.68rem);
+            color: #1f8fd1;
+            font-weight: 800;
+            direction: ltr;
+            text-align: left;
+            margin-top: 0.1rem;
+        }
+        .workflow-step p {
+            font-size: clamp(0.62rem, 0.75vw, 0.72rem);
+            line-height: 1.55;
+            color: #1c4360;
+            font-weight: 600;
+        }
+        @media (max-width: 760px) {
+            .workflow-steps { grid-template-columns: 1fr; }
+        }
+        .workflow-list {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 1vh, 0.65rem);
+            list-style: none;
+        }
+        .workflow-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55rem;
+            background: linear-gradient(160deg, rgba(255,255,255,0.75), rgba(223,240,250,0.75));
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.55rem;
+            padding: 0.42rem 0.6rem;
+            box-shadow: 0 4px 10px rgba(6, 44, 74, 0.06);
+        }
+        .workflow-list .num {
+            width: clamp(1.5rem, 1.8vw, 1.7rem);
+            height: clamp(1.5rem, 1.8vw, 1.7rem);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1f8fd1, #0b4d74);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: clamp(0.68rem, 0.85vw, 0.78rem);
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .workflow-list h5 {
+            font-size: clamp(0.78rem, 0.95vw, 0.92rem);
+            font-weight: 900;
+            color: #04314f;
+            line-height: 1.3;
+            margin-bottom: 0.15rem;
+        }
+        .workflow-list h5 .en-tag {
+            font-size: clamp(0.62rem, 0.72vw, 0.7rem);
+            color: #1f8fd1;
+            font-weight: 800;
+            direction: ltr;
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+        .workflow-list p {
+            font-size: clamp(0.7rem, 0.85vw, 0.82rem);
+            line-height: 1.6;
+            color: #1c4360;
+            font-weight: 600;
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.42rem;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .partner-card {
+            background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(223,240,250,0.85));
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.5rem;
+            padding: 0.36rem 0.5rem;
+            box-shadow: 0 4px 10px rgba(6, 44, 74, 0.06);
+        }
+        .partner-card h5 {
+            font-size: clamp(0.64rem, 0.78vw, 0.75rem);
+            font-weight: 900;
+            color: #04314f;
+            line-height: 1.3;
+        }
+        .partner-card h5 .en-tag {
+            display: block;
+            font-size: clamp(0.56rem, 0.66vw, 0.62rem);
+            color: #1f8fd1;
+            font-weight: 800;
+            direction: ltr;
+            text-align: left;
+            margin-top: 0.08rem;
+        }
+        .partner-card p {
+            font-size: clamp(0.58rem, 0.68vw, 0.65rem);
+            line-height: 1.45;
+            color: #1c4360;
+            font-weight: 600;
+            margin-top: 0.18rem;
+        }
+        .partner-card p .role-en {
+            display: block;
+            direction: ltr;
+            text-align: left;
+            color: #3d6a86;
+            font-weight: 700;
+            margin-top: 0.06rem;
+        }
+        @media (max-width: 760px) {
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .benchmark-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(0.6rem, 1.4vh, 1rem);
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .benchmark-lead {
+            max-width: 62rem;
+            text-align: justify;
+            text-align-last: center;
+            font-size: clamp(0.85rem, 1.05vw, 1.02rem);
+            line-height: 1.9;
+            color: #173b52;
+            font-weight: 600;
+        }
+        .benchmark-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.65rem;
+            width: 100%;
+            max-width: 1250px;
+            margin: 0 auto;
+            text-align: right;
+        }
+        .benchmark-card {
+            background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(223,240,250,0.85));
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.7rem;
+            padding: 0.55rem 0.85rem;
+            box-shadow: 0 6px 14px rgba(6, 44, 74, 0.08);
+        }
+        .benchmark-card .stat {
+            font-size: clamp(1.15rem, 1.9vw, 1.7rem);
+            font-weight: 900;
+            color: #0b4d74;
+            direction: ltr;
+            display: block;
+            text-align: left;
+        }
+        .benchmark-card h5 {
+            font-size: clamp(0.76rem, 0.92vw, 0.88rem);
+            font-weight: 900;
+            color: #04314f;
+            margin: 0.2rem 0 0.25rem;
+        }
+        .benchmark-card p {
+            font-size: clamp(0.7rem, 0.85vw, 0.82rem);
+            line-height: 1.6;
+            color: #1c4360;
+            font-weight: 600;
+        }
+        @media (max-width: 760px) {
+            .benchmark-grid { grid-template-columns: 1fr; }
+        }
+        .slide-header {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: clamp(5.7rem, 18vh, 8.4rem);
-            z-index: 2;
+            z-index: 3;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(1.72rem, 4.5vw, 3.37rem);
-            padding: 0.62rem clamp(1.5rem, 6vw, 3.75rem);
+            padding: 0.78rem clamp(1.2rem, 3.5vw, 2rem);
+            background: linear-gradient(90deg, rgba(240, 248, 253, 0.96) 0%, rgba(223, 239, 248, 0.96) 50%, rgba(214, 232, 243, 0.96) 100%);
+            box-shadow: 0 8px 24px rgba(0, 50, 92, 0.12);
+            border-bottom: 1px solid rgba(0, 63, 115, 0.14);
         }
-        .header-logo {
+        .slide-header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0.4), transparent 25%, transparent 75%, rgba(255,255,255,0.3));
+            pointer-events: none;
+        }
+        .slide-header .header-logos {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(1.3rem, 3vw, 2.3rem);
+            width: 100%;
+            max-width: 1100px;
+        }
+        .slide-header .header-logo {
             display: block;
             width: auto;
             max-width: 100%;
             height: auto;
             object-fit: contain;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
         }
-        .header-logo.qanwan {
-            width: clamp(13.05rem, 24.75vw, 15.9rem);
+        .slide-header .header-logo.qanwan {
+            width: clamp(10.2rem, 18vw, 13.2rem);
         }
-        .header-logo.union {
-            width: clamp(16.8rem, 30vw, 19.5rem);
+        .slide-header .header-logo.union {
+            width: clamp(13.2rem, 24vw, 16.4rem);
         }
-        .header-logo.council {
-            width: clamp(17.85rem, 33vw, 21rem);
+        .slide-header .header-logo.council {
+            width: clamp(14rem, 26vw, 17.2rem);
         }
         @media (max-width: 760px) {
-            .header-logos {
-                gap: 1.12rem;
-                padding-inline: 0.98rem;
+            .slide-header {
+                padding: 0.72rem 0.9rem;
             }
-            .header-logo.qanwan { width: 36vw; }
-            .header-logo.union { width: 45vw; }
-            .header-logo.council { width: 46.5vw; }
+            .slide-header .header-logos {
+                gap: 0.75rem;
+            }
+            .slide-header .header-logo.qanwan { width: 30vw; }
+            .slide-header .header-logo.union { width: 38vw; }
+            .slide-header .header-logo.council { width: 40vw; }
         }
         .slide-controls {
             position: fixed;
@@ -185,34 +671,458 @@
     <main class="stage" id="stage" aria-label="الإصدار الثالث">
         <section class="slide cover-slide" aria-label="الشريحة الرئيسية">
             <img class="background-art" src="assets/backgrounds/third-edition-background-clean.jpg" alt="">
-            <div class="header-logos" aria-label="شعارات الهيدر">
-                <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
-                <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
-                <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
             </div>
         </section>
-        <section class="slide" aria-label="الشريحة 1"><img class="slide-image" src="assets/slides/1.png" alt="الشريحة 1"></section>
-        <section class="slide" aria-label="الشريحة 2"><img class="slide-image" src="assets/slides/2.png" alt="الشريحة 2"></section>
-        <section class="slide protocol-slide" aria-label="الشريحة 3">
-            <img class="slide-image" src="assets/slides/3.png" alt="الشريحة 3">
+        <section class="slide" aria-label="الشريحة 1">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <img class="slide-image" src="assets/slides/1.png" alt="الشريحة 1">
         </section>
-        <section class="slide" aria-label="الشريحة 4"><img class="slide-image" src="assets/slides/4.png" alt="الشريحة 4"></section>
-        <section class="slide" aria-label="الشريحة 5"><img class="slide-image" src="assets/slides/5.png" alt="الشريحة 5"></section>
-        <section class="slide" aria-label="الشريحة 6"><img class="slide-image" src="assets/slides/6.png" alt="الشريحة 6"></section>
-        <section class="slide" aria-label="الشريحة 7"><img class="slide-image" src="assets/slides/7.png" alt="الشريحة 7"></section>
-        <section class="slide" aria-label="الشريحة 8"><img class="slide-image" src="assets/slides/8.png" alt="الشريحة 8"></section>
-        <section class="slide" aria-label="الشريحة 9"><img class="slide-image" src="assets/slides/9.png" alt="الشريحة 9"></section>
-        <section class="slide" aria-label="الشريحة 10"><img class="slide-image" src="assets/slides/10.png" alt="الشريحة 10"></section>
-        <section class="slide" aria-label="الشريحة 11"><img class="slide-image" src="assets/slides/11.png" alt="الشريحة 11"></section>
-        <section class="slide" aria-label="الشريحة 12"><img class="slide-image" src="assets/slides/12.png" alt="الشريحة 12"></section>
-        <section class="slide" aria-label="الشريحة 13"><img class="slide-image" src="assets/slides/13.png" alt="الشريحة 13"></section>
-        <section class="slide" aria-label="الشريحة 14"><img class="slide-image" src="assets/slides/14.png" alt="الشريحة 14"></section>
+        <section class="slide text-slide" aria-label="الشريحة 2">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-columns">
+                    <div class="text-slide-main">
+                        <div class="text-slide-top">
+                            <div>
+                                <p class="text-slide-kicker">شركة قنوان للاستثمار وإدارة المجموعات التجارية</p>
+                                <h2 class="text-slide-title">امتداد لمجموعة استثمارية عريقة منذ عام 1990</h2>
+                            </div>
+                        </div>
+                        <p class="text-slide-lead">شركة قنوان للاستثمار وإدارة المجموعات التجارية هي امتداد لمجموعة استثمارية عريقة لها باع طويل في عالم التجارة منذ عام 1990، خاصة في مجال المجوهرات والمعادن الثمينة. وتمثل قنوان اليوم الثمرة المتطورة لهذا التاريخ الحافل، حيث تتولى إدارة استثمارات المجموعة بمختلف قطاعاتها الحيوية المتنوعة، بفضل كوكبة من الشركات التجارية المتميزة ذات ملاءة مالية معتبرة وتوزيع جغرافي استراتيجي.</p>
+                        <div class="closing-panels">
+                            <div class="closing-card">
+                                <span class="icon material-symbols-rounded">handshake</span>
+                                <div>
+                                    <h4>مبادرة قنوان الوطنية</h4>
+                                    <p>أطلقت قنوان عدة مبادرات مع شركاء استراتيجيين من القطاع العام، أبرزهم الاتحاد العام لغرف التجارة والصناعة والزراعة، مما أثمر منصة النظام الموحد لغرف التجارة والصناعة والزراعة.</p>
+                                </div>
+                            </div>
+                            <div class="closing-card">
+                                <span class="icon material-symbols-rounded">flag</span>
+                                <div>
+                                    <h4>رؤية قنوان 2030</h4>
+                                    <p>تسعى قنوان أن تكون مساهماً فاعلاً في تدوير عجلة الاقتصاد الوطني، من خلال توسيع نطاق مبادراتها وزيادة استثماراتها عبر تفعيل نظام المحافظ الاستثمارية محلياً ودولياً.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-slide-sectors">
+                        <p class="text-slide-subhead">أهم قطاعات الاستثمار:</p>
+                        <ul class="sector-cards">
+                            <li class="sector-card"><span class="icon material-symbols-rounded">diamond</span><span class="label">المجوهرات</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">apartment</span><span class="label">التطوير العقاري</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">construction</span><span class="label">البنية التحتية</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">agriculture</span><span class="label">الغذاء</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">payments</span><span class="label">الخدمات المالية</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">computer</span><span class="label">التكنولوجيا والتحول الرقمي</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">local_shipping</span><span class="label">استيراد السيارات والآليات الثقيلة</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">factory</span><span class="label">القطاع الصناعي</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">shopping_cart</span><span class="label">القطاع التجاري</span></li>
+                            <li class="sector-card"><span class="icon material-symbols-rounded">campaign</span><span class="label">الدعاية والإعلان</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 3">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-split">
+                    <div class="text-slide-copy">
+                        <p class="text-slide-kicker">من الجغرافيا إلى الجيواقتصاد</p>
+                        <p class="text-slide-lead solo-lead">في توقيت مفصلي يشهد فيه العالم إعادة هندسة جذرية لسلاسل الإمداد العالمية، وتحديداً مع التحديات التي فرضتها الاضطرابات الجيوسياسية على الممرات التقليدية، تبرز ليبيا ليس فقط كحقيقة جغرافية ثابتة، بل كضرورة اقتصادية ملحة. إن مبادرة «الجسر الأزرق الرقمي» تتجاوز مفهوم شق الطرق وتسيير الشاحنات؛ إنها تطرح رؤية طموحة لتحويل الموقع الاستراتيجي للدولة الليبية إلى «أصل سيادي رقمي ولوجستي»، يمنح دول الجوار الأفريقي ‏(دول الطوق والعمق الحبيسة)‏ شريان حياة بديلاً: آمناً، ذكياً، وسريعاً، برياً وجوياً يربط ثرواتهم بالأسواق العالمية عبر موانئنا الشمالية، مؤسساً لشراكة تكاملية مستدامة.</p>
+                        <p class="text-slide-signature">مبادرة الجسر الأزرق الرقمي</p>
+                    </div>
+                    <div class="text-slide-visual">
+                        <img src="assets/slides/geo-economics-illustration.png" alt="من الجغرافيا إلى الجيواقتصاد">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 4">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-split">
+                    <div class="text-slide-copy">
+                        <p class="text-slide-kicker">بروتوكول التشغيل البري (Operational Workflow)</p>
+                        <ul class="workflow-list">
+                            <li>
+                                <span class="num">1</span>
+                                <div>
+                                    <h5>التسجيل والاعتماد (Registration)</h5>
+                                    <p>تأسيس "هوية رقمية" ومحفظة مالية للمشغل، يتم تفعيلها فقط بعد التحقق الآلي من الأهلية عبر الربط المباشر مع وزارة الاقتصاد والمصرف المركزي.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <div>
+                                    <h5>الإخطار المسبق (Notification)</h5>
+                                    <p>يرفع الوكيل الملاحي "بيان الشحنة" إلكترونياً قبل الوصول، مما يتيح للنظام القراءة الاستباقية للبيانات وتجهيز الموارد.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <div>
+                                    <h5>التحقق والمقاصة (Verification)</h5>
+                                    <p>يقوم النظام آلياً بتحليل المخاطر لتحديد نوع التتبع (قفل/ستيكر)، وتنفيذ "الخصم المباشر" للرسوم من المحفظة، وإتمام "الاقتران الرقمي" في الميناء بالتكامل مع الجمارك وسلطات الميناء.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">4</span>
+                                <div>
+                                    <h5>عملية العبور (Transit)</h5>
+                                    <p>انطلاق الشاحنة في "ممر آمن" تحت رقابة "سياج جغرافي" يبث الموقع لحظياً لغرفة عمليات وزارة الداخلية؛ حيث يولد أي انحراف عن المسار تنبيهاً أمنياً فورياً.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">5</span>
+                                <div>
+                                    <h5>التخليص والربط الدولي (Clearance &amp; Int. Link)</h5>
+                                    <p>عند الحدود، يتم تأكيد الخروج واسترداد مبلغ الضمان آلياً. ويتميز النظام بمنح سلطات الدولة المستهدفة صلاحية النفاذ المسبق لبيانات الشحنة، لضمان سرعة الاستقبال والتعاون الأمني المشترك.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-slide-visual">
+                        <img src="assets/slides/land-operational-workflow.png" alt="بروتوكول التشغيل البري">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 5">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-split">
+                    <div class="text-slide-copy">
+                        <p class="text-slide-kicker">بروتوكول التشغيل: المسار المتعدد "بحر-جو" (Sea-Air Workflow)</p>
+                        <ul class="workflow-list">
+                            <li>
+                                <span class="num">1</span>
+                                <div>
+                                    <h5>التسجيل المزدوج (Dual Registration)</h5>
+                                    <p>توسيع "الهوية الرقمية" للمشغل لتشمل صلاحيات المناولة الجوية، مع ربط المحفظة المالية بقطاعي الموانئ والطيران المدني لضمان الامتثال الموحد.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <div>
+                                    <h5>الإخطار الموحد (Unified Notification)</h5>
+                                    <p>رفع بيان "بحر-جو" مسبق، مما يُفعل تلقائياً "المسار السريع" في الميناء ويحجز حيز التخزين في المطار قبل وصول السفينة.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <div>
+                                    <h5>التحقق والنقل البيني (Verification &amp; Transfer)</h5>
+                                    <p>خصم الرسوم الموحدة آلياً، وتفعيل "اقتران انتقالي" للشاحنة لنقل البضاعة من الميناء للمطار كشحنة مقيدة (Bonded) بين الدائرتين الجمركيتين.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">4</span>
+                                <div>
+                                    <h5>المسار الجوي (Air Transit)</h5>
+                                    <p>مراقبة النقل الأرضي للمطار عبر "سياج جغرافي"، ثم تتبع مسار الطائرة عبر التكامل مع الرقابة الجوية (ATC) فور الإقلاع.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">5</span>
+                                <div>
+                                    <h5>الإقلاع والإبراء (Take-off &amp; Release)</h5>
+                                    <p>بمجرد مغادرة المجال الجوي، يعتبر النظام عملية التصدير منتهية، فيقوم برد الضمان المالي فوراً وإرسال إشعار مسبق لسلطات مطار الوجهة لتسريع الاستقبال.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-slide-visual">
+                        <img src="assets/slides/sea-air-operational-workflow.png" alt="بروتوكول التشغيل: المسار المتعدد بحر-جو">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 6">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="workflow-body">
+                    <p class="text-slide-kicker" style="text-align:center">مصفوفة الشركاء والتكامل المؤسسي (Stakeholders Matrix &amp; Institutional Integration)</p>
+                    <div class="workflow-visual">
+                        <img src="assets/slides/partners-matrix.png" alt="مصفوفة الشركاء والتكامل المؤسسي">
+                    </div>
+                    <div class="partners-grid">
+                        <div class="partner-card">
+                            <h5>وزارة الاقتصاد والتجارة<span class="en-tag">Ministry of Economy &amp; Trade</span></h5>
+                            <p>المظلة العامة والتشريعية للمشروع.<span class="role-en">General legislative umbrella for the project.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>مصلحة الموانئ والنقل البحري والمطارات<span class="en-tag">Ports &amp; Maritime Transport Authority</span></h5>
+                            <p>التنظيم الملاحي.<span class="role-en">Maritime regulation.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>موانئ المناطق الحرة<span class="en-tag">Free Zone Ports</span></h5>
+                            <p>البنية التحتية واللوجستية.<span class="role-en">Infrastructure and logistics.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>شبكة ليبيا للتجارة (LTN)<span class="en-tag">Libya Trade Network (LTN)</span></h5>
+                            <p>إدارة النافذة الوطنية وسيادة البيانات.<span class="role-en">National Window Management &amp; Data Sovereignty.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>الاتحاد العام لغرف التجارة<span class="en-tag">General Union of Chambers of Commerce</span></h5>
+                            <p>التنسيق التجاري بين الدول.<span class="role-en">Commercial Coordination between Nations.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>النواقل البحرية والوكلاء<span class="en-tag">Maritime Carriers &amp; Agents</span></h5>
+                            <p>تزويد البيانات وتسريع دوران الحاويات.<span class="role-en">Data Provision &amp; Accelerating Turnaround.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>مصلحة الجمارك<span class="en-tag">Customs Authority</span></h5>
+                            <p>الامتثال الجمركي.<span class="role-en">Customs Compliance.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>وزارة الداخلية<span class="en-tag">Ministry of Interior</span></h5>
+                            <p>الامتثال الأمني.<span class="role-en">Security Compliance.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>القطاع المصرفي<span class="en-tag">Banking Sector</span></h5>
+                            <p>إدارة الدورة المالية.<span class="role-en">Financial Cycle Management.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>قطاع التأمين<span class="en-tag">Insurance Sector</span></h5>
+                            <p>إعادة تدوير خدمات التأمين.<span class="role-en">Recycling Insurance Services.</span></p>
+                        </div>
+                        <div class="partner-card">
+                            <h5>شركة قنوان للاستثمار وإدارة المجوعات التجارية<span class="en-tag">Qinwan Company</span></h5>
+                            <p>التطوير والتشغيل التقني.<span class="role-en">Development &amp; Technical Operation.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 7">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-split">
+                    <div class="text-slide-copy">
+                        <p class="text-slide-kicker">إعادة تدوير الخدمات المالية والتأمينية</p>
+                        <p class="text-slide-lead">تخلق المنصة فرصة ذهبية للقطاع المالي الليبي ليكون لاعباً قارياً، عبر:</p>
+                        <div class="closing-panels">
+                            <div class="closing-card">
+                                <span class="icon material-symbols-rounded">account_balance</span>
+                                <div>
+                                    <h4>المصارف كضامن موثوق</h4>
+                                    <p>تفرض المنصة التعامل عبر المصارف الليبية لفتح "محفظة العبور الرقمية"، مما يوفر سيولة من العملة الصعبة، ويعزز ثقة المستثمر الأفريقي في النظام المصرفي الليبي.</p>
+                                </div>
+                            </div>
+                            <div class="closing-card">
+                                <span class="icon material-symbols-rounded">shield</span>
+                                <div>
+                                    <h4>توطين قطاع التأمين</h4>
+                                    <p>ستلزم الشحنات العابرة بالحصول على "بوليصة تأمين عبور شاملة" صادرة حصرياً من شركات التأمين الليبية، مما يعيد تدوير أقساط التأمين داخل الاقتصاد الوطني بدلاً من ذهابها لشركات أجنبية.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-slide-visual">
+                        <img src="assets/slides/finance-insurance-ecosystem.png" alt="إعادة تدوير الخدمات المالية والتأمينية">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 8">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="benchmark-body">
+                    <p class="text-slide-kicker">شواهد النجاح العالمية والميزة التنافسية (Global Benchmarks &amp; Competitive Edge)</p>
+                    <p class="benchmark-lead">تؤكد تقارير (IMF, World Bank, UNCTAD 2024) أن "الرقمنة" هي الرافعة الاقتصادية الأقوى للمنطقة، وفق الشواهد التالية:</p>
+                    <div class="benchmark-grid">
+                        <div class="benchmark-card">
+                            <span class="stat">0% → 32%</span>
+                            <h5>تغلب التقنية على التحديات الأمنية (نموذج الصومال)</h5>
+                            <p>نجحت منصة "ميناء بربرة" الرقمية في رفع حصتها من تجارة إثيوبيا من 0% إلى 32% خلال 4 سنوات فقط، رغم الظروف الأمنية الصعبة.</p>
+                        </div>
+                        <div class="benchmark-card">
+                            <span class="stat">21 → 4 أيام</span>
+                            <h5>الكفاءة الأمنية القصوى (نموذج شرق أفريقيا)</h5>
+                            <p>أثبتت أنظمة التتبع الإلكتروني قدرتها على خفض زمن العبور من 21 يوماً إلى 4 أيام، والقضاء على سرقة البضائع بنسبة 99%.</p>
+                        </div>
+                        <div class="benchmark-card">
+                            <span class="stat">72.8%</span>
+                            <h5>اقتصاد الخدمات (نموذج جيبوتي)</h5>
+                            <p>تشكل خدمات العبور حالياً 72.8% من الناتج المحلي الإجمالي، مما يجعله البديل الاستراتيجي للنفط.</p>
+                        </div>
+                        <div class="benchmark-card">
+                            <span class="stat">+$200M</span>
+                            <h5>ميزة ليبيا الحاسمة (القرب من أوروبا)</h5>
+                            <p>تتفوق ليبيا على منافسيها في غرب أفريقيا بكونها الأقرب للأسواق الأوروبية (2-3 أيام شحن بحري مقابل 12 يوماً)، مما يوفر للتاجر النيجيري 50% من زمن دورة رأس المال، ويحقق وفورات سنوية تتجاوز 200 مليون دولار (وفق تقديرات AfDB).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 9">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-split">
+                    <div class="text-slide-copy">
+                        <p class="text-slide-kicker">الديموغرافيا والاقتصاد</p>
+                        <p class="text-slide-lead">لا تستهدف المبادرة أرقاماً صماء، بل تستهدف كتلاً بشرية هائلة تمثل سوقاً استهلاكياً متنامياً، بإجمالي واردات يتجاوز 15.54 مليار دولار وسوق بشري يقارب 95 مليون نسمة:</p>
+                        <ul class="workflow-list">
+                            <li>
+                                <span class="num">1</span>
+                                <div>
+                                    <h5>جمهورية النيجر (الهدف الرئيسي)</h5>
+                                    <p>السكان: حوالي 27 مليون نسمة. الواردات: 3.84 مليار دولار. الهدف: الاستحواذ على 35% - 40% كبديل لموانئ بنين.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <div>
+                                    <h5>جمهورية تشاد (الهدف الملح)</h5>
+                                    <p>السكان: حوالي 19 مليون نسمة. الواردات: 1.80 مليار دولار. الهدف: الاستحواذ على 30% - 35% لتعويض مسار بورتسودان.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <div>
+                                    <h5>أسواق العمق (مالي وبوركينا فاسو)</h5>
+                                    <p>السكان: حوالي 48 مليون نسمة مجتمعة. الهدف: استهداف البضائع النوعية عالية القيمة. القيمة المضافة للمتعاملين: خفض التكلفة إلى 12% - 14%، واختصار الزمن إلى 3 - 5 أيام، والقضاء على الإتاوات.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-slide-visual">
+                        <img src="assets/slides/demographics-map.png" alt="الديموغرافيا والاقتصاد">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 10">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-split">
+                    <div class="text-slide-copy">
+                        <p class="text-slide-kicker">الامتثال الدولي والاتفاقيات</p>
+                        <ul class="workflow-list">
+                            <li>
+                                <span class="num">1</span>
+                                <div>
+                                    <h5>AfCFTA</h5>
+                                    <p>تطبيق قواعد المنشأ.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <div>
+                                    <h5>WCO (SAFE)</h5>
+                                    <p>معايير أمن التجارة.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <div>
+                                    <h5>AML/KYC</h5>
+                                    <p>الامتثال المالي الدولي.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-slide-visual">
+                        <img src="assets/slides/compliance-standards.png" alt="الامتثال الدولي والاتفاقيات">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slide text-slide" aria-label="الشريحة 11">
+            <div class="slide-header" aria-label="شعارات الهيدر">
+                <div class="header-logos">
+                    <img class="header-logo council" src="assets/forum/council-logo.png" alt="">
+                    <img class="header-logo union" src="assets/forum/libyan-general-union-logo.png" alt="">
+                    <img class="header-logo qanwan" src="assets/forum/qanwan-logo.png" alt="">
+                </div>
+            </div>
+            <div class="text-slide-body">
+                <div class="text-slide-split">
+                    <div class="text-slide-copy">
+                        <p class="text-slide-kicker">الخاتمة ودعوة للمباركة</p>
+                        <p class="text-slide-lead solo-lead" style="text-align:justify;text-align-last:right;">إن مبادرة «الجسر الأزرق الرقمي» هي إعادة صياغة لدور ليبيا الإقليمي؛ من دولة عبور جغرافي إلى "مركز ثقل خدماتي ومالي". نحن نقدم نظاماً يتكامل مع ما هو قائم، يحيي قطاعاتنا المصرفية والتأمينية، ويخدم سوقاً يتجاوز 90 مليون نسمة. نضع بين أيديكم هذه الوثيقة، متطلعين لنيل مباركتكم ورعايتكم الكريمة لهذه المبادرة الاستراتيجية.</p>
+                        <p class="text-slide-signature">مبادرة الجسر الأزرق الرقمي</p>
+                    </div>
+                    <div class="text-slide-visual">
+                        <img src="assets/slides/future-vision-hub.png" alt="الخاتمة ودعوة للمباركة">
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <audio id="narrationAudio" preload="auto" aria-label="السرد الصوتي"></audio>
     <nav class="slide-controls" aria-label="التنقل بين الشرائح">
         <button class="nav-button audio-button" type="button" id="toggleNarration" aria-label="تشغيل/إيقاف السرد الصوتي" aria-pressed="true">🔊</button>
         <button class="nav-button" type="button" id="prevSlide" aria-label="الشريحة السابقة">↑</button>
-        <span class="slide-counter" id="slideCounter" aria-live="polite">1 / 13</span>
+        <span class="slide-counter" id="slideCounter" aria-live="polite">1 / 12</span>
         <button class="nav-button" type="button" id="nextSlide" aria-label="الشريحة التالية">↓</button>
     </nav>
     <script>

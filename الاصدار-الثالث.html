@@ -213,6 +213,16 @@
             color: #04314f;
             margin-top: 0.2rem;
         }
+        .sectors-note {
+            font-size: clamp(0.74rem, 0.9vw, 0.87rem);
+            line-height: 1.75;
+            color: #1c4360;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .sectors-note strong {
+            color: #04314f;
+        }
         .material-symbols-rounded {
             font-family: 'Material Symbols Rounded';
             font-weight: normal;
@@ -716,6 +726,56 @@
         @media (max-width: 760px) {
             .benchmark-grid { grid-template-columns: 1fr; }
         }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0.15rem auto 0;
+            text-align: right;
+        }
+        .benefit-card {
+            display: flex;
+            gap: 0.55rem;
+            align-items: flex-start;
+            background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(223,240,250,0.85));
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-radius: 0.6rem;
+            padding: 0.5rem 0.65rem;
+            box-shadow: 0 4px 10px rgba(6, 44, 74, 0.07);
+        }
+        .benefit-card .icon {
+            width: clamp(1.9rem, 2.2vw, 2.15rem);
+            height: clamp(1.9rem, 2.2vw, 2.15rem);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1f8fd1, #0b4d74);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            flex-shrink: 0;
+        }
+        .benefit-card h5 {
+            font-size: clamp(0.72rem, 0.88vw, 0.85rem);
+            font-weight: 900;
+            color: #04314f;
+            margin-bottom: 0.18rem;
+            line-height: 1.3;
+        }
+        .benefit-card p {
+            font-size: clamp(0.65rem, 0.79vw, 0.77rem);
+            line-height: 1.5;
+            color: #1c4360;
+            font-weight: 600;
+        }
+        @media (max-width: 1024px) {
+            .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .benefit-grid { grid-template-columns: 1fr; }
+        }
         .slide-header {
             position: absolute;
             top: 0;
@@ -1201,38 +1261,21 @@
                                 <p class="text-slide-kicker">مؤسسة قنوان للاستثمار وإدارة المجموعات التجارية</p>
                             </div>
                         </div>
-                        <p class="text-slide-lead">مؤسسة قنوان للاستثمار وإدارة المجموعات التجارية هي امتداد لمجموعة استثمارية عريقة لها باع طويل في عالم التجارة منذ عام 1990، خاصة في مجال المجوهرات والمعادن الثمينة. وتمثل قنوان اليوم الثمرة المتطورة لهذا التاريخ الحافل، حيث تتولى إدارة استثمارات المجموعة بمختلف قطاعاتها الحيوية المتنوعة، مع تركيز خاص على قطاع التكنولوجيا والتحول الرقمي بوصفه رافعة النمو القادمة، بفضل كوكبة من الشركات التجارية المتميزة ذات ملاءة مالية معتبرة وتوزيع جغرافي استراتيجي.</p>
+                        <p class="text-slide-lead">امتداد لمجموعة استثمارية عريقة لها باع طويل في عالم التجارة منذ عام 1990، خاصة في مجال المجوهرات والمعادن الثمينة. وتمثل قنوان اليوم الثمرة المتطورة لهذا التاريخ الحافل، حيث تتولى إدارة استثمارات المجموعة بمختلف قطاعاتها الحيوية المتنوعة، بفضل كوكبة من الشركات التجارية المتميزة ذات ملاءة مالية معتبرة وتوزيع جغرافي استراتيجي.</p>
                         <div class="closing-panels">
-                            <div class="closing-card">
-                                <span class="icon material-symbols-rounded">hub</span>
-                                <div>
-                                    <h4>التحول الرقمي.. بوابة نحو للاقتصاد الأزرق</h4>
-                                    <p>من بين قطاعاتها الحيوية، تبنّت قنوان اهتماماً خاصاً بقطاع التكنولوجيا والتحول الرقمي، وهو الاهتمام الذي انبثقت عنه مبادرة الجسر الأزرق الرقمي؛ بنية رقمية متكاملة لمصدر دخل بديل وداعم، ينطلق من تفعيل الاقتصاد الأزرق محلياً أولاً.</p>
-                                </div>
-                            </div>
                             <div class="closing-card">
                                 <span class="icon material-symbols-rounded">flag</span>
                                 <div>
                                     <h4>رؤية قنوان 2030</h4>
-                                    <p>تستثمر قنوان في قطاعات حيوية متنوعة، وهي: المجوهرات، والتطوير العقاري، والبنية التحتية، والقطاع الغذائي، والخدمات المالية، والتكنولوجيا والتحول الرقمي، واستيراد السيارات والآليات الثقيلة، والقطاع الصناعي، والقطاع التجاري، والدعاية والإعلان. ويتصدر هذه القطاعات الاستثمار في قطاع التكنولوجيا والتحول الرقمي، الذي حقق إنجازات نوعية من أبرزها إتمام مشروع المنصة الرقمية الموحدة لغرف التجارة والصناعة والزراعة، بالشراكة مع الاتحاد العام لغرف التجارة والصناعة والزراعة بصفته الشريك الاستراتيجي والراعي الرسمي لمبادرة قنوان الوطنية للتحول الرقمي، إلى جانب عدد من المشاريع الأخرى يتقدمها مبادرة الجسر الأزرق الرقمي التي سيتم استعراضها تفصيلاً على حضراتكم.</p>
+                                    <p>تستثمر قنوان في عدة قطاعات حيوية، يتصدرها الاستثمار في قطاع التكنولوجيا والتحول الرقمي بوصفه رافعة النمو القادمة، يليه الاستثمار في: المجوهرات، والتطوير العقاري، والبنية التحتية، والقطاع الغذائي، والخدمات المالية، واستيراد السيارات والآليات الثقيلة، والقطاع الصناعي، والقطاع التجاري، والدعاية والإعلان.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="text-slide-sectors">
-                        <p class="text-slide-subhead">أهم قطاعات الاستثمار:</p>
-                        <ul class="sector-cards">
-                            <li class="sector-card"><span class="icon material-symbols-rounded">diamond</span><span class="label">الاستثمار في قطاع المجوهرات</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">apartment</span><span class="label">الاستثمار في قطاع التطوير العقاري</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">construction</span><span class="label">الاستثمار في قطاع البنية التحتية</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">agriculture</span><span class="label">الاستثمار في القطاع الغذائي</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">payments</span><span class="label">الاستثمار في قطاع الخدمات المالية</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">computer</span><span class="label">الاستثمار في قطاع التكنولوجيا والتحول الرقمي</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">local_shipping</span><span class="label">الاستثمار في استيراد السيارات والآليات الثقيلة</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">factory</span><span class="label">الاستثمار في القطاع الصناعي</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">shopping_cart</span><span class="label">الاستثمار في القطاع التجاري</span></li>
-                            <li class="sector-card"><span class="icon material-symbols-rounded">campaign</span><span class="label">الاستثمار في قطاع الدعاية والإعلان</span></li>
-                        </ul>
+                        <p class="text-slide-subhead">مبادرة قنوان الوطنية للتحول الرقمي</p>
+                        <p class="sectors-note">جاءت المبادرة نتيجة الاهتمام الخاص بقطاع التكنولوجيا والتحول الرقمي، وتمت بالشراكة مع <strong>الاتحاد العام لغرف التجارة والصناعة والزراعة</strong>، بصفته الشريك الاستراتيجي والراعي الرسمي.</p>
+                        <p class="sectors-note">ولمبادرة قنوان الوطنية للتحول الرقمي عدد من المنجزات، أبرزها المنصة الرقمية الموحدة لغرف التجارة والصناعة والزراعة، إلى جانب عدد من المشاريع الأخرى، من ضمنها المشروع الاستراتيجي «الجسر الرقمي الأزرق» الذي سنستعرضه على حضراتكم في هذا العرض.</p>
                     </div>
                 </div>
             </div>
@@ -1811,7 +1854,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 10">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 10">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -1852,29 +1895,80 @@
                 </div>
             </div>
             <div class="text-slide-body">
-                <div class="text-slide-split">
-                    <div class="text-slide-copy">
-                        <p class="text-slide-kicker">القطاعات المستفيدة من المبادرة</p>
-                        <p class="text-slide-lead">لا تقتصر عوائد المبادرة على البنية التشغيلية، بل تمتد لتخلق فرصاً حقيقية لقطاعات وطنية متعددة، أبرزها:</p>
-                        <div class="closing-panels">
-                            <div class="closing-card">
-                                <span class="icon material-symbols-rounded">account_balance</span>
-                                <div>
-                                    <h4>إعادة تدوير خدمات المصارف والتأمين</h4>
-                                    <p>تفرض المنصة التعامل عبر المصارف الليبية لفتح "محفظة العبور الرقمية"، وتلزم الشحنات العابرة ببوليصة تأمين عبور شاملة صادرة حصرياً من شركات التأمين الليبية، بما يعيد تدوير السيولة وأقساط التأمين داخل الاقتصاد الوطني بدلاً من تسربها لشركات أجنبية.</p>
-                                </div>
-                            </div>
-                            <div class="closing-card">
-                                <span class="icon material-symbols-rounded">handshake</span>
-                                <div>
-                                    <h4>رجال الأعمال.. بوابة التصدير الأولى</h4>
-                                    <p>يمنح الممر رجال الأعمال والتجار الليبيين فرصة تجارية غير مسبوقة ليصبحوا المصدّر الأساسي للسلع نحو دول الطوق والدول الحبيسة (النيجر، تشاد، مالي، بوركينا فاسو)، بدلاً من اعتمادها على موانئ منافسة.</p>
-                                </div>
+                <div class="benchmark-body">
+                    <p class="text-slide-kicker" style="text-align:center">القطاعات المستفيدة من المبادرة</p>
+                    <p class="benchmark-lead">لا تقتصر عوائد المبادرة على البنية التشغيلية وحدها، بل تمتد لتخلق فرصاً حقيقية وقابلة للقياس لكافة القطاعات الوطنية:</p>
+                    <div class="benefit-grid">
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">account_balance</span>
+                            <div>
+                                <h5>القطاع المصرفي والتأمين</h5>
+                                <p>استرداد كامل السيولة وأقساط التأمين للاقتصاد المحلي بدلاً من تسربها لشركات أجنبية.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="text-slide-visual">
-                        <img src="assets/slides/finance-insurance-ecosystem.png" alt="إعادة تدوير الخدمات المالية والتأمينية">
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">handshake</span>
+                            <div>
+                                <h5>رجال الأعمال والتجار</h5>
+                                <p>بوابة تصدير أولى نحو سوق استهلاكي يفوق 90 مليون نسمة في دول الطوق والدول الحبيسة.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">local_shipping</span>
+                            <div>
+                                <h5>القطاع اللوجستي والنقل</h5>
+                                <p>خفض زمن العبور من 21 يوماً إلى 4-5 أيام، وخفض تكلفة الشحن بنسبة تصل إلى 14%.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">receipt_long</span>
+                            <div>
+                                <h5>القطاع الجمركي والإيرادات العامة</h5>
+                                <p>رفع حصيلة الرسوم الجمركية عبر التتبع الرقمي والقضاء على التهريب والإتاوات.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">anchor</span>
+                            <div>
+                                <h5>قطاع الموانئ والمناطق الحرة</h5>
+                                <p>زيادة الطاقة التشغيلية وجذب حركة ملاحية إقليمية جديدة إلى الموانئ الليبية.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">factory</span>
+                            <div>
+                                <h5>القطاع الصناعي والتصنيع</h5>
+                                <p>فتح أسواق تصدير جديدة للمنتج الليبي المصنّع في دول الجوار الأفريقي.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">agriculture</span>
+                            <div>
+                                <h5>القطاع الزراعي والغذائي</h5>
+                                <p>قنوات تصدير مباشرة للمنتجات الغذائية والزراعية نحو أسواق استهلاكية متنامية.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">computer</span>
+                            <div>
+                                <h5>قطاع التكنولوجيا والاقتصاد الرقمي</h5>
+                                <p>مصدر دخل رقمي متجدد عبر رسوم المنصة والبيانات والخدمات الرقمية المرتبطة بها.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">payments</span>
+                            <div>
+                                <h5>المستثمرون ورأس المال</h5>
+                                <p>فرص استثمارية جديدة بعائد مضمون ضمن منظومة رقمية شفافة وقابلة للتتبع.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="icon material-symbols-rounded">public</span>
+                            <div>
+                                <h5>الدولة والاقتصاد الوطني</h5>
+                                <p>مصدر دخل بديل ومستدام يعزز الناتج المحلي الإجمالي غير النفطي.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

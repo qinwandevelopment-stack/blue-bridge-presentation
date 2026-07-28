@@ -262,40 +262,55 @@
             padding-right: clamp(1.2rem, 2.6vw, 2.2rem);
         }
         .sector-cards {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 0.4rem;
-            margin: 0.1rem 0 0;
+            margin: 0.5rem 0 0;
             padding: 0;
             list-style: none;
         }
         .sector-card {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.45rem;
             background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(223,240,250,0.85));
             border: 1px solid rgba(11, 77, 116, 0.14);
-            border-radius: 0.6rem;
-            padding: 0.4rem 0.7rem;
-            box-shadow: 0 4px 10px rgba(6, 44, 74, 0.07);
+            border-radius: 0.5rem;
+            padding: 0.35rem 0.55rem;
+            box-shadow: 0 3px 8px rgba(6, 44, 74, 0.06);
         }
         .sector-card .icon {
-            width: clamp(1.8rem, 2.1vw, 2.05rem);
-            height: clamp(1.8rem, 2.1vw, 2.05rem);
+            width: clamp(1.5rem, 1.8vw, 1.75rem);
+            height: clamp(1.5rem, 1.8vw, 1.75rem);
             border-radius: 50%;
             background: linear-gradient(135deg, #1f8fd1, #0b4d74);
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1rem, 1.15vw, 1.1rem);
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
             flex-shrink: 0;
         }
         .sector-card .label {
-            font-size: clamp(0.76rem, 0.94vw, 0.92rem);
+            font-size: clamp(0.62rem, 0.78vw, 0.74rem);
             font-weight: 700;
             color: #0b4d74;
-            line-height: 1.4;
+            line-height: 1.25;
+        }
+        .sector-card.featured {
+            grid-column: 1 / -1;
+            background: linear-gradient(120deg, rgba(31,143,209,0.18), rgba(11,77,116,0.1));
+            border: 1.5px solid #1f8fd1;
+            box-shadow: 0 6px 14px rgba(31,143,209,0.22);
+        }
+        .sector-card.featured .icon {
+            width: clamp(2rem, 2.3vw, 2.3rem);
+            height: clamp(2rem, 2.3vw, 2.3rem);
+            font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+        }
+        .sector-card.featured .label {
+            font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+            font-weight: 900;
         }
         .closing-panels {
             display: flex;
@@ -1267,7 +1282,19 @@
                                 <span class="icon material-symbols-rounded">flag</span>
                                 <div>
                                     <h4>رؤية قنوان 2030</h4>
-                                    <p>تستثمر قنوان في عدة قطاعات حيوية، يتصدرها الاستثمار في قطاع التكنولوجيا والتحول الرقمي بوصفه رافعة النمو القادمة، يليه الاستثمار في: المجوهرات، والتطوير العقاري، والبنية التحتية، والقطاع الغذائي، والخدمات المالية، واستيراد السيارات والآليات الثقيلة، والقطاع الصناعي، والقطاع التجاري، والدعاية والإعلان.</p>
+                                    <p>تستثمر قنوان في عدة قطاعات حيوية، يتصدرها الاستثمار في قطاع التكنولوجيا والتحول الرقمي بوصفه رافعة النمو القادمة:</p>
+                                    <ul class="sector-cards">
+                                        <li class="sector-card featured"><span class="icon material-symbols-rounded">computer</span><span class="label">التكنولوجيا والتحول الرقمي</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">diamond</span><span class="label">المجوهرات</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">apartment</span><span class="label">التطوير العقاري</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">construction</span><span class="label">البنية التحتية</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">agriculture</span><span class="label">القطاع الغذائي</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">payments</span><span class="label">الخدمات المالية</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">local_shipping</span><span class="label">استيراد السيارات والآليات الثقيلة</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">factory</span><span class="label">القطاع الصناعي</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">shopping_cart</span><span class="label">القطاع التجاري</span></li>
+                                        <li class="sector-card"><span class="icon material-symbols-rounded">campaign</span><span class="label">الدعاية والإعلان</span></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

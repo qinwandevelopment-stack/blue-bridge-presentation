@@ -93,71 +93,11 @@
             letter-spacing: 0.005em;
             text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55), 0 1px 6px rgba(0, 0, 0, 0.4);
         }
-        .cover-brand-spotlight {
-            position: absolute;
-            top: clamp(6.4rem, 12vh, 8.2rem);
-            right: clamp(1rem, 3vw, 2.6rem);
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            max-width: min(34rem, 88vw);
-            padding: 0.8rem 1rem;
-            border-radius: 1.25rem;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(233, 245, 252, 0.9));
-            border: 1px solid rgba(13, 90, 135, 0.16);
-            box-shadow: 0 16px 32px rgba(0, 42, 76, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.36) inset;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-        }
-        .cover-brand-logo {
-            width: clamp(7rem, 17vw, 10rem);
-            flex-shrink: 0;
-            display: block;
-            object-fit: contain;
-        }
-        .cover-brand-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            text-align: right;
-            min-width: 0;
-        }
-        .cover-brand-kicker {
-            font-size: clamp(0.72rem, 0.95vw, 0.92rem);
-            font-weight: 900;
-            color: #0b4d74;
-            letter-spacing: 0.02em;
-        }
-        .cover-brand-lead {
-            font-size: clamp(0.63rem, 0.82vw, 0.76rem);
-            font-weight: 700;
-            color: #35556d;
-            line-height: 1.45;
-        }
         @media (max-width: 760px) {
             .cover-title {
                 bottom: 9%;
                 font-size: clamp(0.95rem, 4.2vw, 1.3rem);
                 width: 92%;
-            }
-            .cover-brand-spotlight {
-                top: 6rem;
-                right: 50%;
-                transform: translateX(50%);
-                width: min(92%, 27rem);
-                justify-content: center;
-                gap: 0.7rem;
-                padding: 0.72rem 0.85rem;
-            }
-            .cover-brand-logo {
-                width: clamp(6rem, 32vw, 8rem);
-            }
-            .cover-brand-kicker {
-                font-size: 0.68rem;
-            }
-            .cover-brand-lead {
-                font-size: 0.6rem;
             }
         }
         .video-caption {
@@ -1282,13 +1222,6 @@
         <section class="slide cover-slide" aria-label="الشريحة الرئيسية">
             <img class="background-art" src="assets/backgrounds/third-edition-background-clean.jpg" alt="">
             <h1 class="cover-title">أطروحة مشروع رقمي يخلق اقتصاداً مستداماً عبر التحول الرقمي ويعزز مصادر الدخل البديلة</h1>
-            <div class="cover-brand-spotlight" aria-label="هوية قنوان">
-                <img class="cover-brand-logo" src="assets/forum/qanwan-logo.png" alt="شعار قنوان">
-                <div class="cover-brand-text">
-                    <span class="cover-brand-kicker">شركة قنوان للاستثمار وإدارة المجموعات التجارية</span>
-                    <span class="cover-brand-lead">هوية الشريك الداعم للمبادرة ضمن عرض بصري هادئ يوازن بين الشعار والعنوان الرئيسي.</span>
-                </div>
-            </div>
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">

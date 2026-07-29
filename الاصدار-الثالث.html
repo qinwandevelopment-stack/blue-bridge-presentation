@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { width: 100%; height: 100%; }
+        html, body { width: 100%; height: 100%; min-height: 100dvh; }
            :root { --deck-bg: #d9eef7; }
            body {
                overflow: hidden;
@@ -20,7 +20,8 @@
            }
         .stage {
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             direction: rtl;
@@ -32,8 +33,9 @@
         .slide {
             min-width: 100vw;
             width: 100vw;
-            flex: 0 0 100vh;
-            height: 100vh;
+            flex: 0 0 100dvh;
+            height: 100dvh;
+            min-height: 100dvh;
             direction: rtl;
             position: relative;
             overflow: hidden;
@@ -41,7 +43,7 @@
             place-items: center;
             background: var(--deck-bg);
             padding-top: clamp(5.5rem, 10vh, 7rem);
-            padding-bottom: clamp(2.6rem, 6vh, 3.4rem);
+            padding-bottom: clamp(6rem, 12vh, 7.4rem);
             padding-left: clamp(4.4rem, 6.5vw, 5.4rem);
         }
         .slide::before,
@@ -91,11 +93,71 @@
             letter-spacing: 0.005em;
             text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55), 0 1px 6px rgba(0, 0, 0, 0.4);
         }
+        .cover-brand-spotlight {
+            position: absolute;
+            top: clamp(6.4rem, 12vh, 8.2rem);
+            right: clamp(1rem, 3vw, 2.6rem);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            max-width: min(34rem, 88vw);
+            padding: 0.8rem 1rem;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(233, 245, 252, 0.9));
+            border: 1px solid rgba(13, 90, 135, 0.16);
+            box-shadow: 0 16px 32px rgba(0, 42, 76, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.36) inset;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .cover-brand-logo {
+            width: clamp(7rem, 17vw, 10rem);
+            flex-shrink: 0;
+            display: block;
+            object-fit: contain;
+        }
+        .cover-brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            text-align: right;
+            min-width: 0;
+        }
+        .cover-brand-kicker {
+            font-size: clamp(0.72rem, 0.95vw, 0.92rem);
+            font-weight: 900;
+            color: #0b4d74;
+            letter-spacing: 0.02em;
+        }
+        .cover-brand-lead {
+            font-size: clamp(0.63rem, 0.82vw, 0.76rem);
+            font-weight: 700;
+            color: #35556d;
+            line-height: 1.45;
+        }
         @media (max-width: 760px) {
             .cover-title {
                 bottom: 9%;
                 font-size: clamp(0.95rem, 4.2vw, 1.3rem);
                 width: 92%;
+            }
+            .cover-brand-spotlight {
+                top: 6rem;
+                right: 50%;
+                transform: translateX(50%);
+                width: min(92%, 27rem);
+                justify-content: center;
+                gap: 0.7rem;
+                padding: 0.72rem 0.85rem;
+            }
+            .cover-brand-logo {
+                width: clamp(6rem, 32vw, 8rem);
+            }
+            .cover-brand-kicker {
+                font-size: 0.68rem;
+            }
+            .cover-brand-lead {
+                font-size: 0.6rem;
             }
         }
         .video-caption {
@@ -155,6 +217,7 @@
             justify-content: center;
             gap: clamp(0.55rem, 1.3vh, 0.95rem);
             color: #0a2c46;
+            padding-bottom: clamp(0.4rem, 1.3vh, 0.9rem);
         }
         .text-slide-top {
             display: flex;
@@ -316,6 +379,43 @@
             font-size: clamp(0.78rem, 0.95vw, 0.9rem);
             font-weight: 900;
         }
+        .profile-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.15rem;
+        }
+        .profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.32rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(31, 143, 209, 0.12);
+            border: 1px solid rgba(31, 143, 209, 0.18);
+            color: #0b4d74;
+            font-size: clamp(0.6rem, 0.74vw, 0.72rem);
+            font-weight: 800;
+        }
+        .profile-badge .material-symbols-rounded {
+            font-size: 0.92rem;
+            color: #1f8fd1;
+        }
+        .profile-highlight {
+            margin-top: 0.15rem;
+            padding: 0.55rem 0.75rem;
+            border-right: 3px solid #1f8fd1;
+            border-radius: 0.55rem;
+            background: linear-gradient(135deg, rgba(31,143,209,0.12), rgba(255,255,255,0.72));
+            color: #0a2c46;
+            font-size: clamp(0.72rem, 0.9vw, 0.86rem);
+            line-height: 1.75;
+            font-weight: 700;
+        }
+        .profile-highlight strong {
+            color: #04314f;
+            font-weight: 900;
+        }
         .closing-panels {
             display: flex;
             flex-direction: column;
@@ -363,6 +463,7 @@
             text-align: center;
             width: min(1100px, 100%);
             margin: 0 auto;
+            padding-bottom: clamp(0.4rem, 1.3vh, 0.9rem);
         }
         .text-slide-solo .text-slide-kicker {
             font-size: clamp(1.15rem, 1.55vw, 1.55rem);
@@ -647,6 +748,7 @@
         .slide-scrollable {
             overflow-y: auto !important;
             align-items: flex-start !important;
+            padding-bottom: clamp(11rem, 20vh, 13rem);
         }
         .goals-grid {
             display: grid;
@@ -681,6 +783,7 @@
             width: 100%;
             height: 100%;
             text-align: center;
+            padding-bottom: clamp(0.4rem, 1.3vh, 0.9rem);
         }
         .benchmark-lead {
             max-width: 62rem;
@@ -1107,15 +1210,15 @@
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
                 align-items: flex-start;
-                padding-top: clamp(5rem, 9vh, 6.4rem);
-                padding-bottom: clamp(3.4rem, 8vh, 4.2rem);
+                padding-top: clamp(4.8rem, 9vh, 6.1rem);
+                padding-bottom: clamp(8.8rem, 18vh, 11rem);
             }
             .text-slide-body,
             .workflow-body,
             .text-slide-solo {
                 height: auto;
                 min-height: 100%;
-                padding: 0.6rem 0;
+                padding: 0.6rem 0 1.1rem;
             }
             .text-slide-split,
             .text-slide-columns {
@@ -1140,15 +1243,22 @@
             .workflow-steps {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .slide-footer {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+            .slide-scrollable {
+                padding-bottom: clamp(12.5rem, 24vh, 15rem);
+            }
         }
         @media (max-width: 640px) {
             .slide {
-                padding-left: clamp(3.6rem, 15vw, 4.3rem);
-                padding-right: clamp(0.9rem, 4vw, 1.3rem);
+                padding-left: clamp(3.3rem, 14vw, 4rem);
+                padding-right: clamp(0.8rem, 4vw, 1.1rem);
             }
             .text-slide {
-                padding-left: clamp(3.6rem, 15vw, 4.3rem);
-                padding-right: clamp(0.9rem, 4vw, 1.3rem);
+                padding-left: clamp(3.3rem, 14vw, 4rem);
+                padding-right: clamp(0.8rem, 4vw, 1.1rem);
             }
             .partners-grid,
             .workflow-steps,
@@ -1158,6 +1268,12 @@
             .text-slide-top {
                 flex-wrap: wrap;
             }
+            .slide-footer {
+                left: 0.45rem;
+                right: 0.45rem;
+                bottom: 0.4rem;
+                padding: 0.5rem 0.8rem;
+            }
         }
     </style>
 </head>
@@ -1165,7 +1281,14 @@
     <main class="stage" id="stage" aria-label="الإصدار الثالث">
         <section class="slide cover-slide" aria-label="الشريحة الرئيسية">
             <img class="background-art" src="assets/backgrounds/third-edition-background-clean.jpg" alt="">
-            <h1 class="cover-title">دور التحول الرقمي في خلق اقتصاد مستدام وبناء قاعدة اقتصادية لرجال الأعمال</h1>
+            <h1 class="cover-title">أطروحة مشروع رقمي يخلق اقتصاداً مستداماً عبر التحول الرقمي ويعزز مصادر الدخل البديلة</h1>
+            <div class="cover-brand-spotlight" aria-label="هوية قنوان">
+                <img class="cover-brand-logo" src="assets/forum/qanwan-logo.png" alt="شعار قنوان">
+                <div class="cover-brand-text">
+                    <span class="cover-brand-kicker">شركة قنوان للاستثمار وإدارة المجموعات التجارية</span>
+                    <span class="cover-brand-lead">هوية الشريك الداعم للمبادرة ضمن عرض بصري هادئ يوازن بين الشعار والعنوان الرئيسي.</span>
+                </div>
+            </div>
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -1248,8 +1371,8 @@
             </div>
             <video class="slide-image" src="assets/video/digital-blue-bridge-intro.mp4" autoplay muted loop playsinline></video>
             <div class="video-caption">
-                <span class="caption-title">مشروع الجسر الأزرق الرقمي</span>
-                <span class="caption-sub">نحو اقتصاد مستدام ومصادر بديلة للاقتصاد الوطني</span>
+                <span class="caption-title">أطروحة الجسر الأزرق الرقمي</span>
+                <span class="caption-sub">منصة رقمية سيادية لتنويع الدخل الوطني وتوليد قيمة اقتصادية متجددة</span>
             </div>
         </section>
         <section class="slide text-slide" aria-label="الشريحة 2">
@@ -1297,38 +1420,22 @@
                     <div class="text-slide-main">
                         <div class="text-slide-top">
                             <div>
-                                <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">corporate_fare</span>مؤسسة قنوان للاستثمار وإدارة المجموعات التجارية</p>
+                                <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">corporate_fare</span>تعريف بمؤسسة قنوان للاستثمار و ادارة المجموعات التجارية</p>
                             </div>
                         </div>
-                        <p class="text-slide-lead">امتداد لمجموعة استثمارية عريقة لها باع طويل في عالم التجارة منذ عام 1990، خاصة في مجال المجوهرات والمعادن الثمينة. وتمثل قنوان اليوم الثمرة المتطورة لهذا التاريخ الحافل، حيث تتولى إدارة استثمارات المجموعة بمختلف قطاعاتها الحيوية المتنوعة، بفضل كوكبة من الشركات التجارية المتميزة ذات ملاءة مالية معتبرة وتوزيع جغرافي استراتيجي.</p>
-                        <div class="closing-panels">
-                            <div class="closing-card">
-                                <span class="icon material-symbols-rounded">flag</span>
-                                <div>
-                                    <h4>رؤية قنوان 2030</h4>
-                                    <p>تستثمر قنوان في عدة قطاعات حيوية، يتصدرها الاستثمار في قطاع التكنولوجيا والتحول الرقمي بوصفه رافعة النمو القادمة:</p>
-                                    <ul class="sector-cards">
-                                        <li class="sector-card featured"><span class="icon material-symbols-rounded">computer</span><span class="label">التكنولوجيا والتحول الرقمي</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">diamond</span><span class="label">المجوهرات</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">apartment</span><span class="label">التطوير العقاري</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">construction</span><span class="label">البنية التحتية</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">agriculture</span><span class="label">القطاع الغذائي</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">payments</span><span class="label">الخدمات المالية</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">local_shipping</span><span class="label">استيراد السيارات والآليات الثقيلة</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">factory</span><span class="label">القطاع الصناعي</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">shopping_cart</span><span class="label">القطاع التجاري</span></li>
-                                        <li class="sector-card"><span class="icon material-symbols-rounded">campaign</span><span class="label">الدعاية والإعلان</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="text-slide-lead">هي مؤسسة وطنية واعدة تستثمر في عدد من القطاعات، وفي مقدمتها التكنولوجيا والتحول الرقمي. ولها منجزات مهمة في هذا المجال، أبرزها المنصة الرقمية الموحدة للغرف التجارية، وهي نموذج ناجح تمّ بالشراكة الاستراتيجية مع الاتحاد العام لغرف التجارة والصناعة والزراعة ليبيا وتحت إشرافه.</p>
                     </div>
                     <div class="text-slide-sectors">
-                        <p class="text-slide-subhead">مشروع قنوان الوطني للتحول الرقمي</p>
-                        <p class="sectors-note">جاء المشروع نتيجة الاهتمام الخاص بقطاع التكنولوجيا والتحول الرقمي، وتمت بالشراكة مع <strong>الاتحاد العام لغرف التجارة والصناعة والزراعة</strong>، بصفته الشريك الاستراتيجي والراعي الرسمي.</p>
-                        <p class="sectors-note">ولمشروع قنوان الوطني للتحول الرقمي عدد من المنجزات، أبرزها المنصة الرقمية الموحدة لغرف التجارة والصناعة والزراعة، إلى جانب عدد من المشاريع الأخرى، من ضمنها المشروع الاستراتيجي «الجسر الرقمي الأزرق» الذي سنستعرضه على حضراتكم في هذا العرض.</p>
+                        <p class="text-slide-subhead">مشاركتنا في هذا الملتقى</p>
+                        <p class="sectors-note">يسر مؤسستنا في هذا الملتقى الاستراتيجي أن تساهم بأطروحة مشروع «الجسر الأزرق الرقمي» لتسليط الضوء على أهمية التحول الرقمي في صناعة اقتصاد مستدام يوفر مصادر بديلة للدخل العام من خلال بنية تحتية رقمية.</p>
+                        <p class="sectors-note">وسيتم استعراض هذا الطرح على حضراتكم ضمن هذه المشاركة بوصفه امتداداً عملياً لرؤية المؤسسة في الاستثمار الرقمي والتنمية الوطنية. و ان هذه المشاركة هي ابراز لتأثير التحول الرقمي للانتقال بموقع ليبيا من الجغرافيا الي الجيو اقتصاد.</p>
                     </div>
                 </div>
+                        <div class="profile-badges" aria-label="مزايا المؤسسة">
+                            <span class="profile-badge"><span class="material-symbols-rounded">public</span>مؤسسة وطنية واعدة</span>
+                            <span class="profile-badge"><span class="material-symbols-rounded">computer</span>التكنولوجيا والتحول الرقمي</span>
+                            <span class="profile-badge"><span class="material-symbols-rounded">groups</span>شراكة استراتيجية موثوقة</span>
+                        </div>
             </div>
         </section>
         <section class="slide text-slide" aria-label="الشريحة 3">
@@ -1375,7 +1482,7 @@
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
                         <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">public</span>من الجغرافيا إلى الجيواقتصاد</p>
-                        <p class="text-slide-lead solo-lead">في توقيت مفصلي يشهد فيه العالم إعادة هندسة جذرية لسلاسل الإمداد العالمية، وتحديداً مع التحديات التي فرضتها الاضطرابات الجيوسياسية على الممرات التقليدية، تبرز ليبيا ليس فقط كحقيقة جغرافية ثابتة، بل كضرورة اقتصادية ملحة. إن مشروع «الجسر الأزرق الرقمي» يتجاوز مفهوم شق الطرق وتسيير الشاحنات؛ إنها تطرح رؤية طموحة لتحويل الموقع الاستراتيجي للدولة الليبية إلى «أصل سيادي رقمي ولوجستي»، يمنح دول الجوار الأفريقي ‏(دول الطوق والعمق الحبيسة)‏ شريان حياة بديلاً: آمناً، ذكياً، وسريعاً، برياً وجوياً يربط ثرواتهم بالأسواق العالمية عبر موانئنا الشمالية، مؤسساً لشراكة تكاملية مستدامة.</p>
+                        <p class="text-slide-lead solo-lead">في لحظة تتسارع فيها التحولات الاقتصادية عالمياً، لم يعد الموقع الجغرافي وحده كافياً لصناعة القوة؛ بل أصبحت القدرة على تحويل الموقع إلى قيمة رقمية قابلة للقياس والتشغيل والبيع هي العنصر الفارق. وتفترض هذه الأطروحة أن ليبيا يمكن أن تتحول من مجرد نقطة عبور إلى عقدة رقمية اقتصادية، توظف التحول الرقمي لتوليد خدمات لوجستية ومالية ومعرفية تشكل مصادر دخل بديلة ومستقرة.</p>
                         <p class="text-slide-signature">مشروع الجسر الأزرق الرقمي</p>
                     </div>
                     <div class="text-slide-visual">
@@ -1427,7 +1534,7 @@
             <div class="text-slide-body">
                 <div class="text-slide-solo">
                     <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">lightbulb</span>فكرة المشروع</p>
-                    <p class="text-slide-lead solo-lead">ينطلق مشروع «الجسر الأزرق الرقمي» من قناعة راسخة بأن موقع ليبيا الجغرافي، عند ملتقى البحر المتوسط والعمق الأفريقي، يمثل أصلاً استراتيجياً لم يُستثمر بعد بالشكل الأمثل. فبدلاً من الاكتفاء بدور تقليدي كممر عبور للبضائع، يطرح المشروع رؤية لتحويل هذا الموقع إلى منصة رقمية سيادية موحدة، تدير حركة التجارة براً وبحراً وجواً عبر هوية رقمية موثوقة، ومحفظة مالية آمنة، وسياج جغرافي إلكتروني يواكب أفضل المعايير الدولية. بهذا التحول، تعيد ليبيا تعريف دورها الإقليمي؛ من نقطة عبور جغرافية إلى مركز ثقل خدماتي ومالي ولوجستي يخدم أسواقاً أفريقية تتجاوز 90 مليون نسمة.</p>
+                        <p class="text-slide-lead solo-lead">تقوم فكرة المشروع على إنشاء منصة رقمية سيادية موحدة تحوّل الخدمات إلى دورة إنتاج اقتصادية جديدة: تعريف رقمي موثوق، مدفوعات إلكترونية، تتبع للمعاملات، وقياس فوري للأثر. وبدلاً من أن تكون الرقمنة تابعة للاقتصاد التقليدي، تصبح هي نفسها محركاً للدخل، ورافعة لتوسيع الشمول المالي، وبوابة لأسواق إقليمية أوسع.</p>
                     <p class="text-slide-signature">مشروع الجسر الأزرق الرقمي</p>
                 </div>
             </div>
@@ -1474,33 +1581,33 @@
             </div>
             <div class="text-slide-body">
                 <div class="benchmark-body">
-                    <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">track_changes</span>أهداف المشروع وفوائده</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">track_changes</span>أهداف الأطروحة وفوائدها</p>
                     <div class="goals-grid">
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">public</span>
                             <div>
                                 <h4>ترسيخ السيادة الرقمية</h4>
-                                <p>بناء نافذة وطنية موحدة تدير البيانات والمعاملات التجارية تحت إشراف سيادي كامل.</p>
+                                <p>بناء نافذة وطنية موحدة تدير البيانات والمعاملات تحت إشراف سيادي كامل.</p>
                             </div>
                         </div>
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">payments</span>
                             <div>
                                 <h4>زيادة الإيرادات الوطنية</h4>
-                                <p>تحويل رسوم العبور والخدمات اللوجستية إلى مصدر دخل ثابت ومتجدد للدولة.</p>
+                                <p>تحويل رسوم الخدمات الرقمية والاشتراكات والمعاملات إلى مصدر دخل ثابت ومتجدد للدولة.</p>
                             </div>
                         </div>
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">speed</span>
                             <div>
-                                <h4>تسريع حركة التجارة</h4>
-                                <p>خفض زمن العبور وتكاليفه عبر أتمتة الإجراءات الجمركية والأمنية.</p>
+                                <h4>تسريع حركة الاقتصاد</h4>
+                                <p>خفض زمن الخدمات وتكاليفها عبر أتمتة الإجراءات وربط المنظومات في مسار واحد.</p>
                             </div>
                         </div>
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">account_balance</span>
                             <div>
-                                <h4>تنشيط القطاع المصرفي والتأميني</h4>
+                                <h4>تنشيط القطاع المالي</h4>
                                 <p>إعادة تدوير الخدمات المالية والتأمينية داخل الاقتصاد الوطني بدلاً من تسربها للخارج.</p>
                             </div>
                         </div>
@@ -1508,14 +1615,14 @@
                             <span class="icon material-symbols-rounded">groups</span>
                             <div>
                                 <h4>خلق فرص عمل نوعية</h4>
-                                <p>توليد وظائف تقنية ولوجستية جديدة تواكب متطلبات الاقتصاد الرقمي.</p>
+                                <p>توليد وظائف تقنية وإبداعية وتحليلية جديدة تواكب متطلبات الاقتصاد الرقمي.</p>
                             </div>
                         </div>
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">shield</span>
                             <div>
                                 <h4>تعزيز الأمن والشفافية</h4>
-                                <p>توفير تتبع رقمي لحظي للشحنات يحد من التهريب ويرفع مستوى الامتثال الدولي.</p>
+                                <p>توفير تتبع رقمي لحظي للمعاملات والخدمات يحد من الهدر ويرفع مستوى الامتثال.</p>
                             </div>
                         </div>
                     </div>
@@ -1564,28 +1671,28 @@
             </div>
             <div class="text-slide-body">
                 <div class="benchmark-body">
-                    <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">hub</span>دور التحول الرقمي في خلق اقتصاد مستدام</p>
-                    <p class="benchmark-lead">يشكل التحول الرقمي حجر الأساس في تحقيق استدامة اقتصادية طويلة الأمد؛ فبدلاً من الاعتماد على موارد ناضبة أو إجراءات ورقية بطيئة، يعتمد المشروع على بنية رقمية متكاملة تربط الجهات الحكومية والمصرفية واللوجستية في منظومة واحدة، تُنتج بيانات دقيقة تدعم القرار الاقتصادي، وتفتح الباب أمام إيرادات متجددة من الخدمات الرقمية والمالية.</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">hub</span>دور التحول الرقمي في خلق اقتصاد مستدام</p>
+                    <p class="benchmark-lead">يشكل التحول الرقمي حجر الأساس في تحقيق استدامة اقتصادية طويلة الأمد؛ فبدلاً من الاعتماد على مصادر دخل أحادية أو إجراءات ورقية بطيئة، تعتمد الأطروحة على بنية رقمية متكاملة تربط الجهات الحكومية والمصرفية والتعليمية والقطاع الخاص في منظومة واحدة، تُنتج بيانات دقيقة تدعم القرار الاقتصادي وتفتح الباب أمام إيرادات متجددة من الخدمات الرقمية والمعرفية.</p>
                     <div class="goals-grid goals-grid-2">
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">database</span>
                             <div>
                                 <h4>سيادة البيانات</h4>
-                                <p>امتلاك الدولة الكامل لبياناتها التجارية واللوجستية وتحليلها لدعم التخطيط الاقتصادي.</p>
+                                <p>امتلاك الدولة الكامل لبياناتها وتحليلها لدعم التخطيط الاقتصادي وصناعة القرار.</p>
                             </div>
                         </div>
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">account_balance_wallet</span>
                             <div>
                                 <h4>شمول مالي أوسع</h4>
-                                <p>دمج المشغلين والتجار في منظومة مصرفية رقمية تقلل الاعتماد على النقد والوسطاء.</p>
+                                <p>دمج الأفراد والمشروعات الصغيرة في منظومة رقمية تقلل الاعتماد على النقد والوسطاء.</p>
                             </div>
                         </div>
                         <div class="closing-card">
                             <span class="icon material-symbols-rounded">eco</span>
                             <div>
                                 <h4>كفاءة تشغيلية وبيئية</h4>
-                                <p>تقليص الإجراءات الورقية والوقود المهدر نتيجة الانتظار، بما يخفض الأثر البيئي.</p>
+                                <p>تقليص الإجراءات الورقية والهدر التشغيلي بما يخفض الأثر البيئي ويرفع الإنتاجية.</p>
                             </div>
                         </div>
                         <div class="closing-card">
@@ -1642,41 +1749,41 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">local_shipping</span>بروتوكول التشغيل البري (Operational Workflow)</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">local_shipping</span>بروتوكول التشغيل البري للخدمة الرقمية (Operational Workflow)</p>
                         <ul class="workflow-list">
                             <li>
                                 <span class="num">1</span>
                                 <div>
                                     <h5>التسجيل والاعتماد (Registration)</h5>
-                                    <p>تأسيس "هوية رقمية" ومحفظة مالية للمشغل، يتم تفعيلها فقط بعد التحقق الآلي من الأهلية عبر الربط المباشر مع وزارة الاقتصاد والمصرف المركزي.</p>
+                                    <p>تأسيس هوية رقمية ومحفظة إلكترونية للمستفيد أو المشغل، يتم تفعيلها بعد التحقق الآلي من الأهلية والبيانات الأساسية.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">2</span>
                                 <div>
                                     <h5>الإخطار المسبق (Notification)</h5>
-                                    <p>يرفع الوكيل الملاحي "بيان الشحنة" إلكترونياً قبل الوصول، مما يتيح للنظام القراءة الاستباقية للبيانات وتجهيز الموارد.</p>
+                                    <p>يرفع المستخدم الطلب أو الخدمة إلكترونياً قبل التنفيذ، مما يتيح للنظام القراءة الاستباقية للبيانات وتجهيز الموارد.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">3</span>
                                 <div>
                                     <h5>التحقق والمقاصة (Verification)</h5>
-                                    <p>يقوم النظام آلياً بتحليل المخاطر لتحديد نوع التتبع (قفل/ستيكر)، وتنفيذ "الخصم المباشر" للرسوم من المحفظة، وإتمام "الاقتران الرقمي" في الميناء بالتكامل مع الجمارك وسلطات الميناء.</p>
+                                    <p>يقوم النظام آلياً بتحليل البيانات لتحديد مستوى الخدمة، وتنفيذ الخصم المباشر للرسوم من المحفظة، وإتمام المطابقة الرقمية مع الجهات المعنية.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">4</span>
                                 <div>
                                     <h5>عملية العبور (Transit)</h5>
-                                    <p>انطلاق الشاحنة في "ممر آمن" تحت رقابة "سياج جغرافي" يبث الموقع لحظياً لغرفة عمليات وزارة الداخلية؛ حيث يولد أي انحراف عن المسار تنبيهاً أمنياً فورياً.</p>
+                                    <p>انطلاق الخدمة في مسار رقمي واضح تحت رقابة المؤشرات اللحظية؛ حيث يولد أي انحراف عن مؤشرات الجودة أو الزمن تنبيهاً فورياً.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">5</span>
                                 <div>
                                     <h5>التخليص والربط الدولي (Clearance &amp; Int. Link)</h5>
-                                    <p>عند الحدود، يتم تأكيد الخروج واسترداد مبلغ الضمان آلياً. ويتميز النظام بمنح سلطات الدولة المستهدفة صلاحية النفاذ المسبق لبيانات الشحنة، لضمان سرعة الاستقبال والتعاون الأمني المشترك.</p>
+                                    <p>عند اكتمال الخدمة، يتم تأكيد الإنهاء وتسوية الرسوم آلياً، مع حفظ السجل الرقمي وإتاحة النفاذ المصرح به للجهات ذات العلاقة.</p>
                                 </div>
                             </li>
                         </ul>
@@ -1730,41 +1837,41 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">flight</span>بروتوكول التشغيل: المسار المتعدد "بحر-جو" (Sea-Air Workflow)</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">flight</span>بروتوكول التشغيل متعدد القنوات (Sea-Air Workflow)</p>
                         <ul class="workflow-list">
                             <li>
                                 <span class="num">1</span>
                                 <div>
                                     <h5>التسجيل المزدوج (Dual Registration)</h5>
-                                    <p>توسيع "الهوية الرقمية" للمشغل لتشمل صلاحيات المناولة الجوية، مع ربط المحفظة المالية بقطاعي الموانئ والطيران المدني لضمان الامتثال الموحد.</p>
+                                    <p>توسيع الهوية الرقمية للمستفيد لتشمل أكثر من قناة خدمة، مع ربط المحفظة ببيئة الدفع والتحقق لضمان الامتثال الموحد.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">2</span>
                                 <div>
                                     <h5>الإخطار الموحد (Unified Notification)</h5>
-                                    <p>رفع بيان "بحر-جو" مسبق، مما يُفعل تلقائياً "المسار السريع" في الميناء ويحجز حيز التخزين في المطار قبل وصول السفينة.</p>
+                                    <p>رفع الطلب المسبق للقناتين معاً، مما يفعل المسار السريع ويجهز نقاط الخدمة قبل الوصول.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">3</span>
                                 <div>
                                     <h5>التحقق والنقل البيني (Verification &amp; Transfer)</h5>
-                                    <p>خصم الرسوم الموحدة آلياً، وتفعيل "اقتران انتقالي" للشاحنة لنقل البضاعة من الميناء للمطار كشحنة مقيدة (Bonded) بين الدائرتين الجمركيتين.</p>
+                                    <p>خصم الرسوم الموحدة آلياً، وتفعيل نقل الخدمة بين القنوات الرقمية دون انقطاع في البيانات أو السجل المالي.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">4</span>
                                 <div>
                                     <h5>المسار الجوي (Air Transit)</h5>
-                                    <p>مراقبة النقل الأرضي للمطار عبر "سياج جغرافي"، ثم تتبع مسار الطائرة عبر التكامل مع الرقابة الجوية (ATC) فور الإقلاع.</p>
+                                    <p>مراقبة تنفيذ الخدمة عالية القيمة عبر تتبع رقمي مستمر، ثم ربطها بوحدة التحليل والقياس فور إطلاقها.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">5</span>
                                 <div>
                                     <h5>الإقلاع والإبراء (Take-off &amp; Release)</h5>
-                                    <p>بمجرد مغادرة المجال الجوي، يعتبر النظام عملية التصدير منتهية، فيقوم برد الضمان المالي فوراً وإرسال إشعار مسبق لسلطات مطار الوجهة لتسريع الاستقبال.</p>
+                                    <p>بمجرد إطلاق الخدمة، يعتبر النظام الدورة منتهية، فيقوم بتسجيل العائد وإرسال إشعار رقمي بالتسليم للجهات ذات العلاقة.</p>
                                 </div>
                             </li>
                         </ul>
@@ -1817,54 +1924,54 @@
             </div>
             <div class="text-slide-body">
                 <div class="workflow-body">
-                    <p class="text-slide-kicker" style="text-align:center"><span class="kicker-icon material-symbols-rounded">groups</span>مصفوفة الشركاء والتكامل المؤسسي (Stakeholders Matrix &amp; Institutional Integration)</p>
+                        <p class="text-slide-kicker" style="text-align:center"><span class="kicker-icon material-symbols-rounded">groups</span>مصفوفة الشركاء والتكامل المؤسسي (Stakeholders Matrix &amp; Institutional Integration)</p>
                     <div class="partner-group">
-                        <p class="partner-group-title"><span class="material-symbols-rounded">account_balance</span>القطاع العام</p>
+                        <p class="partner-group-title"><span class="material-symbols-rounded">account_balance</span>القطاع العام والتنظيمي</p>
                         <div class="partners-grid">
                             <div class="partner-card">
-                                <h5>وزارة الاقتصاد والتجارة<span class="en-tag">Ministry of Economy &amp; Trade</span></h5>
-                                <p>المظلة العامة والتشريعية للمشروع.<span class="role-en">General legislative umbrella for the project.</span></p>
+                                <h5>وزارة الاقتصاد والجهات التنظيمية<span class="en-tag">Ministry &amp; Regulators</span></h5>
+                                <p>المظلة العامة والتشريعية للأطر الرقمية.<span class="role-en">General legislative umbrella for digital frameworks.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>مصلحة الموانئ والنقل البحري والمطارات<span class="en-tag">Ports &amp; Maritime Transport Authority</span></h5>
-                                <p>التنظيم الملاحي.<span class="role-en">Maritime regulation.</span></p>
+                                <h5>هيئات البيانات والتحول الرقمي<span class="en-tag">Data &amp; Digital Authorities</span></h5>
+                                <p>تنظيم البيانات والتشغيل البيني.<span class="role-en">Data governance and interoperability.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>موانئ المناطق الحرة<span class="en-tag">Free Zone Ports</span></h5>
-                                <p>البنية التحتية واللوجستية.<span class="role-en">Infrastructure and logistics.</span></p>
+                                <h5>هيئات البنية التحتية الرقمية<span class="en-tag">Digital Infrastructure Bodies</span></h5>
+                                <p>الربط والخدمات السحابية والشبكات.<span class="role-en">Connectivity, cloud, and network services.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>شبكة ليبيا للتجارة (LTN)<span class="en-tag">Libya Trade Network (LTN)</span></h5>
-                                <p>إدارة النافذة الوطنية وسيادة البيانات.<span class="role-en">National Window Management &amp; Data Sovereignty.</span></p>
+                                <h5>منصة النافذة الرقمية الموحدة<span class="en-tag">Unified Digital Window</span></h5>
+                                <p>إدارة الطلبات والبيانات والمعاملات.<span class="role-en">Requests, data, and transaction management.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>الاتحاد العام لغرف التجارة<span class="en-tag">General Union of Chambers of Commerce</span></h5>
-                                <p>التنسيق التجاري بين الدول.<span class="role-en">Commercial Coordination between Nations.</span></p>
+                                <h5>الجامعات ومراكز البحث<span class="en-tag">Universities &amp; Research Centers</span></h5>
+                                <p>التطوير المعرفي وقياس الأثر.<span class="role-en">Knowledge development and impact measurement.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>مصلحة الجمارك<span class="en-tag">Customs Authority</span></h5>
-                                <p>الامتثال الجمركي.<span class="role-en">Customs Compliance.</span></p>
+                                <h5>الجهات الرقابية والحوكمة<span class="en-tag">Oversight &amp; Governance</span></h5>
+                                <p>الامتثال والشفافية والمراجعة.<span class="role-en">Compliance, transparency, and audit.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>وزارة الداخلية<span class="en-tag">Ministry of Interior</span></h5>
-                                <p>الامتثال الأمني.<span class="role-en">Security Compliance.</span></p>
+                                <h5>الجهات الأمنية السيبرانية<span class="en-tag">Cybersecurity Units</span></h5>
+                                <p>حماية المنصة والبيانات.<span class="role-en">Platform and data protection.</span></p>
                             </div>
                         </div>
                     </div>
                     <div class="partner-group">
-                        <p class="partner-group-title"><span class="material-symbols-rounded">savings</span>قطاع المصارف والتأمين</p>
+                        <p class="partner-group-title"><span class="material-symbols-rounded">savings</span>قطاع المصارف والتمويل</p>
                         <div class="partners-grid">
                             <div class="partner-card">
                                 <h5>المصرف المركزي الليبي<span class="en-tag">Central Bank of Libya</span></h5>
                                 <p>التحقق من الأهلية المالية والرقابة النقدية.<span class="role-en">Financial Eligibility Verification &amp; Monetary Oversight.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>القطاع المصرفي<span class="en-tag">Banking Sector</span></h5>
-                                <p>إدارة الدورة المالية.<span class="role-en">Financial Cycle Management.</span></p>
+                                <h5>القطاع المصرفي الرقمي<span class="en-tag">Digital Banking Sector</span></h5>
+                                <p>إدارة الدورة المالية والخدمات المصرفية الإلكترونية.<span class="role-en">Financial cycle and e-banking management.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>قطاع التأمين<span class="en-tag">Insurance Sector</span></h5>
-                                <p>إعادة تدوير خدمات التأمين.<span class="role-en">Recycling Insurance Services.</span></p>
+                                <h5>قطاع التأمين الرقمي<span class="en-tag">Digital Insurance Sector</span></h5>
+                                <p>تقديم منتجات تأمينية مبتكرة مرتبطة بالخدمات الرقمية.<span class="role-en">Innovative insurance products linked to digital services.</span></p>
                             </div>
                         </div>
                     </div>
@@ -1872,24 +1979,24 @@
                         <p class="partner-group-title"><span class="material-symbols-rounded">business_center</span>القطاع الخاص</p>
                         <div class="partners-grid">
                             <div class="partner-card">
-                                <h5>النواقل البحرية والوكلاء<span class="en-tag">Maritime Carriers &amp; Agents</span></h5>
-                                <p>تزويد البيانات وتسريع دوران الحاويات.<span class="role-en">Data Provision &amp; Accelerating Turnaround.</span></p>
+                                <h5>الشركات التقنية والشركات الناشئة<span class="en-tag">Tech Firms &amp; Startups</span></h5>
+                                <p>تطوير الحلول وبناء المنتجات الرقمية.<span class="role-en">Solution development and digital product building.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>مؤسسة قنوان للاستثمار وإدارة المجموعات التجارية<span class="en-tag">Qinwan Company</span></h5>
-                                <p>التطوير والتشغيل التقني.<span class="role-en">Development &amp; Technical Operation.</span></p>
+                                <h5>القطاع الاستثماري والريادي<span class="en-tag">Investment &amp; Entrepreneurial Sector</span></h5>
+                                <p>التطوير والتشغيل التقني وتمويل التوسع.<span class="role-en">Technical operation and expansion financing.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>المؤسسات والشركات (القطاع الخاص)<span class="en-tag">Private Sector Institutions &amp; Companies</span></h5>
-                                <p>الشركاء التنفيذيون وسلاسل الإمداد.<span class="role-en">Execution Partners &amp; Supply Chains.</span></p>
+                                <h5>المؤسسات والشركات الوطنية<span class="en-tag">National Institutions &amp; Companies</span></h5>
+                                <p>الشركاء التنفيذيون وسلاسل القيمة الرقمية.<span class="role-en">Execution partners and digital value chains.</span></p>
                             </div>
                             <div class="partner-card">
-                                <h5>رجال الأعمال<span class="en-tag">Businessmen</span></h5>
-                                <p>المستفيدون المباشرون وقادة القرار التجاري.<span class="role-en">Direct Beneficiaries &amp; Trade Decision-Makers.</span></p>
+                                <h5>رواد الأعمال<span class="en-tag">Entrepreneurs</span></h5>
+                                <p>المستفيدون المباشرون وقادة الابتكار التجاري.<span class="role-en">Direct beneficiaries and innovation leaders.</span></p>
                             </div>
                             <div class="partner-card">
                                 <h5>المستثمرون<span class="en-tag">Investors</span></h5>
-                                <p>تمويل المشاريع وتوسيع قاعدة رأس المال.<span class="role-en">Project Financing &amp; Capital Base Expansion.</span></p>
+                                <p>تمويل المشاريع وتوسيع قاعدة رأس المال الإنتاجي.<span class="role-en">Project financing and productive capital expansion.</span></p>
                             </div>
                         </div>
                     </div>
@@ -1897,8 +2004,8 @@
                         <p class="partner-group-title"><span class="material-symbols-rounded">public</span>جهات مستفيدة أخرى</p>
                         <div class="partners-grid">
                             <div class="partner-card">
-                                <h5>دول الجوار الأفريقي (النيجر، تشاد، مالي، بوركينا فاسو)<span class="en-tag">African Neighboring Countries</span></h5>
-                                <p>الأسواق المستهدفة والمستفيد الأكبر من الممر اللوجستي.<span class="role-en">Target Markets &amp; Primary Beneficiaries of the Corridor.</span></p>
+                                <h5>الأسر والشباب الباحثون عن فرص<span class="en-tag">Families &amp; Youth</span></h5>
+                                <p>المستفيد الأكبر من الوظائف الرقمية والدخل البديل.<span class="role-en">Main beneficiaries of digital jobs and alternative income.</span></p>
                             </div>
                         </div>
                     </div>
@@ -1953,64 +2060,64 @@
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">account_balance</span>
                             <div>
-                                <h5>القطاع المصرفي والتأمين</h5>
-                                <p>استرداد كامل السيولة وأقساط التأمين للاقتصاد المحلي بدلاً من تسربها لشركات أجنبية.</p>
+                                <h5>القطاع المصرفي والتمويل</h5>
+                                <p>توسيع المدفوعات الرقمية والمنتجات المالية الجديدة داخل الاقتصاد المحلي.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">handshake</span>
                             <div>
-                                <h5>رجال الأعمال والتجار</h5>
-                                <p>بوابة تصدير أولى نحو سوق استهلاكي يفوق 90 مليون نسمة في دول الطوق والدول الحبيسة.</p>
+                                <h5>رواد الأعمال والتجار</h5>
+                                <p>بوابة دخول أسرع إلى أسواق أوسع عبر منصات وخدمات رقمية قابلة للتوسع.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">local_shipping</span>
                             <div>
                                 <h5>القطاع اللوجستي والنقل</h5>
-                                <p>خفض زمن العبور من 21 يوماً إلى 4-5 أيام، وخفض تكلفة الشحن بنسبة تصل إلى 14%.</p>
+                                <p>خفض زمن الخدمة وتكلفتها عبر الأتمتة والربط الرقمي بين الأطراف.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">receipt_long</span>
                             <div>
-                                <h5>القطاع الجمركي والإيرادات العامة</h5>
-                                <p>رفع حصيلة الرسوم الجمركية عبر التتبع الرقمي والقضاء على التهريب والإتاوات.</p>
+                                <h5>الإيرادات العامة</h5>
+                                <p>رفع الحصيلة عبر التتبع الرقمي وتقليل التسرب والرسوم غير المحصلة.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">anchor</span>
                             <div>
-                                <h5>قطاع الموانئ والمناطق الحرة</h5>
-                                <p>زيادة الطاقة التشغيلية وجذب حركة ملاحية إقليمية جديدة إلى الموانئ الليبية.</p>
+                                <h5>البنية التحتية الرقمية</h5>
+                                <p>زيادة الطاقة التشغيلية وجذب خدمات جديدة إلى المنصة الوطنية.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">factory</span>
                             <div>
                                 <h5>القطاع الصناعي والتصنيع</h5>
-                                <p>فتح أسواق تصدير جديدة للمنتج الليبي المصنّع في دول الجوار الأفريقي.</p>
+                                <p>فتح قنوات تسويق وتصدير رقمية للمنتج الليبي المصنّع.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">agriculture</span>
                             <div>
                                 <h5>القطاع الزراعي والغذائي</h5>
-                                <p>قنوات تصدير مباشرة للمنتجات الغذائية والزراعية نحو أسواق استهلاكية متنامية.</p>
+                                <p>قنوات تسويق وتوزيع رقمية للمنتجات الغذائية والزراعية.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">computer</span>
                             <div>
                                 <h5>قطاع التكنولوجيا والاقتصاد الرقمي</h5>
-                                <p>مصدر دخل رقمي متجدد عبر رسوم المنصة والبيانات والخدمات الرقمية المرتبطة بها.</p>
+                                <p>مصدر دخل رقمي متجدد عبر رسوم المنصة والبيانات والخدمات المرتبطة بها.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
                             <span class="icon material-symbols-rounded">payments</span>
                             <div>
                                 <h5>المستثمرون ورأس المال</h5>
-                                <p>فرص استثمارية جديدة بعائد مضمون ضمن منظومة رقمية شفافة وقابلة للتتبع.</p>
+                                <p>فرص استثمارية جديدة بعائد قابل للقياس ضمن منظومة شفافة وقابلة للتتبع.</p>
                             </div>
                         </div>
                         <div class="benefit-card">
@@ -2067,39 +2174,39 @@
             <div class="text-slide-body">
                 <div class="benchmark-body">
                     <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">military_tech</span>شواهد النجاح العالمية والميزة التنافسية (Global Benchmarks &amp; Competitive Edge)</p>
-                    <p class="benchmark-lead">تؤكد تقارير (IMF, World Bank, UNCTAD 2024) أن "الرقمنة" هي الرافعة الاقتصادية الأقوى للمنطقة، وفق الشواهد التالية:</p>
+                    <p class="benchmark-lead">تؤكد التجارب الدولية أن الرقمنة تتحول إلى رافعة اقتصادية عندما تُبنى كمنصة إنتاجية لا كخدمة شكلية، وفق الشواهد التالية:</p>
                     <div class="benchmark-grid">
                         <div class="benchmark-card">
                             <div class="stat-row">
                                 <span class="stat-icon material-symbols-rounded">security</span>
-                                <span class="stat">0% → 32%</span>
+                                <span class="stat">الهوية أولاً</span>
                             </div>
-                            <h5>تغلب التقنية على التحديات الأمنية (نموذج الصومال)</h5>
-                            <p>نجحت منصة "ميناء بربرة" الرقمية في رفع حصتها من تجارة إثيوبيا من 0% إلى 32% خلال 4 سنوات فقط، رغم الظروف الأمنية الصعبة.</p>
+                            <h5>الهوية الرقمية أساس الثقة</h5>
+                            <p>كلما كانت الهوية الرقمية موثوقة، أصبح الوصول للخدمة أسرع، والاحتيال أقل، والثقة الاستثمارية أعلى.</p>
                         </div>
                         <div class="benchmark-card">
                             <div class="stat-row">
                                 <span class="stat-icon material-symbols-rounded">speed</span>
-                                <span class="stat">21 → 4 أيام</span>
+                                <span class="stat">الوقت = قيمة</span>
                             </div>
-                            <h5>الكفاءة الأمنية القصوى (نموذج شرق أفريقيا)</h5>
-                            <p>أثبتت أنظمة التتبع الإلكتروني قدرتها على خفض زمن العبور من 21 يوماً إلى 4 أيام، والقضاء على سرقة البضائع بنسبة 99%.</p>
+                            <h5>تقليص زمن المعاملة يرفع القيمة</h5>
+                            <p>كل دقيقة تُختصر في الإجراءات تتحول إلى توفير تشغيلي، وتدفق أسرع للنقد، وقدرة أعلى على التوسع.</p>
                         </div>
                         <div class="benchmark-card">
                             <div class="stat-row">
                                 <span class="stat-icon material-symbols-rounded">pie_chart</span>
-                                <span class="stat">72.8%</span>
+                                <span class="stat">إيراد متكرر</span>
                             </div>
-                            <h5>اقتصاد الخدمات (نموذج جيبوتي)</h5>
-                            <p>تشكل خدمات العبور حالياً 72.8% من الناتج المحلي الإجمالي، مما يجعله البديل الاستراتيجي للنفط.</p>
+                            <h5>المنصة تحقق دخلاً متكرراً</h5>
+                            <p>الخدمات الرقمية الناجحة لا تبيع مرة واحدة، بل تنتج اشتراكات وعمولات ورسوم استخدام متكررة.</p>
                         </div>
                         <div class="benchmark-card">
                             <div class="stat-row">
                                 <span class="stat-icon material-symbols-rounded">trending_up</span>
-                                <span class="stat">+$200M</span>
+                                <span class="stat">+ تنويع</span>
                             </div>
-                            <h5>ميزة ليبيا الحاسمة (القرب من أوروبا)</h5>
-                            <p>تتفوق ليبيا على منافسيها في غرب أفريقيا بكونها الأقرب للأسواق الأوروبية (2-3 أيام شحن بحري مقابل 12 يوماً)، مما يوفر للتاجر النيجيري 50% من زمن دورة رأس المال، ويحقق وفورات سنوية تتجاوز 200 مليون دولار (وفق تقديرات AfDB).</p>
+                            <h5>تنويع الاقتصاد يقلل المخاطر</h5>
+                            <p>كل مصدر دخل بديل يخفف اعتماد الدولة على مورد واحد، ويزيد قدرتها على مواجهة الصدمات.</p>
                         </div>
                     </div>
                 </div>
@@ -2149,27 +2256,27 @@
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
                         <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">groups_3</span>الديموغرافيا والاقتصاد</p>
-                        <p class="text-slide-lead">لا يستهدف المشروع أرقاماً صماء، بل تستهدف كتلاً بشرية هائلة تمثل سوقاً استهلاكياً متنامياً، بإجمالي واردات يتجاوز 15.54 مليار دولار وسوق بشري يقارب 95 مليون نسمة:</p>
+                        <p class="text-slide-lead">لا تستهدف الأطروحة أرقاماً صماء، بل شرائح بشرية واقتصادية قادرة على التحول إلى سوق إنتاج واستهلاك رقمي متنامٍ:</p>
                         <ul class="workflow-list">
                             <li>
                                 <span class="num">1</span>
                                 <div>
-                                    <h5>جمهورية النيجر (الهدف الرئيسي)</h5>
-                                    <p>السكان: حوالي 27 مليون نسمة. الواردات: 3.84 مليار دولار. الهدف: الاستحواذ على 35% - 40% كبديل لموانئ بنين.</p>
+                                    <h5>الشباب والباحثون عن العمل</h5>
+                                    <p>الهدف: تحويل المهارات الرقمية إلى دخل مستقل عبر العمل الحر والمنصات والخدمات.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">2</span>
                                 <div>
-                                    <h5>جمهورية تشاد (الهدف الملح)</h5>
-                                    <p>السكان: حوالي 19 مليون نسمة. الواردات: 1.80 مليار دولار. الهدف: الاستحواذ على 30% - 35% لتعويض مسار بورتسودان.</p>
+                                    <h5>المشروعات الصغيرة والمتوسطة</h5>
+                                    <p>الهدف: تمكينها من البيع والدفع والتسويق والتوسع دون حواجز تشغيلية مرتفعة.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">3</span>
                                 <div>
-                                    <h5>أسواق العمق (مالي وبوركينا فاسو)</h5>
-                                    <p>السكان: حوالي 48 مليون نسمة مجتمعة. الهدف: استهداف البضائع النوعية عالية القيمة. القيمة المضافة للمتعاملين: خفض التكلفة إلى 12% - 14%، واختصار الزمن إلى 3 - 5 أيام، والقضاء على الإتاوات.</p>
+                                    <h5>القطاع غير الرسمي</h5>
+                                    <p>الهدف: إدخاله في الاقتصاد المنظم عبر الهوية الرقمية والمدفوعات والخدمات الموثقة.</p>
                                 </div>
                             </li>
                         </ul>
@@ -2223,41 +2330,41 @@
             <div class="text-slide-body">
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
-                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">gavel</span>الامتثال الدولي والاتفاقيات</p>
-                        <p class="text-slide-lead">تلتزم المنصة بمنظومة متكاملة من المعايير والاتفاقيات الدولية التي تمنح الممر مصداقية تشغيلية، وتسهّل اعتراف الجمارك والمصارف والشركاء الدوليين ببياناته وشهاداته:</p>
+                        <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">gavel</span>الامتثال الدولي والحوكمة الرقمية</p>
+                        <p class="text-slide-lead">تلتزم المنصة بمنظومة متكاملة من المعايير والاتفاقيات التي تمنحها مصداقية تشغيلية، وتسهّل اعتراف الجهات المحلية والدولية ببياناتها وشهاداتها:</p>
                         <ul class="workflow-list">
                             <li>
                                 <span class="num">1</span>
                                 <div>
-                                    <h5>اتفاقية التجارة الحرة القارية الأفريقية<span class="en-tag">AfCFTA</span></h5>
-                                    <p>تطبيق قواعد المنشأ التفضيلية التي تتيح للبضائع العابرة عبر الممر الاستفادة من تعريفات جمركية مخفضة بين الدول الأفريقية الموقّعة، بما يعزز تنافسية السلع الليبية والعابرة في أسواق دول الجوار.</p>
+                                    <h5>الهوية الرقمية وتوقيع المعاملات<span class="en-tag">Digital ID &amp; e-Signature</span></h5>
+                                    <p>اعتماد هوية رقمية وتوقيع إلكتروني يضمنان صحة المعاملة وسهولة التحقق وموثوقية السجل.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">2</span>
                                 <div>
-                                    <h5>إطار منظمة الجمارك العالمية لتأمين وتيسير التجارة<span class="en-tag">WCO SAFE</span></h5>
-                                    <p>اعتماد معايير التشغيل الآمن بين الجمارك والجمارك، والجمارك والقطاع الخاص، بما يشمل مسار المشغل الاقتصادي المعتمد (AEO)، لضمان تدفق سلس للبضائع مع الحفاظ على أعلى مستويات الرقابة الأمنية.</p>
+                                    <h5>قابلية التشغيل البيني<span class="en-tag">Interoperability</span></h5>
+                                    <p>الربط بين المنصة والجهات المختلفة عبر واجهات موحدة تسمح بتدفق البيانات دون عزل أو ازدواجية.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">3</span>
                                 <div>
-                                    <h5>الامتثال المالي الدولي<span class="en-tag">AML / KYC</span></h5>
-                                    <p>تطبيق معايير مكافحة غسل الأموال ومعرفة العميل وفق توصيات مجموعة العمل المالي (FATF)، عبر التحقق الآلي من هوية المشغلين وربط المحفظة الرقمية بالمصرف المركزي، بما يرفع ثقة المؤسسات المالية الدولية في النظام.</p>
+                                    <h5>الامتثال المالي <span class="en-tag">AML / KYC</span></h5>
+                                    <p>تطبيق معايير معرفة العميل ومكافحة غسل الأموال عبر التحقق الآلي وربط المحافظ بالمنظومة المصرفية الرسمية.</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="num">4</span>
                                 <div>
-                                    <h5>معايير أمن الموانئ والطيران<span class="en-tag">ISPS &amp; ICAO Annex 17</span></h5>
-                                    <p>الالتزام بالمدونة الدولية لأمن السفن والمرافق المينائية (ISPS) والملحق السابع عشر لمنظمة الطيران المدني الدولي، لضمان توافق عمليات الشحن البحري والجوي مع أعلى معايير السلامة والأمن العالمية.</p>
+                                    <h5>حماية البيانات والأمن السيبراني<span class="en-tag">Cybersecurity &amp; Data Protection</span></h5>
+                                    <p>الالتزام بأفضل الممارسات في أمن المعلومات وحماية الخصوصية وسجلات التدقيق الرقمية.</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="text-slide-visual">
-                        <img src="assets/slides/compliance-standards.png" alt="الامتثال الدولي والاتفاقيات">
+                        <img src="assets/slides/compliance-standards.png" alt="الامتثال والحوكمة الرقمية">
                     </div>
                 </div>
             </div>
@@ -2306,7 +2413,7 @@
                 <div class="text-slide-split">
                     <div class="text-slide-copy">
                         <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">flag_circle</span>الخاتمة ودعوة للمباركة</p>
-                        <p class="text-slide-lead solo-lead" style="text-align:justify;text-align-last:right;">إن مشروع «الجسر الأزرق الرقمي» هو إعادة صياغة لدور ليبيا الإقليمي؛ من دولة عبور جغرافي إلى "مركز ثقل خدماتي ومالي". نحن نقدم نظاماً يتكامل مع ما هو قائم، يحيي قطاعاتنا المصرفية والتأمينية، ويخدم سوقاً يتجاوز 90 مليون نسمة. نضع بين أيديكم هذا الطرح، متطلعين لنيل مباركتكم ورعايتكم الكريمة لهذا المشروع الاستراتيجي.</p>
+                        <p class="text-slide-lead solo-lead" style="text-align:justify;text-align-last:right;">إن مشروع «الجسر الأزرق الرقمي» ليس مجرد فكرة تقنية، بل أطروحة اقتصادية كاملة تعيد تعريف العلاقة بين الرقمنة والتنمية. فهو يقترح نموذجاً عملياً يربط الخدمات الرقمية بالإيراد، ويحوّل البيانات إلى أصل اقتصادي، ويجعل من التحول الرقمي أداة لصناعة دخل بديل ومستدام. نضع بين أيديكم هذا الطرح بوصفه مساراً قابلاً للتنفيذ والتوسع والقياس.</p>
                         <p class="text-slide-signature">مشروع الجسر الأزرق الرقمي</p>
                     </div>
                     <div class="text-slide-visual">
@@ -2409,7 +2516,7 @@
 
         function syncStagePosition() {
             stage.style.transition = 'none';
-            stage.style.transform = `translateY(${-activeSlideIndex * 100}vh)`;
+            stage.style.transform = `translateY(${-activeSlideIndex * 100}dvh)`;
         }
 
         function goToSlide(index) {
@@ -2419,7 +2526,7 @@
             }
             activeSlideIndex = targetIndex;
             stage.style.transition = 'transform 320ms cubic-bezier(0.22, 1, 0.36, 1)';
-            stage.style.transform = `translateY(${-targetIndex * 100}vh)`;
+            stage.style.transform = `translateY(${-targetIndex * 100}dvh)`;
             updateControls();
             playCurrentNarration();
         }

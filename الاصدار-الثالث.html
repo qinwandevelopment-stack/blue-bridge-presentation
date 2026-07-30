@@ -462,8 +462,35 @@
             display: block;
             border-radius: 0.5rem;
         }
+        .partner-sector-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-top: 0.15rem;
+        }
+        .sector-summary-card {
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid rgba(11, 77, 116, 0.14);
+            border-right: 3px solid #1f8fd1;
+            border-radius: 0.55rem;
+            padding: 0.4rem 0.6rem;
+            box-shadow: 0 4px 10px rgba(6, 44, 74, 0.06);
+        }
+        .sector-summary-card h3 {
+            font-size: clamp(0.88rem, 1.05vw, 1rem);
+            font-weight: 900;
+            color: #04314f;
+            margin-bottom: 0.12rem;
+        }
+        .sector-summary-card p {
+            font-size: clamp(0.66rem, 0.82vw, 0.78rem);
+            line-height: 1.55;
+            color: #1c4360;
+            font-weight: 600;
+        }
         @media (max-width: 760px) {
             .text-slide-split { grid-template-columns: 1fr; height: auto; }
+            .partner-sector-summary { gap: 0.3rem; }
         }
         .workflow-body {
             display: flex;
@@ -1751,7 +1778,21 @@
                     <div class="text-slide-copy">
                         <p class="text-slide-kicker"><span class="kicker-icon material-symbols-rounded">groups</span>مصفوفة الشركاء والتكامل المؤسسي</p>
                         <h2 class="text-slide-title">مصفوفة الشركاء والتكامل المؤسسي</h2>
-                        <p class="solo-lead">وزارة الاقتصاد والتجارة توفر المظلة التشريعية، ومصلحة الموانئ والنقل البحري والمطارات تتولى التنظيم، وموانئ المناطق الحرة تقدم البنية اللوجستية، بينما تدير شبكة ليبيا للتجارة النافذة الوطنية وسيادة البيانات.</p>
+                        <p class="solo-lead">تقوم المصفوفة على ثلاثة قطاعات رئيسية تتكامل حول المبادرة: قطاع عام يوفّر المظلة التنظيمية والبنية السيادية، وقطاع المصارف والتأمين يضمن الدورة المالية وإدارة المخاطر، وقطاع خاص يتولى التطوير والتشغيل والتنفيذ.</p>
+                        <div class="partner-sector-summary">
+                            <div class="sector-summary-card">
+                                <h3>قطاع عام</h3>
+                                <p>وزارة الاقتصاد والتجارة، مصلحة الموانئ والنقل البحري والمطارات، موانئ المناطق الحرة، شبكة ليبيا للتجارة، الاتحاد العام لغرف التجارة والصناعة والزراعة، مصلحة الجمارك، ووزارة الداخلية.</p>
+                            </div>
+                            <div class="sector-summary-card">
+                                <h3>قطاع المصارف والتأمين</h3>
+                                <p>المصرف المركزي الليبي، القطاع المصرفي الرقمي، وقطاع التأمين الرقمي بوصفهم الضامن للدورة المالية والامتثال والمرونة التشغيلية.</p>
+                            </div>
+                            <div class="sector-summary-card">
+                                <h3>قطاع خاص</h3>
+                                <p>شركة قنوان، الشركات التقنية والناشئة، المستثمرون، ورواد الأعمال باعتبارهم محرك التطوير وبناء الحلول وسلاسل القيمة.</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="text-slide-visual">
                         <img src="assets/slides/partners-matrix.png" alt="مصفوفة الشركاء">

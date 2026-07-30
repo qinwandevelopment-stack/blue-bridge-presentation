@@ -964,136 +964,7 @@
             .slide-header .header-logo.council { width: 40vw; }
         }
         .slide-footer {
-            position: relative;
-            order: 3;
-            margin-top: auto;
-            bottom: auto;
-            left: auto;
-            right: auto;
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: clamp(0.7rem, 1.8vw, 1.3rem);
-            padding: 0.55rem clamp(1.2rem, 3.5vw, 2rem);
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(223, 239, 248, 0.96) 55%, rgba(255, 255, 255, 0.96) 100%);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 10px 28px rgba(0, 50, 92, 0.16), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
-            border: 1px solid rgba(0, 63, 115, 0.14);
-            border-radius: 999px;
-        }
-        .slide-footer .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            flex: 0 1 auto;
-            min-width: 0;
-        }
-        .slide-footer .footer-logo {
-            width: clamp(2.1rem, 2.6vw, 2.5rem);
-            height: clamp(2.1rem, 2.6vw, 2.5rem);
-            border-radius: 50%;
-            display: block;
-            object-fit: contain;
-            background: #ffffff;
-            padding: 0.24rem;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18), 0 0 0 2px rgba(122, 16, 21, 0.16);
-        }
-        .slide-footer .footer-event-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.3;
-        }
-        .slide-footer .footer-event-title {
-            font-size: clamp(0.68rem, 0.84vw, 0.8rem);
-            font-weight: 900;
-            color: #7a1015;
-        }
-        .slide-footer .footer-event-sub {
-            font-size: clamp(0.58rem, 0.7vw, 0.66rem);
-            font-weight: 700;
-            color: #a3373c;
-            letter-spacing: 0.02em;
-        }
-        .slide-footer .footer-divider {
-            width: 1px;
-            height: clamp(1.8rem, 3.4vh, 2.3rem);
-            align-self: center;
-            background: linear-gradient(180deg, transparent, rgba(11, 77, 116, 0.3), transparent);
-            flex-shrink: 0;
-        }
-        .slide-footer .footer-participation {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-            min-width: 0;
-        }
-        .slide-footer .footer-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            flex: 1 1 0;
-            min-width: 0;
-        }
-        .slide-footer .footer-item .material-symbols-rounded {
-            width: clamp(1.7rem, 2.05vw, 1.95rem);
-            height: clamp(1.7rem, 2.05vw, 1.95rem);
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1f8fd1, #0b4d74);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(0.92rem, 1.1vw, 1.05rem);
-            flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(11, 77, 116, 0.28);
-        }
-        .slide-footer .footer-item-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.32;
-            min-width: 0;
-        }
-        .slide-footer .footer-label {
-            font-size: clamp(0.6rem, 0.72vw, 0.68rem);
-            font-weight: 900;
-            color: #04314f;
-            letter-spacing: 0.01em;
-        }
-        .slide-footer .footer-value {
-            font-size: clamp(0.64rem, 0.8vw, 0.76rem);
-            font-weight: 700;
-            color: #0b4d74;
-        }
-        .slide-footer .footer-line {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: clamp(0.6rem, 0.74vw, 0.7rem);
-            color: #0b4d74;
-            font-weight: 700;
-            line-height: 1.4;
-        }
-        .slide-footer .footer-line .material-symbols-rounded {
-            font-size: clamp(0.85rem, 1vw, 0.95rem);
-            color: #1f8fd1;
-            flex-shrink: 0;
-        }
-        .slide-footer .footer-participation b {
-            color: #04314f;
-            font-weight: 900;
-        }
-        @media (max-width: 760px) {
-            .slide-footer {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.4rem;
-                padding: 0.55rem 1rem;
-                border-radius: 1.2rem;
-            }
-            .slide-footer .footer-divider { display: none; }
-            .slide-footer .footer-item { flex: 1 1 100%; }
+            display: none;
         }
         .slide-controls {
             position: fixed;
@@ -1322,7 +1193,7 @@
                     </div>
                 </div>
             </div>
-            <img class="slide-image" src="assets/slides/1.png" alt="مبادرة الجسر الأزرق الرقمي">
+            <video class="slide-image" src="assets/video/digital-blue-bridge-intro.mp4" poster="assets/slides/1.png" autoplay muted loop playsinline></video>
             <div class="video-caption">
                 <span class="caption-title">أطروحة الجسر الأزرق الرقمي</span>
                 <span class="caption-sub">منصة رقمية سيادية لتنويع الدخل الوطني وتوليد قيمة اقتصادية متجددة</span>

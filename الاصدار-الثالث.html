@@ -40,7 +40,9 @@
             flex: 0 0 100dvh;
             direction: rtl;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
             display: grid;
             place-items: center;
             background: var(--deck-bg);
@@ -688,7 +690,6 @@
             background: linear-gradient(90deg, rgba(11, 77, 116, 0.3), transparent);
         }
         .slide-scrollable {
-            overflow-y: auto !important;
             align-items: flex-start !important;
             padding-bottom: clamp(12rem, 22vh, 14rem);
             scroll-padding-bottom: clamp(12rem, 22vh, 14rem);

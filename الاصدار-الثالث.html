@@ -188,10 +188,10 @@
             box-shadow: 0 5px 12px rgba(11, 77, 116, 0.28);
         }
         .text-slide-title {
-            font-size: clamp(1.48rem, 2.55vw, 2.4rem);
+            font-size: clamp(1.58rem, 2.7vw, 2.55rem);
             font-weight: 900;
             color: #04314f;
-            line-height: 1.28;
+            line-height: 1.22;
             margin-top: 0.2rem;
             letter-spacing: -0.005em;
             position: relative;
@@ -209,13 +209,13 @@
             background: linear-gradient(90deg, #1f8fd1, #0b4d74);
         }
         .text-slide-lead {
-            font-size: clamp(0.82rem, 1.02vw, 1.02rem);
-            line-height: 1.85;
+            font-size: clamp(0.84rem, 1.05vw, 1.05rem);
+            line-height: 1.92;
             color: #173b52;
             font-weight: 600;
         }
         .text-slide-subhead {
-            font-size: clamp(0.85rem, 1.05vw, 1.02rem);
+            font-size: clamp(0.9rem, 1.1vw, 1.08rem);
             font-weight: 800;
             color: #04314f;
             margin-top: 0.2rem;
@@ -688,7 +688,12 @@
         .slide-scrollable {
             overflow-y: auto !important;
             align-items: flex-start !important;
-            padding-bottom: clamp(11rem, 20vh, 13rem);
+            padding-bottom: clamp(12rem, 22vh, 14rem);
+            scroll-padding-bottom: clamp(12rem, 22vh, 14rem);
+        }
+        .partner-matrix-slide.slide-scrollable {
+            padding-bottom: 64rem;
+            scroll-padding-bottom: 64rem;
         }
         .goals-grid {
             display: grid;
@@ -1151,7 +1156,7 @@
                 -webkit-overflow-scrolling: touch;
                 align-items: flex-start;
                 padding-top: clamp(4.8rem, 9vh, 6.1rem);
-                padding-bottom: clamp(8.8rem, 18vh, 11rem);
+                padding-bottom: clamp(9.5rem, 19vh, 11.8rem);
             }
             .text-slide-body,
             .workflow-body,
@@ -1188,7 +1193,8 @@
                 justify-content: flex-start;
             }
             .slide-scrollable {
-                padding-bottom: clamp(12.5rem, 24vh, 15rem);
+                padding-bottom: clamp(13.5rem, 26vh, 16rem);
+                scroll-padding-bottom: clamp(13.5rem, 26vh, 16rem);
             }
         }
         @media (max-width: 640px) {
@@ -1262,7 +1268,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide" aria-label="الشريحة 1">
+        <section class="slide slide-scrollable" aria-label="الشريحة 1">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -1371,7 +1377,7 @@
                         </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 3">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 3">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -1639,7 +1645,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 7">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 7">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -1727,7 +1733,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 8">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 8">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -1815,7 +1821,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 9">
+        <section class="slide text-slide slide-scrollable partner-matrix-slide" aria-label="الشريحة 9">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -2145,7 +2151,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 12">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 12">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -2220,7 +2226,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 13">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 13">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -2302,7 +2308,7 @@
                 </div>
             </div>
         </section>
-        <section class="slide text-slide" aria-label="الشريحة 14">
+        <section class="slide text-slide slide-scrollable" aria-label="الشريحة 14">
             <div class="slide-header" aria-label="شعارات الهيدر">
                 <div class="header-logos">
                     <div class="header-forum">
@@ -2411,6 +2417,13 @@
             nextButton.disabled = index === slides.length - 1;
         }
 
+        function refreshScrollableSlides() {
+            slides.forEach((slide) => {
+                const isScrollable = slide.scrollHeight > slide.clientHeight + 2;
+                slide.classList.toggle('slide-scrollable', isScrollable);
+            });
+        }
+
         function playCurrentNarration() {
             if (!narrationEnabled) {
                 return;
@@ -2469,7 +2482,12 @@
             goToSlide(currentSlideIndex() - 1);
         });
         nextButton.addEventListener('click', () => {
-            handleFirstInteraction();
+        window.addEventListener('resize', refreshScrollableSlides);
+        window.addEventListener('orientationchange', () => {
+            syncStagePosition();
+            refreshScrollableSlides();
+        });
+        window.addEventListener('load', refreshScrollableSlides);
             goToSlide(currentSlideIndex() + 1);
         });
         toggleNarrationButton.addEventListener('click', () => {
@@ -2494,6 +2512,7 @@
                 goToSlide(activeSlideIndex + 1);
             }
         });
+        refreshScrollableSlides();
         updateControls();
         playCurrentNarration();
     </script>

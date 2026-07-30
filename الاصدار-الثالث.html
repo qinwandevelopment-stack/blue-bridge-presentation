@@ -22,33 +22,30 @@
             width: 100vw;
             height: 100dvh;
             min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
+            display: block;
             direction: rtl;
             background: var(--deck-bg);
             overflow: hidden;
-            transition: transform 280ms ease;
-            will-change: transform;
-            transform: translate3d(0, 0, 0);
         }
         .slide {
-            min-width: 100%;
             width: 100%;
             min-height: 100dvh;
             height: 100dvh;
             max-height: 100dvh;
-            flex: 0 0 100dvh;
             direction: rtl;
             position: relative;
+            display: none;
             overflow-x: hidden;
             overflow-y: auto;
             overscroll-behavior: contain;
-            display: grid;
             place-items: center;
             background: var(--deck-bg);
             padding-top: clamp(5.5rem, 10vh, 7rem);
             padding-bottom: clamp(6rem, 12vh, 7.4rem);
             padding-left: clamp(4.4rem, 6.5vw, 5.4rem);
+        }
+        .slide.is-active {
+            display: grid;
         }
         .slide::before,
         .slide::after {
@@ -2465,8 +2462,9 @@
         }
 
         function syncStagePosition() {
-            stage.style.transition = 'none';
-            stage.style.transform = `translateY(${-activeSlideIndex * 100}dvh)`;
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('is-active', index === activeSlideIndex);
+            });
         }
 
         function goToSlide(index) {
@@ -2475,8 +2473,7 @@
                 return;
             }
             activeSlideIndex = targetIndex;
-            stage.style.transition = 'transform 320ms cubic-bezier(0.22, 1, 0.36, 1)';
-            stage.style.transform = `translateY(${-targetIndex * 100}dvh)`;
+            syncStagePosition();
             updateControls();
             playCurrentNarration();
         }
